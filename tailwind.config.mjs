@@ -6,26 +6,27 @@ export default {
 		extend: {
 			colors: {
 				primary: {
-					DEFAULT: '#C5A059', // Gold (CTAs) [cite: 68]
+					DEFAULT: '#C5A059', // Gold (CTAs)
 					hover: '#B08D4B',   // Gold ligeramente más oscuro para hover
 				},
 				surface: {
-					light: '#FFFFFF',   // [cite: 70]
-					dark: '#0F0F0F',    // [cite: 73]
-					card: '#1A1A1A',    // [cite: 74]
+					light: '#FFFFFF',   //
+					dark: '#0F0F0F',    //
+					card: '#1A1A1A',    //
 				},
 				text: {
-					main: '#121212',    // Charcoal [cite: 71]
+					main: '#121212',    // Charcoal
 					inverted: '#FFFFFF'
 				},
 				status: {
-					success: '#10B981', // [cite: 75]
-					error: '#F43F5E',   // [cite: 75]
+					success: '#10B981', //
+					error: '#F43F5E',   //
 				}
 			},
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],           // Body [cite: 78]
-				serif: ['Playfair Display', 'serif'],    // Headings [cite: 77]
+                // CAMBIO: Estilo Geico/TheGeneral
+				sans: ['Lato', 'sans-serif'],           // Body (Limpio, legible como The General)
+				serif: ['Montserrat', 'sans-serif'],    // Headings (Geométrico, fuerte como Geico)
 			},
 		},
 	},
