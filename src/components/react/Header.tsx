@@ -36,7 +36,7 @@ export default function Header({ lang }: HeaderProps) {
   const t = {
     en: {
       login: 'Log In',
-      insuranceHeading: 'Insurance Services', // CAMBIO REALIZADO
+      insuranceHeading: 'Insurance Services',
       auto: 'Auto Insurance',
       property: 'Property Insurance',
       commercial: 'Commercial Insurance',
@@ -53,7 +53,7 @@ export default function Header({ lang }: HeaderProps) {
     },
     es: {
       login: 'Ingresar',
-      insuranceHeading: 'Servicios de Seguros', // CAMBIO REALIZADO
+      insuranceHeading: 'Servicios de Seguros',
       auto: 'Seguro de Auto',
       property: 'Seguro de Propiedad',
       commercial: 'Seguro Comercial',
@@ -86,11 +86,17 @@ export default function Header({ lang }: HeaderProps) {
   return (
     <>
       <header className="sticky top-0 z-50 w-full bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+        {/* MODIFICACIÓN: Altura aumentada a h-24 (móvil) y h-28 (escritorio) para acomodar el logo grande */}
+        <div className="container mx-auto px-4 h-24 md:h-28 flex items-center justify-between">
           
           {/* 1. LOGO */}
           <a href={lang === 'es' ? '/es' : '/'} className="flex items-center">
-            <img src="/images/fortitude-logo.png" alt="Fortitude Insurance" className="h-10 w-auto object-contain" />
+            {/* MODIFICACIÓN: Logo mucho más grande (h-16 en móvil, h-24 en escritorio) */}
+            <img 
+              src="/images/fortitude-logo.png" 
+              alt="Fortitude Insurance" 
+              className="h-16 md:h-24 w-auto object-contain transition-all duration-300" 
+            />
           </a>
 
           {/* RIGHT SIDE ACTIONS */}

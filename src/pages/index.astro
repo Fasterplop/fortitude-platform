@@ -1,48 +1,119 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import EZLynxFrame from '../components/EZLynxFrame.astro';
 import CarriersCarousel from '../components/CarriersCarousel.astro';
+import { Image } from 'astro:assets';
+import autoImg from '../images/auto.jpg';
+import propertyImg from '../images/property.jpg';
+import commercialImg from '../images/commercial.jpg';
 
 const title = "Fortitude Insurance Services LLC | Seguros de Auto, Hogar y Comercial";
 const description = "Cotice en tiempo real. Seguros confiables en Florida y Texas.";
-
-const quoteUrl = "https://www.agentinsure.com/compare/auto-insurance-home-insurance/fortitudeis/quote.aspx";
-const accountUrl = "https://customerservice.agentinsure.com/EzlynxCustomerService/fortitudeis/Account/LogIn";
 ---
 
 <Layout title={title} description={description}>
   
-  <section class="relative bg-surface-light dark:bg-surface-dark pt-12 pb-20 overflow-visible">
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="flex flex-col lg:flex-row items-center gap-12">
+  {/* === HERO SECTION === */}
+  <section class="relative min-h-[90vh] flex flex-col justify-center overflow-hidden bg-surface-light dark:bg-surface-dark pt-20 pb-10">
+    
+
+    <div class="container mx-auto px-4 relative z-10 text-center flex-1 flex flex-col justify-center">
+      
+      {/* Título Principal */}
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-text-main dark:text-surface-light tracking-tight leading-[1.1] mb-6">
+        Cotiza y asegura  <br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-500 to-yellow-600">en solo minutos</span>.
+      </h1>
+
+      {/* Subtítulo */}
+      <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto mb-10 font-light leading-relaxed">
+        Con Fortitude Insurance obtén protección integral para tu auto, hogar o negocio en Florida y Texas con tecnología en tiempo real y respaldo experto.
+      </p>
+
+      {/* Botones de Acción */}
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+        <button id="open-quote-modal" class="group relative px-10 py-5 bg-text-main dark:bg-white text-white dark:text-black font-bold text-lg rounded-full hover:-translate-y-1 transition-all duration-300 overflow-hidden min-w-[220px]">
+            <span class="relative z-10 flex items-center justify-center gap-3">
+               Iniciar Cotización
+               <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </span>
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+        </button>
         
-        <div class="lg:w-5/12 space-y-6 text-center lg:text-left">
-          <h1 class="text-5xl lg:text-6xl font-serif font-bold text-text-main dark:text-surface-light leading-tight">
-            Protección que avanza <span class="text-primary italic">contigo</span>.
-          </h1>
-          <p class="text-lg text-gray-600 dark:text-gray-300">
-            Seguros diseñados para la era moderna en FL y TX. Sin complicaciones.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <button id="start-quote-btn" class="bg-primary hover:bg-primary-hover text-text-main font-bold py-4 px-10 rounded-md shadow-lg transform transition hover:-translate-y-1 cursor-pointer">
-              Empezar a Cotizar
-            </button>
-            <a href="/contact" class="flex items-center justify-center gap-2 border border-gray-300 dark:border-gray-700 text-text-main dark:text-surface-light font-medium py-4 px-8 rounded-md hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
-              Contactar Agente
-            </a>
-          </div>
-        </div>
-
-        <div id="quote-container" class="lg:w-7/12 w-full relative transition-all duration-700 rounded-xl">
-            <div class="absolute -inset-1 bg-gradient-to-r from-primary to-primary-hover rounded-xl blur opacity-20 dark:opacity-40 animate-pulse"></div>
-            <EZLynxFrame src={quoteUrl} title="Cotizador Seguro" id="main-quote-frame" heightPx={850} />
-        </div>
-
+        <a href="/contact" class="text-gray-600 dark:text-gray-300 font-medium hover:text-primary transition-colors flex items-center gap-2 px-6 py-4 rounded-full hover:bg-gray-100 dark:hover:bg-white/10">
+           Hablar con un Agente
+        </a>
       </div>
-    </div>
-  </section>
 
-  <CarriersCarousel />
+      {/* Microcopia UX (Trust & Speed) */}
+      <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-medium mb-12 flex items-center justify-center gap-2 opacity-90">
+         <span>⏱️ Cotiza en solo 3 a 5 minutos.</span>
+         <span class="hidden sm:inline">•</span>
+         <span>Este proceso es gratuito y no afecta tu puntaje de crédito.</span>
+      </p>
+
+      {/* CARRUSEL DE CARRIERS INTEGRADO EN EL HERO */}
+      <div class="w-full mx-auto border-t border-gray-200/50 dark:border-white/5 pt-8">
+          <CarriersCarousel />
+      </div>
+
+    </div>
+</section>
+
+  {/* === MODAL DEL COTIZADOR === */}
+  <div id="quote-modal" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300" aria-hidden="true">
+      {/* Backdrop */}
+      <div class="absolute inset-0 bg-black/80 backdrop-blur-md" id="modal-backdrop"></div>
+      
+      <div class="relative z-10 w-full h-full flex items-center justify-center p-4 md:p-8">
+          <div class="bg-white w-full max-w-7xl h-[90vh] rounded-2xl overflow-hidden shadow-2xl flex flex-col relative animate-scale-in ring-1 ring-white/20">
+              
+              {/* Header del Modal - LOGO FORTITUDE */}
+              <div class="bg-surface-light dark:bg-surface-light px-6 py-4 border-b border-gray-200 flex items-center justify-between shadow-sm z-20">
+                  <div class="flex items-center gap-4">
+                      {/* Logo Reemplazado */}
+                      <img src="/images/fortitude-logo.png" alt="Fortitude Insurance" class="h-10 w-auto object-contain" />
+                      
+                      <div class="hidden sm:block">
+                          <h3 class="font-bold text-gray-900 text-lg leading-tight">Fortitude Insurance</h3>
+                          <p class="text-xs text-gray-500 font-medium tracking-wide uppercase flex items-center gap-1.5">
+                              <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                              Plataforma de Cotización Oficial
+                          </p>
+                      </div>
+                  </div>
+                  <button id="close-modal-btn" class="group p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-400 hover:text-red-500">
+                      <svg class="w-6 h-6 transform group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                  </button>
+              </div>
+
+              {/* Contenedor del Iframe Centrado */}
+              <div class="flex-1 bg-gray-50 relative overflow-hidden flex items-center justify-center">
+                  <iframe 
+                      id="modal-iframe"
+                      src="" 
+                      data-src="https://www.agentinsure.com/compare/auto-insurance-home-insurance/fortitudeis/quote.aspx" 
+                      class="w-full h-full border-0"
+                      title="Cotizador Fortitude Insurance"
+                  ></iframe>
+                  
+                  {/* Loader */}
+                  <div class="absolute inset-0 flex items-center justify-center bg-white pointer-events-none transition-opacity duration-500" id="iframe-loader">
+                      <div class="flex flex-col items-center gap-6">
+                          <div class="relative w-16 h-16">
+                              <div class="absolute inset-0 border-4 border-gray-100 rounded-full"></div>
+                              <div class="absolute inset-0 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+                          </div>
+                          <div class="text-center">
+                              <p class="text-gray-900 font-bold text-lg">Iniciando Cotizador</p>
+                              <p class="text-gray-400 text-sm">Conectando con aseguradoras...</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
 
   <section class="py-24 bg-white dark:bg-surface-card border-b border-gray-100 dark:border-gray-800">
   <div class="container mx-auto px-4">
@@ -110,147 +181,506 @@ const accountUrl = "https://customerservice.agentinsure.com/EzlynxCustomerServic
   </div>
 </section>
 
-  <section class="py-24 bg-gray-50 dark:bg-[#111]">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-serif font-bold mb-4 dark:text-white">Coberturas a tu medida</h2>
-        <p class="text-gray-500 max-w-2xl mx-auto">Selecciona el tipo de protección que necesitas hoy.</p>
+<section class="py-24 bg-white dark:bg-[#111] overflow-hidden">
+  <div class="container mx-auto px-4">
+    
+    {/* Encabezado */}
+    <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
+      <div class="max-w-2xl">
+        <h2 class="text-4xl md:text-6xl font-serif font-bold text-text-main dark:text-white leading-none mb-4">
+          Nuestras <span class="text-primary">Coberturas</span>
+        </h2>
+        <p class="text-lg text-gray-500 dark:text-gray-400 font-light">
+          Soluciones de riesgo diseñadas con precisión para cada etapa de tu vida y negocio.
+        </p>
       </div>
+      
+      {/* Indicador visual */}
+      <div class="hidden md:flex items-center gap-2 pb-2 opacity-50">
+        <span class="text-xs font-mono uppercase tracking-widest text-gray-400">Selecciona una categoría</span>
+        <svg class="w-12 h-px text-gray-300" viewBox="0 0 50 1"><rect width="50" height="1" fill="currentColor"/></svg>
+      </div>
+    </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+    {/* LAYOUT ACORDEÓN HORIZONTAL */}
+    <div class="flex flex-col lg:flex-row gap-4 h-auto lg:h-[600px] w-full">
+      
+      {/* === CARD 1: AUTO === */}
+      <a href="/auto" class="group relative flex-1 lg:hover:flex-[2.5] transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-3xl overflow-hidden cursor-pointer min-h-[300px] lg:min-h-full">
         
-        <a href="/auto" class="group relative h-[450px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80');"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-8 w-full">
-                <div class="mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 class="text-3xl font-bold text-white mb-2">Auto</h3>
-                    <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Protección completa para tu vehículo.</p>
-                </div>
-                <div class="w-full h-1 bg-gray-700 rounded overflow-hidden mt-4">
-                    <div class="w-0 h-full bg-primary group-hover:w-full transition-all duration-700 ease-out"></div>
-                </div>
-            </div>
-        </a>
+        {/* IMAGEN DE FONDO */}
+        <Image src={autoImg} alt="Seguro de Auto" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+        
+        {/* Overlay Gradiente Oscuro */}
+        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-700"></div>
 
-        <a href="/property" class="group relative h-[450px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&q=80');"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-8 w-full">
-                <div class="mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                     <h3 class="text-3xl font-bold text-white mb-2">Propiedad</h3>
-                    <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Seguridad para tu hogar y bienes.</p>
-                </div>
-                <div class="w-full h-1 bg-gray-700 rounded overflow-hidden mt-4">
-                    <div class="w-0 h-full bg-primary group-hover:w-full transition-all duration-700 ease-out"></div>
-                </div>
+        {/* Contenido */}
+        <div class="absolute inset-0 p-8 flex flex-col justify-between z-10">
+          
+          {/* Top: Número y Icono ACTUALIZADO */}
+          <div class="flex justify-between items-start">
+            
+            <div class="w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/10 group-hover:bg-primary group-hover:border-primary transition-colors duration-500 p-2.5">
+               {/* NUEVO ICONO DE AUTO SOLICITADO */}
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+                 <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
+                 <circle cx="7" cy="17" r="2" />
+                 <path d="M9 17h6" />
+                 <circle cx="17" cy="17" r="2" />
+               </svg>
             </div>
-        </a>
+          </div>
 
-        <a href="/commercial" class="group relative h-[450px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80');"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-8 w-full">
-                <div class="mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 class="text-3xl font-bold text-white mb-2">Comercial</h3>
-                    <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Respaldo sólido para tu negocio.</p>
-                </div>
-                <div class="w-full h-1 bg-gray-700 rounded overflow-hidden mt-4">
-                    <div class="w-0 h-full bg-primary group-hover:w-full transition-all duration-700 ease-out"></div>
-                </div>
+          {/* Bottom: Texto */}
+          <div>
+            <h3 class="text-3xl font-bold text-white mb-2 transform transition-transform duration-500 group-hover:-translate-y-2">Auto</h3>
+            
+            <div class="h-0 lg:h-auto overflow-hidden opacity-0 lg:group-hover:opacity-100 lg:group-hover:h-auto transition-all duration-700 delay-100 lg:max-h-0 lg:group-hover:max-h-40">
+               <p class="text-gray-200 text-sm md:text-base leading-relaxed mb-4 border-l-2 border-primary pl-4">
+                 Desde cobertura básica hasta protección total contra colisiones. Aseguramos tu movilidad con las mejores tarifas del mercado.
+               </p>
+               <span class="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
+                 Ver Opciones <span class="group-hover:translate-x-2 transition-transform">&rarr;</span>
+               </span>
             </div>
-        </a>
-      </div>
+            {/* Texto Móvil */}
+            <p class="lg:hidden text-gray-300 text-sm mt-2">Cobertura personal y comercial.</p>
+          </div>
+        </div>
+      </a>
+
+      {/* === CARD 2: PROPIEDAD === */}
+      <a href="/property" class="group relative flex-1 lg:hover:flex-[2.5] transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-3xl overflow-hidden cursor-pointer min-h-[300px] lg:min-h-full">
+        
+        {/* IMAGEN DE FONDO */}
+       <Image src={propertyImg} alt="Seguro de Auto" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+
+        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-700"></div>
+
+        <div class="absolute inset-0 p-8 flex flex-col justify-between z-10">
+          <div class="flex justify-between items-start">
+            
+            <div class="w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/10 group-hover:bg-primary group-hover:border-primary transition-colors duration-500">
+               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-3xl font-bold text-white mb-2 transform transition-transform duration-500 group-hover:-translate-y-2">Propiedad</h3>
+            <div class="h-0 lg:h-auto overflow-hidden opacity-0 lg:group-hover:opacity-100 lg:group-hover:h-auto transition-all duration-700 delay-100 lg:max-h-0 lg:group-hover:max-h-40">
+               <p class="text-gray-200 text-sm md:text-base leading-relaxed mb-4 border-l-2 border-primary pl-4">
+                 Protege tu inversión más importante. Seguros para propietarios, inquilinos y protección contra desastres naturales en FL y TX.
+               </p>
+               <span class="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
+                 Ver Opciones <span class="group-hover:translate-x-2 transition-transform">&rarr;</span>
+               </span>
+            </div>
+            <p class="lg:hidden text-gray-300 text-sm mt-2">Hogar, Condo y Renters.</p>
+          </div>
+        </div>
+      </a>
+
+      {/* === CARD 3: COMERCIAL === */}
+      <a href="/commercial" class="group relative flex-1 lg:hover:flex-[2.5] transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-3xl overflow-hidden cursor-pointer min-h-[300px] lg:min-h-full">
+        
+        {/* IMAGEN DE FONDO */}
+        <Image src={commercialImg} alt="Seguro de Auto" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+
+        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-700"></div>
+
+        <div class="absolute inset-0 p-8 flex flex-col justify-between z-10">
+          <div class="flex justify-between items-start">
+            
+            <div class="w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/10 group-hover:bg-primary group-hover:border-primary transition-colors duration-500">
+               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-3xl font-bold text-white mb-2 transform transition-transform duration-500 group-hover:-translate-y-2">Comercial</h3>
+            <div class="h-0 lg:h-auto overflow-hidden opacity-0 lg:group-hover:opacity-100 lg:group-hover:h-auto transition-all duration-700 delay-100 lg:max-h-0 lg:group-hover:max-h-40">
+               <p class="text-gray-200 text-sm md:text-base leading-relaxed mb-4 border-l-2 border-primary pl-4">
+                 Asegura la continuidad de tu negocio. General Liability, Workers Comp y flotas comerciales a tu medida.
+               </p>
+               <span class="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
+                 Ver Opciones <span class="group-hover:translate-x-2 transition-transform">&rarr;</span>
+               </span>
+            </div>
+             <p class="lg:hidden text-gray-300 text-sm mt-2">Negocios y Flotas.</p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+  {/* SECCION CONTACTO 50/50 CON FORMULARIO */}
+  <section class="py-20 bg-surface-light dark:bg-surface-dark overflow-hidden relative" id="contact-section">
+    
+    <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        
+        {/* COLUMNA IZQUIERDA: Texto Persuasivo + Información de Contacto */}
+        <div class="lg:w-1/2 relative z-10 text-center lg:text-left">
+             <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+                Soporte Personalizado
+             </span>
+             <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6 text-text-main dark:text-white leading-tight">
+                ¿Prefiere la asesoría de un <br/>
+                <span class="text-primary decoration-4 underline decoration-primary/30">agente licenciado?</span>
+             </h2>
+             <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                Entendemos que cada situación es única. Si tiene dudas sobre su cobertura o necesita una póliza personalizada para su empresa, nuestro equipo de expertos está listo para asistirle paso a paso.
+             </p>
+             
+             <div class="space-y-6">
+                 
+                 {/* Dirección (NUEVO) */}
+                 <div class="flex items-center justify-center lg:justify-start gap-4">
+                     <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                        {/* Icono de Mapa/Ubicación */}
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                     </div>
+                     <div class="text-left">
+                         <p class="text-xs text-gray-500 uppercase tracking-wide font-bold">Visítenos</p>
+                         <p class="text-xl font-bold text-text-main dark:text-white text-base">
+                             28210 Paseo Drive #190<br/>
+                             Wesley Chapel, FL 33543
+                         </p>
+                     </div>
+                 </div>
+
+                 {/* Teléfono */}
+                 <div class="flex items-center justify-center lg:justify-start gap-4">
+                     <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                     </div>
+                     <div class="text-left">
+                         <p class="text-xs text-gray-500 uppercase tracking-wide font-bold">Llámenos Directamente</p>
+                         <p class="text-xl font-bold text-text-main dark:text-white">(813) 753-4197</p>
+                     </div>
+                 </div>
+
+                 {/* Correo Electrónico */}
+                 <div class="flex items-center justify-center lg:justify-start gap-4">
+                     <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                     </div>
+                     <div class="text-left">
+                         <p class="text-xs text-gray-500 uppercase tracking-wide font-bold">Correo Electrónico</p>
+                         <a href="mailto:support@fortitudeins.us" class="text-xl font-bold text-text-main dark:text-white hover:text-primary transition-colors">
+                             support@fortitudeins.us
+                         </a>
+                     </div>
+                 </div>
+
+             </div>
+        </div>
+
+        {/* COLUMNA DERECHA: Formulario */}
+        <div class="lg:w-1/2 w-full relative z-10">
+            <div class="bg-white dark:bg-[#1a1a1a] p-8 md:p-10 rounded-3xl shadow-2xl border border-gray-100 dark:border-white/10">
+                <form id="contact-form" class="space-y-6">
+                    {/* ... (resto del formulario igual) ... */}
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label for="name" class="text-sm font-medium text-gray-700 dark:text-gray-300">Nombre completo</label>
+                            <input type="text" id="name" name="name" required 
+                                class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white" placeholder="Ej. Juan Pérez" />
+                        </div>
+                        <div class="space-y-2">
+                            <label for="phone" class="text-sm font-medium text-gray-700 dark:text-gray-300">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" required 
+                                class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white" placeholder="(000) 000-0000" />
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="email" class="text-sm font-medium text-gray-700 dark:text-gray-300">Correo electrónico</label>
+                        <input type="email" id="email" name="email" required 
+                            class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white" placeholder="juan@ejemplo.com" />
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="interest" class="text-sm font-medium text-gray-700 dark:text-gray-300">Tipo de seguro de interés</label>
+                        <div class="relative">
+                            <select id="interest" name="interest" class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all appearance-none dark:text-white cursor-pointer">
+                                <option value="Auto">Seguro de Auto</option>
+                                <option value="Hogar">Seguro de Hogar</option>
+                                <option value="Comercial">Seguro Comercial</option>
+                                <option value="Otro">Otro / Consulta General</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="message" class="text-sm font-medium text-gray-700 dark:text-gray-300">Mensaje</label>
+                        <textarea id="message" name="message" rows="3" 
+                            class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none dark:text-white" placeholder="¿Cómo podemos ayudarle?"></textarea>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="w-full bg-primary hover:bg-primary-hover text-text-main font-bold py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <span>Enviar consulta</span>
+                        <svg id="btn-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <svg id="btn-loader" class="w-5 h-5 animate-spin hidden" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                    </button>
+                    
+                    <p id="form-message" class="text-center text-sm font-medium hidden"></p>
+                </form>
+            </div>
+        </div>
+
+        {/* Fondo Decorativo en Diagonal */}
+        <div class="absolute top-0 right-0 w-2/3 h-full bg-gray-50 dark:bg-[#151515] -skew-x-12 transform origin-top-right -z-0"></div>
     </div>
   </section>
 
-  <section class="py-20 bg-surface-light dark:bg-surface-dark overflow-hidden relative">
-    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 relative z-10 mb-10 md:mb-0">
-             <img src="/images/fortitude-logo.png" 
-                  alt="Asistencia en el camino" 
-                  class="w-full max-w-lg mx-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500"
-                  onerror="this.src='https://placehold.co/600x400/transparent/C5A059?text=Ilustracion'" />
-        </div>
-        <div class="md:w-1/2 md:pl-16 relative z-10">
-            <h2 class="text-4xl font-serif font-bold mb-6 dark:text-white">
-                Estamos ahí cuando <br/> <span class="text-primary decoration-4 underline decoration-primary/30">más importa</span>.
-            </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                No somos solo un contrato en papel. Somos la respuesta rápida ante un incidente.
-            </p>
-            <ul class="space-y-4 mb-8">
-                <li class="flex items-center gap-3">
-                    <span class="bg-green-100 text-green-600 p-1 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg></span>
-                    <span class="dark:text-gray-300 font-medium">Respuesta inmediata 24/7</span>
-                </li>
-            </ul>
-        </div>
-        <div class="absolute top-0 right-0 w-1/2 h-full bg-gray-50 dark:bg-[#151515] -skew-x-12 transform origin-top-right -z-0"></div>
-    </div>
-  </section>
+  {/* SECCION PREGUNTAS FRECUENTES (FAQ) */}
+  <section class="py-24 bg-white dark:bg-[#0a0a0a] relative overflow-hidden">
+    
+    {/* Elementos decorativos de fondo */}
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+    <div class="absolute -left-20 top-40 w-72 h-72 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
 
-  <section class="py-24 bg-[#1a1a1a] text-white relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
     <div class="container mx-auto px-4 relative z-10">
-        <div class="flex flex-col lg:flex-row gap-16 items-center">
-            <div class="lg:w-1/3">
-                <div class="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-2xl shadow-2xl">
-                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-primary/40">
-                         <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        
+        {/* Encabezado Centrado */}
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-text-main dark:text-white mb-4">
+                Preguntas Frecuentes
+            </h2>
+            <p class="text-gray-500 dark:text-gray-400 font-light">
+                Resolvemos sus dudas principales para que tome decisiones con confianza.
+            </p>
+        </div>
+
+        {/* Grid de Preguntas */}
+        <div class="max-w-4xl mx-auto grid gap-6">
+            
+            {/* FAQ Item 1 */}
+            <div class="group bg-gray-50 dark:bg-white/5 rounded-2xl p-1 border border-transparent hover:border-primary/20 transition-all duration-300">
+                <details class="group [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 rounded-xl bg-white dark:bg-[#1a1a1a] p-6 text-gray-900 dark:text-white transition-colors hover:bg-gray-50 dark:hover:bg-white/5 shadow-sm">
+                        <h3 class="font-bold text-lg pr-4">
+                            ¿Qué información necesito para cotizar mi auto?
+                        </h3>
+                        <span class="shrink-0 rounded-full bg-gray-100 dark:bg-white/10 p-2 text-gray-900 dark:text-white shadow-sm group-open:bg-primary group-open:text-white transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 transition duration-300 group-open:-rotate-45" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+
+                    <div class="px-6 pb-6 pt-4">
+                         <p class="leading-relaxed text-gray-600 dark:text-gray-300 pl-4 border-l-2 border-primary/30">
+                            Solo requiere sus datos básicos, código postal y el tipo de seguro deseado. El sistema no realizará consultas que afecten su crédito.
+                        </p>
                     </div>
-                    <h2 class="text-3xl font-serif font-bold mb-4">Client Center</h2>
-                    <p class="text-gray-400 mb-8">Accede a tu portal seguro para gestionar pólizas, pagos y documentos.</p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white/5 p-4 rounded-lg text-center hover:bg-white/10 transition-colors cursor-default">
-                            <span class="text-xs font-bold uppercase block text-primary mb-1">ID Cards</span>
-                            <span class="text-xs text-gray-400">Descargar</span>
-                        </div>
-                        <div class="bg-white/5 p-4 rounded-lg text-center hover:bg-white/10 transition-colors cursor-default">
-                             <span class="text-xs font-bold uppercase block text-primary mb-1">Docs</span>
-                             <span class="text-xs text-gray-400">Revisar</span>
-                        </div>
-                    </div>
-                </div>
+                </details>
             </div>
-            <div class="lg:w-2/3 w-full">
-                <div class="bg-[#111] rounded-xl overflow-hidden shadow-2xl border border-gray-800">
-                    <div class="bg-[#000] px-4 py-3 border-b border-gray-800 flex items-center justify-between">
-                        <div class="flex gap-2">
-                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
-                        </div>
-                        <div class="text-xs text-gray-500 font-mono">Secure Connection</div>
+
+            {/* FAQ Item 2 */}
+            <div class="group bg-gray-50 dark:bg-white/5 rounded-2xl p-1 border border-transparent hover:border-primary/20 transition-all duration-300">
+                <details class="group [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 rounded-xl bg-white dark:bg-[#1a1a1a] p-6 text-gray-900 dark:text-white transition-colors hover:bg-gray-50 dark:hover:bg-white/5 shadow-sm">
+                        <h3 class="font-bold text-lg pr-4">
+                            ¿Puedo gestionar mis documentos en línea?
+                        </h3>
+                         <span class="shrink-0 rounded-full bg-gray-100 dark:bg-white/10 p-2 text-gray-900 dark:text-white shadow-sm group-open:bg-primary group-open:text-white transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 transition duration-300 group-open:-rotate-45" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+
+                    <div class="px-6 pb-6 pt-4">
+                        <p class="leading-relaxed text-gray-600 dark:text-gray-300 pl-4 border-l-2 border-primary/30">
+                            Sí, a través de nuestro portal de clientes puede descargar tarjetas de identificación, certificados y solicitar cambios en sus pólizas de forma autónoma.
+                        </p>
                     </div>
-                    <div class="bg-white"> 
-  <EZLynxFrame src={accountUrl} title="Portal de Clientes" heightPx={1000} /> 
-</div>
-                </div>
+                </details>
             </div>
+
+            {/* FAQ Item 3 (NUEVO) */}
+            <div class="group bg-gray-50 dark:bg-white/5 rounded-2xl p-1 border border-transparent hover:border-primary/20 transition-all duration-300">
+                <details class="group [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 rounded-xl bg-white dark:bg-[#1a1a1a] p-6 text-gray-900 dark:text-white transition-colors hover:bg-gray-50 dark:hover:bg-white/5 shadow-sm">
+                        <h3 class="font-bold text-lg pr-4">
+                            ¿Ofrecen descuentos al combinar pólizas (Bundles)?
+                        </h3>
+                        <span class="shrink-0 rounded-full bg-gray-100 dark:bg-white/10 p-2 text-gray-900 dark:text-white shadow-sm group-open:bg-primary group-open:text-white transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 transition duration-300 group-open:-rotate-45" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+
+                    <div class="px-6 pb-6 pt-4">
+                        <p class="leading-relaxed text-gray-600 dark:text-gray-300 pl-4 border-l-2 border-primary/30">
+                            Absolutamente. Maximice sus ahorros agrupando sus seguros de Auto y Hogar. Nuestros agentes diseñarán un paquete personalizado que reduce sus primas sin sacrificar cobertura.
+                        </p>
+                    </div>
+                </details>
+            </div>
+
+            {/* FAQ Item 4 (NUEVO) */}
+            <div class="group bg-gray-50 dark:bg-white/5 rounded-2xl p-1 border border-transparent hover:border-primary/20 transition-all duration-300">
+                <details class="group [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 rounded-xl bg-white dark:bg-[#1a1a1a] p-6 text-gray-900 dark:text-white transition-colors hover:bg-gray-50 dark:hover:bg-white/5 shadow-sm">
+                        <h3 class="font-bold text-lg pr-4">
+                            ¿Qué debo hacer en caso de un siniestro o accidente?
+                        </h3>
+                        <span class="shrink-0 rounded-full bg-gray-100 dark:bg-white/10 p-2 text-gray-900 dark:text-white shadow-sm group-open:bg-primary group-open:text-white transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 transition duration-300 group-open:-rotate-45" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </summary>
+
+                    <div class="px-6 pb-6 pt-4">
+                        <p class="leading-relaxed text-gray-600 dark:text-gray-300 pl-4 border-l-2 border-primary/30">
+                            Su tranquilidad es prioridad. Puede reportar reclamos 24/7 a través de nuestro Portal de Clientes o llamando a nuestra línea de emergencia. Le acompañaremos durante todo el proceso de resolución.
+                        </p>
+                    </div>
+                </details>
+            </div>
+
         </div>
     </div>
   </section>
 
   <script is:inline>
-    const startBtn = document.getElementById('start-quote-btn');
-    const quoteContainer = document.getElementById('quote-container');
+      const form = document.getElementById('contact-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const btnIcon = document.getElementById('btn-icon');
+      const btnLoader = document.getElementById('btn-loader');
+      const formMessage = document.getElementById('form-message');
 
-    if (startBtn && quoteContainer) {
-        startBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            
-            // 2. Efecto de "Glow" (Anillo dorado + escala sutil)
-            // Añadimos clases de Tailwind para un anillo dorado brillante
-            quoteContainer.classList.add('ring-4', 'ring-primary', 'ring-offset-4', 'ring-offset-surface-light', 'dark:ring-offset-surface-dark', 'scale-[1.01]', 'shadow-[0_0_50px_rgba(197,160,89,0.5)]');
+      if (form) {
+          form.addEventListener('submit', async (e) => {
+              e.preventDefault();
+              
+              // UI Loading State
+              submitBtn.disabled = true;
+              submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+              btnIcon.classList.add('hidden');
+              btnLoader.classList.remove('hidden');
+              formMessage.classList.add('hidden');
 
-            // 3. Quitar el efecto después de 2 segundos para que no moleste
-            setTimeout(() => {
-                 quoteContainer.classList.remove('ring-4', 'ring-primary', 'ring-offset-4', 'ring-offset-surface-light', 'dark:ring-offset-surface-dark', 'scale-[1.01]', 'shadow-[0_0_50px_rgba(197,160,89,0.5)]');
-            }, 500);
-        });
-    }
+              const formData = new FormData(form);
+              const data = Object.fromEntries(formData);
+
+              try {
+                  const response = await fetch('/api/send-email', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify(data),
+                  });
+
+                  if (response.ok) {
+                      form.reset();
+                      formMessage.textContent = "¡Gracias! Su mensaje ha sido enviado. Nos pondremos en contacto pronto.";
+                      formMessage.className = "text-center text-sm font-medium text-green-600 mt-4 block p-3 bg-green-50 rounded-lg";
+                  } else {
+                      throw new Error('Error en el envío');
+                  }
+              } catch (error) {
+                  formMessage.textContent = "Hubo un error al enviar el mensaje. Por favor intente nuevamente o llámenos.";
+                  formMessage.className = "text-center text-sm font-medium text-red-600 mt-4 block p-3 bg-red-50 rounded-lg";
+              } finally {
+                  // Reset UI
+                  submitBtn.disabled = false;
+                  submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                  btnIcon.classList.remove('hidden');
+                  btnLoader.classList.add('hidden');
+                  formMessage.classList.remove('hidden');
+              }
+          });
+      }
   </script>
+
+
+
+  <script is:inline>
+    // ELEMENTOS DEL DOM
+    const openBtn = document.getElementById('open-quote-modal');
+    const modal = document.getElementById('quote-modal');
+    const closeBtn = document.getElementById('close-modal-btn');
+    const backdrop = document.getElementById('modal-backdrop');
+    const iframe = document.getElementById('modal-iframe');
+    const loader = document.getElementById('iframe-loader');
+
+    // FUNCIONES DEL MODAL
+    function openModal() {
+        if (!modal) return;
+        
+        // 1. Mostrar contenedor
+        modal.classList.remove('hidden');
+        
+        // 2. Cargar Iframe (Lazy Loading para que no pese al inicio)
+        if (iframe && !iframe.getAttribute('src')) {
+            iframe.setAttribute('src', iframe.getAttribute('data-src'));
+            // Ocultar loader cuando cargue
+            iframe.onload = () => {
+                if(loader) loader.style.opacity = '0';
+            };
+        }
+
+        // 3. Animación de entrada
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            document.body.style.overflow = 'hidden'; // Evitar scroll trasero
+        }, 10);
+    }
+
+    function closeModal() {
+        if (!modal) return;
+
+        // 1. Animación de salida
+        modal.classList.add('opacity-0');
+        document.body.style.overflow = ''; // Restaurar scroll
+
+        // 2. Ocultar tras la animación
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
+
+    // EVENT LISTENERS
+    if (openBtn) openBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+
+    // Cerrar con tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+  </script>
+
+  <style>
+    /* Animaciones personalizadas */
+    @keyframes pulse-slow {
+        0%, 100% { opacity: 0.5; transform: scale(1); }
+        50% { opacity: 0.8; transform: scale(1.1); }
+    }
+    .animate-pulse-slow {
+        animation: pulse-slow 8s infinite ease-in-out;
+    }
+    
+    @keyframes scale-in {
+        0% { transform: scale(0.95); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    .animate-scale-in {
+        animation: scale-in 0.3s ease-out forwards;
+    }
+  </style>
 
 </Layout>
