@@ -1,0 +1,51 @@
+---
+const carriers = [
+  { name: 'Progressive', src: '/images/carriers/Progressive.png' },
+  { name: 'Geico', src: '/images/carriers/Geico.png' },
+  { name: 'Mile Auto', src: '/images/carriers/MileAuto.png' },
+  { name: 'National General', src: '/images/carriers/NationalGeneral.png' },
+  { name: 'Bristol West', src: '/images/carriers/Bristol.png' },
+  { name: 'Assurance America', src: '/images/carriers/AssuranceAmerica.png' },
+];
+---
+
+<section class="py-12 bg-white dark:bg-surface-dark overflow-hidden border-b border-gray-100 dark:border-gray-800 pointer-events-none select-none">
+  <div class="container mx-auto px-4 mb-8">
+     <p class="text-center text-xs font-bold text-gray-400 uppercase tracking-[0.2em]">
+      Trabajamos con las mejores aseguradoras
+    </p>
+  </div>
+  
+  <div class="relative w-full">
+    <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white dark:from-surface-dark to-transparent z-10"></div>
+    <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white dark:from-surface-dark to-transparent z-10"></div>
+
+    <div class="flex w-max animate-infinite-scroll">
+      <div class="flex gap-20 mx-10 items-center">
+        {carriers.map((carrier) => (
+          /* AUMENTO DE TAMAÑO: w-44 h-28 */
+          <div class="w-44 h-28 flex items-center justify-center">
+            <img src={carrier.src} alt={carrier.name} class="max-w-full max-h-full object-contain" />
+          </div>
+        ))}
+      </div>
+      <div class="flex gap-20 mx-10 items-center">
+        {carriers.map((carrier) => (
+          <div class="w-44 h-28 flex items-center justify-center">
+            <img src={carrier.src} alt={carrier.name} class="max-w-full max-h-full object-contain" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes infinite-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-infinite-scroll {
+    animation: infinite-scroll 40s linear infinite;
+  }
+</style>
