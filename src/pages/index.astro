@@ -6,11 +6,13 @@ import autoImg from '../images/auto.jpg';
 import propertyImg from '../images/property.jpg';
 import commercialImg from '../images/commercial.jpg';
 
-const title = "Fortitude Insurance Services LLC | Seguros de Auto, Hogar y Comercial";
-const description = "Cotice en tiempo real. Seguros confiables en Florida y Texas.";
+const title = "Fortitude Insurance Services LLC | Auto, Home & Commercial Insurance";
+const description = "Quote in real time. Reliable insurance in Florida and Texas.";
+// Definimos el idioma de esta página
+const lang = "en"; 
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} lang={lang}>
   
   {/* === HERO SECTION === */}
   <section class="relative min-h-[90vh] flex flex-col justify-center overflow-hidden bg-surface-light dark:bg-surface-dark pt-20 pb-10">
@@ -18,48 +20,50 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
 
     <div class="container mx-auto px-4 relative z-10 text-center flex-1 flex flex-col justify-center">
       
-      {/* Título Principal */}
+      {/* Main Title */}
       <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-text-main dark:text-surface-light tracking-tight leading-[1.1] mb-6">
-        Cotiza y asegura  <br/>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-500 to-yellow-600">en solo minutos</span>.
+        Quote and insure <br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-500 to-yellow-600">in just minutes</span>.
       </h1>
 
-      {/* Subtítulo */}
+      {/* Subtitle */}
       <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto mb-10 font-light leading-relaxed">
-        Con Fortitude Insurance obtén protección integral para tu auto, hogar o negocio en Florida y Texas con tecnología en tiempo real y respaldo experto.
+        With Fortitude Insurance get comprehensive protection for your auto, home, or business in Florida and Texas with real-time technology and expert support.
       </p>
 
-      {/* Botones de Acción */}
+      {/* Action Buttons */}
       <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
         <button id="open-quote-modal" class="group relative px-10 py-5 bg-text-main dark:bg-white text-white dark:text-black font-bold text-lg rounded-full hover:-translate-y-1 transition-all duration-300 overflow-hidden min-w-[220px]">
             <span class="relative z-10 flex items-center justify-center gap-3">
-               Iniciar Cotización
-               <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+               Start Quote
+               <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </span>
             <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
         </button>
         
         <a href="/contact" class="text-gray-600 dark:text-gray-300 font-medium hover:text-primary transition-colors flex items-center gap-2 px-6 py-4 rounded-full hover:bg-gray-100 dark:hover:bg-white/10">
-           Hablar con un Agente
+           Speak with an Agent
         </a>
       </div>
 
-      {/* Microcopia UX (Trust & Speed) */}
+      {/* UX Microcopy (Trust & Speed) */}
       <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-medium mb-12 flex items-center justify-center gap-2 opacity-90">
-         <span>⏱️ Cotiza en solo 3 a 5 minutos.</span>
+         <span>⏱️ Quote in just 3 to 5 minutes.</span>
          <span class="hidden sm:inline">•</span>
-         <span>Este proceso es gratuito y no afecta tu puntaje de crédito.</span>
+         <span>This process is free and does not affect your credit score.</span>
       </p>
 
-      {/* CARRUSEL DE CARRIERS INTEGRADO EN EL HERO */}
+   
+      {/* INTEGRATED CARRIERS CAROUSEL IN HERO */}
       <div class="w-full mx-auto border-t border-gray-200/50 dark:border-white/5 pt-8">
-          <CarriersCarousel />
+          {/* PASAMOS LA PROPIEDAD LANG AQUI */}
+          <CarriersCarousel lang={lang} />
       </div>
 
     </div>
 </section>
 
-  {/* === MODAL DEL COTIZADOR === */}
+  {/* === QUOTE MODAL === */}
   <div id="quote-modal" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300" aria-hidden="true">
       {/* Backdrop */}
       <div class="absolute inset-0 bg-black/80 backdrop-blur-md" id="modal-backdrop"></div>
@@ -67,50 +71,60 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
       <div class="relative z-10 w-full h-full flex items-center justify-center p-4 md:p-8">
           <div class="bg-white w-full max-w-7xl h-[90vh] rounded-2xl overflow-hidden shadow-2xl flex flex-col relative animate-scale-in ring-1 ring-white/20">
               
-              {/* Header del Modal - LOGO FORTITUDE */}
+              {/* Modal Header - FORTITUDE LOGO */}
               <div class="bg-surface-light dark:bg-surface-light px-6 py-4 border-b border-gray-200 flex items-center justify-between shadow-sm z-20">
+              
                   <div class="flex items-center gap-4">
-                      {/* Logo Reemplazado */}
+                      {/* Replaced Logo */}
                       <img src="/images/fortitude-logo.png" alt="Fortitude Insurance" class="h-10 w-auto object-contain" />
                       
+                 
                       <div class="hidden sm:block">
                           <h3 class="font-bold text-gray-900 text-lg leading-tight">Fortitude Insurance</h3>
                           <p class="text-xs text-gray-500 font-medium tracking-wide uppercase flex items-center gap-1.5">
+                            
                               <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                              Plataforma de Cotización Oficial
+                              Official Quoting Platform
                           </p>
                       </div>
+            
                   </div>
                   <button id="close-modal-btn" class="group p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-400 hover:text-red-500">
-                      <svg class="w-6 h-6 transform group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                      <svg class="w-6 h-6 transform group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                   </button>
+        
               </div>
 
-              {/* Contenedor del Iframe Centrado */}
+              {/* Centered Iframe Container */}
               <div class="flex-1 bg-gray-50 relative overflow-hidden flex items-center justify-center">
                   <iframe 
                       id="modal-iframe"
                       src="" 
                       data-src="https://www.agentinsure.com/compare/auto-insurance-home-insurance/fortitudeis/quote.aspx" 
                       class="w-full h-full border-0"
-                      title="Cotizador Fortitude Insurance"
+                      title="Fortitude Insurance Quoter"
                   ></iframe>
+ 
                   
                   {/* Loader */}
                   <div class="absolute inset-0 flex items-center justify-center bg-white pointer-events-none transition-opacity duration-500" id="iframe-loader">
                       <div class="flex flex-col items-center gap-6">
+         
                           <div class="relative w-16 h-16">
                               <div class="absolute inset-0 border-4 border-gray-100 rounded-full"></div>
                               <div class="absolute inset-0 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+        
                           </div>
                           <div class="text-center">
-                              <p class="text-gray-900 font-bold text-lg">Iniciando Cotizador</p>
-                              <p class="text-gray-400 text-sm">Conectando con aseguradoras...</p>
+                              <p class="text-gray-900 font-bold text-lg">Starting Quoter</p>
+                     
+                              <p class="text-gray-400 text-sm">Connecting with carriers...</p>
                           </div>
                       </div>
                   </div>
               </div>
 
+       
           </div>
       </div>
   </div>
@@ -120,22 +134,22 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
     
     <div class="max-w-6xl mx-auto text-center mb-10">
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-text-main dark:text-white leading-tight tracking-tight">
-        Fortitude Insurance le brinda el respaldo que necesita cuando más importa.
+        Fortitude Insurance provides the support you need when it matters most.
       </h2>
     </div>
 
     <div class="max-w-3xl mx-auto text-center">
       <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed font-light">
-        Durante años, hemos hecho nuestro negocio brindar cobertura de 5 estrellas, con excelentes tarifas bajas y opciones de pago flexibles para mantenerlo cubierto.
+        For years, we have made it our business to provide 5-star coverage, with excellent low rates and flexible payment options to keep you covered.
       </p>
 
       <p class="text-lg text-gray-500 dark:text-gray-400 mb-12">
-        Todos son bienvenidos aquí, incluso con historial de crédito o manejo menos que perfecto.
+        Everyone is welcome here, even with less than perfect credit or driving history.
       </p>
 
       <a href="/about" class="inline-flex items-center gap-2 text-primary font-bold text-lg hover:text-primary-hover transition-colors group mb-20">
-        Más sobre Fortitude Insurance
-        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        More about Fortitude Insurance
+        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
       </a>
     </div>
 
@@ -146,23 +160,26 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
               <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
               <circle cx="7" cy="17" r="2" />
+            
               <path d="M9 17h6" />
               <circle cx="17" cy="17" r="2" />
            </svg>
         </div>
         <h3 class="text-2xl font-medium text-text-main dark:text-white max-w-xs leading-snug">
-          Cientos de conductores asegurados
+          Hundreds of insured drivers
         </h3>
       </div>
 
       <div class="flex flex-col items-center text-center group">
-        <div class="w-20 h-20 mb-6 text-text-main dark:text-white group-hover:text-primary transition-colors duration-500 flex items-center justify-center">
+      
+          <div class="w-20 h-20 mb-6 text-text-main dark:text-white group-hover:text-primary transition-colors duration-500 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-full h-full">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
             </svg>
         </div>
         <h3 class="text-2xl font-medium text-text-main dark:text-white max-w-xs leading-snug">
-          Obtenga una cotización de auto en 2 minutos o menos
+        
+          Get an auto quote in 2 minutes or less
         </h3>
       </div>
 
@@ -173,7 +190,7 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
             </svg>
         </div>
         <h3 class="text-2xl font-medium text-text-main dark:text-white max-w-xs leading-snug">
-          Proceso de reclamos rápido y sencillo
+          Fast and simple claims process
         </h3>
       </div>
 
@@ -182,46 +199,49 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
 </section>
 
 <section class="py-24 bg-white dark:bg-[#111] overflow-hidden">
+ 
   <div class="container mx-auto px-4">
     
-    {/* Encabezado */}
+    {/* Header */}
     <div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
       <div class="max-w-2xl">
         <h2 class="text-4xl md:text-6xl font-serif font-bold text-text-main dark:text-white leading-none mb-4">
-          Nuestras <span class="text-primary">Coberturas</span>
+          Our <span class="text-primary">Coverages</span>
         </h2>
         <p class="text-lg text-gray-500 dark:text-gray-400 font-light">
-          Soluciones de riesgo diseñadas con precisión para cada etapa de tu vida y negocio.
+          Risk solutions precisely designed for every stage of your life and business.
         </p>
       </div>
       
-      {/* Indicador visual */}
+      {/* Visual Indicator */}
       <div class="hidden md:flex items-center gap-2 pb-2 opacity-50">
-        <span class="text-xs font-mono uppercase tracking-widest text-gray-400">Selecciona una categoría</span>
+        <span class="text-xs font-mono uppercase tracking-widest text-gray-400">Select a category</span>
         <svg class="w-12 h-px text-gray-300" viewBox="0 0 50 1"><rect width="50" height="1" fill="currentColor"/></svg>
       </div>
     </div>
 
-    {/* LAYOUT ACORDEÓN HORIZONTAL */}
+    {/* HORIZONTAL ACCORDION LAYOUT */}
     <div class="flex flex-col lg:flex-row gap-4 h-auto lg:h-[600px] w-full">
+ 
       
       {/* === CARD 1: AUTO === */}
       <a href="/auto" class="group relative flex-1 lg:hover:flex-[2.5] transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-3xl overflow-hidden cursor-pointer min-h-[300px] lg:min-h-full">
         
-        {/* IMAGEN DE FONDO */}
-        <Image src={autoImg} alt="Seguro de Auto" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+        {/* BACKGROUND IMAGE */}
+        <Image src={autoImg} alt="Auto Insurance" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
         
-        {/* Overlay Gradiente Oscuro */}
-        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-700"></div>
+        {/* Dark Gradient Overlay */}
+   
+         <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-700"></div>
 
-        {/* Contenido */}
+        {/* Content */}
         <div class="absolute inset-0 p-8 flex flex-col justify-between z-10">
           
-          {/* Top: Número y Icono ACTUALIZADO */}
+          {/* Top: Number and UPDATED Icon */}
           <div class="flex justify-between items-start">
             
             <div class="w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/10 group-hover:bg-primary group-hover:border-primary transition-colors duration-500 p-2.5">
-               {/* NUEVO ICONO DE AUTO SOLICITADO */}
+               {/* NEW AUTO ICON REQUESTED */}
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
                  <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
                  <circle cx="7" cy="17" r="2" />
@@ -229,31 +249,33 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
                  <circle cx="17" cy="17" r="2" />
                </svg>
             </div>
+        
           </div>
 
-          {/* Bottom: Texto */}
+          {/* Bottom: Text */}
           <div>
             <h3 class="text-3xl font-bold text-white mb-2 transform transition-transform duration-500 group-hover:-translate-y-2">Auto</h3>
             
             <div class="h-0 lg:h-auto overflow-hidden opacity-0 lg:group-hover:opacity-100 lg:group-hover:h-auto transition-all duration-700 delay-100 lg:max-h-0 lg:group-hover:max-h-40">
                <p class="text-gray-200 text-sm md:text-base leading-relaxed mb-4 border-l-2 border-primary pl-4">
-                 Desde cobertura básica hasta protección total contra colisiones. Aseguramos tu movilidad con las mejores tarifas del mercado.
+                 From basic coverage to full collision protection. We insure your mobility with the best rates in the market.
                </p>
                <span class="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
-                 Ver Opciones <span class="group-hover:translate-x-2 transition-transform">&rarr;</span>
+                 View Options <span class="group-hover:translate-x-2 transition-transform">&rarr;</span>
                </span>
             </div>
-            {/* Texto Móvil */}
-            <p class="lg:hidden text-gray-300 text-sm mt-2">Cobertura personal y comercial.</p>
+            {/* Mobile Text */}
+     
+            <p class="lg:hidden text-gray-300 text-sm mt-2">Personal and commercial coverage.</p>
           </div>
         </div>
       </a>
 
-      {/* === CARD 2: PROPIEDAD === */}
+      {/* === CARD 2: PROPERTY === */}
       <a href="/property" class="group relative flex-1 lg:hover:flex-[2.5] transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-3xl overflow-hidden cursor-pointer min-h-[300px] lg:min-h-full">
         
-        {/* IMAGEN DE FONDO */}
-       <Image src={propertyImg} alt="Seguro de Auto" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+        {/* BACKGROUND IMAGE */}
+       <Image src={propertyImg} alt="Property Insurance" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
 
         <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-700"></div>
 
@@ -261,30 +283,33 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
           <div class="flex justify-between items-start">
             
             <div class="w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/10 group-hover:bg-primary group-hover:border-primary transition-colors duration-500">
+          
                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
             </div>
           </div>
 
           <div>
-            <h3 class="text-3xl font-bold text-white mb-2 transform transition-transform duration-500 group-hover:-translate-y-2">Propiedad</h3>
+            <h3 class="text-3xl font-bold text-white mb-2 transform transition-transform duration-500 group-hover:-translate-y-2">Property</h3>
+ 
             <div class="h-0 lg:h-auto overflow-hidden opacity-0 lg:group-hover:opacity-100 lg:group-hover:h-auto transition-all duration-700 delay-100 lg:max-h-0 lg:group-hover:max-h-40">
                <p class="text-gray-200 text-sm md:text-base leading-relaxed mb-4 border-l-2 border-primary pl-4">
-                 Protege tu inversión más importante. Seguros para propietarios, inquilinos y protección contra desastres naturales en FL y TX.
+                 Protect your most important investment. Insurance for homeowners, renters and protection against natural disasters in FL and TX.
                </p>
                <span class="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
-                 Ver Opciones <span class="group-hover:translate-x-2 transition-transform">&rarr;</span>
+                 View Options <span class="group-hover:translate-x-2 transition-transform">&rarr;</span>
                </span>
             </div>
-            <p class="lg:hidden text-gray-300 text-sm mt-2">Hogar, Condo y Renters.</p>
-          </div>
+            <p class="lg:hidden text-gray-300 text-sm mt-2">Home, Condo and Renters.</p>
+          
+</div>
         </div>
       </a>
 
-      {/* === CARD 3: COMERCIAL === */}
+      {/* === CARD 3: COMMERCIAL === */}
       <a href="/commercial" class="group relative flex-1 lg:hover:flex-[2.5] transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-3xl overflow-hidden cursor-pointer min-h-[300px] lg:min-h-full">
         
-        {/* IMAGEN DE FONDO */}
-        <Image src={commercialImg} alt="Seguro de Auto" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+        {/* BACKGROUND IMAGE */}
+        <Image src={commercialImg} alt="Commercial Insurance" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
 
         <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-700"></div>
 
@@ -297,17 +322,19 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
           </div>
 
           <div>
-            <h3 class="text-3xl font-bold text-white mb-2 transform transition-transform duration-500 group-hover:-translate-y-2">Comercial</h3>
+            <h3 class="text-3xl font-bold text-white mb-2 transform transition-transform duration-500 group-hover:-translate-y-2">Commercial</h3>
             <div class="h-0 lg:h-auto overflow-hidden opacity-0 lg:group-hover:opacity-100 lg:group-hover:h-auto transition-all duration-700 delay-100 lg:max-h-0 lg:group-hover:max-h-40">
-               <p class="text-gray-200 text-sm md:text-base leading-relaxed mb-4 border-l-2 border-primary pl-4">
-                 Asegura la continuidad de tu negocio. General Liability, Workers Comp y flotas comerciales a tu medida.
+       
+                <p class="text-gray-200 text-sm md:text-base leading-relaxed mb-4 border-l-2 border-primary pl-4">
+                 Ensure your business continuity. General Liability, Workers Comp and commercial fleets tailored to you.
                </p>
                <span class="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
-                 Ver Opciones <span class="group-hover:translate-x-2 transition-transform">&rarr;</span>
+                 View Options <span class="group-hover:translate-x-2 transition-transform">&rarr;</span>
                </span>
             </div>
-             <p class="lg:hidden text-gray-300 text-sm mt-2">Negocios y Flotas.</p>
-          </div>
+             <p class="lg:hidden text-gray-300 text-sm mt-2">Businesses and Fleets.</p>
+          
+</div>
         </div>
       </a>
 
@@ -315,149 +342,174 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
   </div>
 </section>
 
-  {/* SECCION CONTACTO 50/50 CON FORMULARIO */}
+  {/* CONTACT SECTION 50/50 WITH FORM */}
   <section class="py-20 bg-surface-light dark:bg-surface-dark overflow-hidden relative" id="contact-section">
     
     <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         
-        {/* COLUMNA IZQUIERDA: Texto Persuasivo + Información de Contacto */}
+        {/* LEFT COLUMN: Persuasive Text + Contact Info */}
         <div class="lg:w-1/2 relative z-10 text-center lg:text-left">
-             <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
-                Soporte Personalizado
+         
+     <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+                Personalized Support
              </span>
              <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6 text-text-main dark:text-white leading-tight">
-                ¿Prefiere la asesoría de un <br/>
-                <span class="text-primary decoration-4 underline decoration-primary/30">agente licenciado?</span>
+                Prefer the advice of a <br/>
+             
+   <span class="text-primary decoration-4 underline decoration-primary/30">licensed agent?</span>
              </h2>
              <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                Entendemos que cada situación es única. Si tiene dudas sobre su cobertura o necesita una póliza personalizada para su empresa, nuestro equipo de expertos está listo para asistirle paso a paso.
+                We understand that every situation is unique. If you have doubts about your coverage or need a personalized policy for your company, our team of experts is ready to assist you step by step.
              </p>
              
              <div class="space-y-6">
                  
-                 {/* Dirección (NUEVO) */}
+                 {/* Address (NEW) */}
                  <div class="flex items-center justify-center lg:justify-start gap-4">
-                     <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
-                        {/* Icono de Mapa/Ubicación */}
+              
+       <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                        {/* Map/Location Icon */}
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                      </div>
                      <div class="text-left">
-                         <p class="text-xs text-gray-500 uppercase tracking-wide font-bold">Visítenos</p>
-                         <p class="text-xl font-bold text-text-main dark:text-white text-base">
+                         <p class="text-xs text-gray-500 uppercase tracking-wide font-bold">Visit Us</p>
+                      
+   <p class="text-xl font-bold text-text-main dark:text-white text-base">
                              28210 Paseo Drive #190<br/>
                              Wesley Chapel, FL 33543
                          </p>
-                     </div>
+   
+                  </div>
                  </div>
 
-                 {/* Teléfono */}
+                 {/* Phone */}
                  <div class="flex items-center justify-center lg:justify-start gap-4">
                      <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                      </div>
-                     <div class="text-left">
-                         <p class="text-xs text-gray-500 uppercase tracking-wide font-bold">Llámenos Directamente</p>
+   
+                  <div class="text-left">
+                         <p class="text-xs text-gray-500 uppercase tracking-wide font-bold">Call Us Directly</p>
                          <p class="text-xl font-bold text-text-main dark:text-white">(813) 753-4197</p>
-                     </div>
+                    
+  </div>
                  </div>
 
-                 {/* Correo Electrónico */}
+                 {/* Email */}
                  <div class="flex items-center justify-center lg:justify-start gap-4">
                      <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+         
+               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                      </div>
                      <div class="text-left">
-                         <p class="text-xs text-gray-500 uppercase tracking-wide font-bold">Correo Electrónico</p>
+        
+                  <p class="text-xs text-gray-500 uppercase tracking-wide font-bold">Email</p>
                          <a href="mailto:support@fortitudeins.us" class="text-xl font-bold text-text-main dark:text-white hover:text-primary transition-colors">
                              support@fortitudeins.us
-                         </a>
+                
+          </a>
                      </div>
                  </div>
 
              </div>
         </div>
 
-        {/* COLUMNA DERECHA: Formulario */}
+        {/* RIGHT COLUMN: Form */}
         <div class="lg:w-1/2 w-full relative z-10">
-            <div class="bg-white dark:bg-[#1a1a1a] p-8 md:p-10 rounded-3xl shadow-2xl border border-gray-100 dark:border-white/10">
+        
+     <div class="bg-white dark:bg-[#1a1a1a] p-8 md:p-10 rounded-3xl shadow-2xl border border-gray-100 dark:border-white/10">
                 <form id="contact-form" class="space-y-6">
-                    {/* ... (resto del formulario igual) ... */}
+                    {/* ... (rest of the form) ... */}
                     <div class="grid md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label for="name" class="text-sm font-medium text-gray-700 dark:text-gray-300">Nombre completo</label>
+                   
+     <div class="space-y-2">
+                            <label for="name" class="text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
                             <input type="text" id="name" name="name" required 
-                                class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white" placeholder="Ej. Juan Pérez" />
+                           
+     class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white" placeholder="Ex. John Doe" />
                         </div>
                         <div class="space-y-2">
-                            <label for="phone" class="text-sm font-medium text-gray-700 dark:text-gray-300">Teléfono</label>
-                            <input type="tel" id="phone" name="phone" required 
+                            <label for="phone" class="text-sm font-medium text-gray-700 dark:text-gray-300">Phone</label>
+                
+             <input type="tel" id="phone" name="phone" required 
                                 class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white" placeholder="(000) 000-0000" />
                         </div>
-                    </div>
+          
+           </div>
 
                     <div class="space-y-2">
-                        <label for="email" class="text-sm font-medium text-gray-700 dark:text-gray-300">Correo electrónico</label>
+                        <label for="email" class="text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
                         <input type="email" id="email" name="email" required 
-                            class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white" placeholder="juan@ejemplo.com" />
+          
+                  class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white" placeholder="john@example.com" />
                     </div>
 
                     <div class="space-y-2">
-                        <label for="interest" class="text-sm font-medium text-gray-700 dark:text-gray-300">Tipo de seguro de interés</label>
+                        <label 
+for="interest" class="text-sm font-medium text-gray-700 dark:text-gray-300">Type of insurance</label>
                         <div class="relative">
                             <select id="interest" name="interest" class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all appearance-none dark:text-white cursor-pointer">
-                                <option value="Auto">Seguro de Auto</option>
-                                <option value="Hogar">Seguro de Hogar</option>
-                                <option value="Comercial">Seguro Comercial</option>
-                                <option value="Otro">Otro / Consulta General</option>
+                    
+             <option value="Auto">Auto Insurance</option>
+                                <option value="Hogar">Home Insurance</option>
+                                <option value="Comercial">Commercial Insurance</option>
+                
+                 <option value="Otro">Other / General Inquiry</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                
+                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </div>
                         </div>
-                    </div>
+                  
+   </div>
 
                     <div class="space-y-2">
-                        <label for="message" class="text-sm font-medium text-gray-700 dark:text-gray-300">Mensaje</label>
+                        <label for="message" class="text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
                         <textarea id="message" name="message" rows="3" 
-                            class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none dark:text-white" placeholder="¿Cómo podemos ayudarle?"></textarea>
+                    
+         class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none dark:text-white" placeholder="How can we help you?"></textarea>
                     </div>
 
                     <button type="submit" id="submit-btn" class="w-full bg-primary hover:bg-primary-hover text-text-main font-bold py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                        <span>Enviar consulta</span>
+               
+         <span>Send Inquiry</span>
                         <svg id="btn-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         <svg id="btn-loader" class="w-5 h-5 animate-spin hidden" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                     </button>
                     
                     <p id="form-message" class="text-center text-sm font-medium hidden"></p>
                 </form>
-            </div>
+      
+       </div>
         </div>
 
-        {/* Fondo Decorativo en Diagonal */}
+        {/* Decorative Background */}
         <div class="absolute top-0 right-0 w-2/3 h-full bg-gray-50 dark:bg-[#151515] -skew-x-12 transform origin-top-right -z-0"></div>
     </div>
   </section>
 
-  {/* SECCION PREGUNTAS FRECUENTES (FAQ) */}
+  {/* FAQ SECTION */}
   <section class="py-24 bg-white dark:bg-[#0a0a0a] relative overflow-hidden">
     
-    {/* Elementos decorativos de fondo */}
+    {/* Decorative Elements */}
     <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
     <div class="absolute -left-20 top-40 w-72 h-72 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="container mx-auto px-4 relative z-10">
         
-        {/* Encabezado Centrado */}
+        {/* Centered Header */}
         <div class="text-center max-w-3xl mx-auto mb-16">
             <h2 class="text-3xl md:text-4xl font-serif font-bold text-text-main dark:text-white mb-4">
-                Preguntas Frecuentes
+                Frequently Asked Questions
             </h2>
-            <p class="text-gray-500 dark:text-gray-400 font-light">
-                Resolvemos sus dudas principales para que tome decisiones con confianza.
-            </p>
+       
+     <p class="text-gray-500 dark:text-gray-400 font-light">
+                We resolve your main questions so you can make decisions with confidence.
+</p>
         </div>
 
-        {/* Grid de Preguntas */}
+        {/* Questions Grid */}
         <div class="max-w-4xl mx-auto grid gap-6">
             
             {/* FAQ Item 1 */}
@@ -465,18 +517,20 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
                 <details class="group [&_summary::-webkit-details-marker]:hidden">
                     <summary class="flex cursor-pointer items-center justify-between gap-1.5 rounded-xl bg-white dark:bg-[#1a1a1a] p-6 text-gray-900 dark:text-white transition-colors hover:bg-gray-50 dark:hover:bg-white/5 shadow-sm">
                         <h3 class="font-bold text-lg pr-4">
-                            ¿Qué información necesito para cotizar mi auto?
-                        </h3>
+                            What information do I need to quote my car?
+</h3>
                         <span class="shrink-0 rounded-full bg-gray-100 dark:bg-white/10 p-2 text-gray-900 dark:text-white shadow-sm group-open:bg-primary group-open:text-white transition-all duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 transition duration-300 group-open:-rotate-45" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                        
+         <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
                             </svg>
                         </span>
-                    </summary>
+                 
+   </summary>
 
                     <div class="px-6 pb-6 pt-4">
                          <p class="leading-relaxed text-gray-600 dark:text-gray-300 pl-4 border-l-2 border-primary/30">
-                            Solo requiere sus datos básicos, código postal y el tipo de seguro deseado. El sistema no realizará consultas que afecten su crédito.
+                            It only requires your basic data, zip code, and the type of insurance desired. The system will not perform checks that affect your credit.
                         </p>
                     </div>
                 </details>
@@ -484,65 +538,75 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
 
             {/* FAQ Item 2 */}
             <div class="group bg-gray-50 dark:bg-white/5 rounded-2xl p-1 border border-transparent hover:border-primary/20 transition-all duration-300">
-                <details class="group [&_summary::-webkit-details-marker]:hidden">
+     
+           <details class="group [&_summary::-webkit-details-marker]:hidden">
                     <summary class="flex cursor-pointer items-center justify-between gap-1.5 rounded-xl bg-white dark:bg-[#1a1a1a] p-6 text-gray-900 dark:text-white transition-colors hover:bg-gray-50 dark:hover:bg-white/5 shadow-sm">
                         <h3 class="font-bold text-lg pr-4">
-                            ¿Puedo gestionar mis documentos en línea?
+                         
+   Can I manage my documents online?
                         </h3>
                          <span class="shrink-0 rounded-full bg-gray-100 dark:bg-white/10 p-2 text-gray-900 dark:text-white shadow-sm group-open:bg-primary group-open:text-white transition-all duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 transition duration-300 group-open:-rotate-45" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+              
+                   <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
                             </svg>
                         </span>
-                    </summary>
+       
+             </summary>
 
                     <div class="px-6 pb-6 pt-4">
                         <p class="leading-relaxed text-gray-600 dark:text-gray-300 pl-4 border-l-2 border-primary/30">
-                            Sí, a través de nuestro portal de clientes puede descargar tarjetas de identificación, certificados y solicitar cambios en sus pólizas de forma autónoma.
-                        </p>
+                            Yes, through our Client Portal you can download ID cards, certificates, and request policy changes autonomously.
+</p>
                     </div>
                 </details>
             </div>
 
-            {/* FAQ Item 3 (NUEVO) */}
+            {/* FAQ Item 3 (NEW) */}
             <div class="group bg-gray-50 dark:bg-white/5 rounded-2xl p-1 border border-transparent hover:border-primary/20 transition-all duration-300">
-                <details class="group [&_summary::-webkit-details-marker]:hidden">
+             
+   <details class="group [&_summary::-webkit-details-marker]:hidden">
                     <summary class="flex cursor-pointer items-center justify-between gap-1.5 rounded-xl bg-white dark:bg-[#1a1a1a] p-6 text-gray-900 dark:text-white transition-colors hover:bg-gray-50 dark:hover:bg-white/5 shadow-sm">
                         <h3 class="font-bold text-lg pr-4">
-                            ¿Ofrecen descuentos al combinar pólizas (Bundles)?
+                            Do you offer discounts for bundling policies (Bundles)?
                         </h3>
                         <span class="shrink-0 rounded-full bg-gray-100 dark:bg-white/10 p-2 text-gray-900 dark:text-white shadow-sm group-open:bg-primary group-open:text-white transition-all duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 transition duration-300 group-open:-rotate-45" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                       
+         <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
                             </svg>
                         </span>
-                    </summary>
+                
+     </summary>
 
                     <div class="px-6 pb-6 pt-4">
                         <p class="leading-relaxed text-gray-600 dark:text-gray-300 pl-4 border-l-2 border-primary/30">
-                            Absolutamente. Maximice sus ahorros agrupando sus seguros de Auto y Hogar. Nuestros agentes diseñarán un paquete personalizado que reduce sus primas sin sacrificar cobertura.
-                        </p>
+                            Absolutely. Maximize your savings by bundling Auto and Home insurance. Our agents will design a custom package that reduces your premiums without sacrificing coverage.
+</p>
                     </div>
                 </details>
             </div>
 
-            {/* FAQ Item 4 (NUEVO) */}
+            {/* FAQ Item 4 (NEW) */}
             <div class="group bg-gray-50 dark:bg-white/5 rounded-2xl p-1 border border-transparent hover:border-primary/20 transition-all duration-300">
-                <details class="group [&_summary::-webkit-details-marker]:hidden">
+             
+   <details class="group [&_summary::-webkit-details-marker]:hidden">
                     <summary class="flex cursor-pointer items-center justify-between gap-1.5 rounded-xl bg-white dark:bg-[#1a1a1a] p-6 text-gray-900 dark:text-white transition-colors hover:bg-gray-50 dark:hover:bg-white/5 shadow-sm">
                         <h3 class="font-bold text-lg pr-4">
-                            ¿Qué debo hacer en caso de un siniestro o accidente?
+                            What should I do in case of a claim or accident?
                         </h3>
                         <span class="shrink-0 rounded-full bg-gray-100 dark:bg-white/10 p-2 text-gray-900 dark:text-white shadow-sm group-open:bg-primary group-open:text-white transition-all duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 transition duration-300 group-open:-rotate-45" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                   
+             <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
                             </svg>
                         </span>
-                    </summary>
+            
+         </summary>
 
                     <div class="px-6 pb-6 pt-4">
                         <p class="leading-relaxed text-gray-600 dark:text-gray-300 pl-4 border-l-2 border-primary/30">
-                            Su tranquilidad es prioridad. Puede reportar reclamos 24/7 a través de nuestro Portal de Clientes o llamando a nuestra línea de emergencia. Le acompañaremos durante todo el proceso de resolución.
+                            Your peace of mind is a priority. You can report claims 24/7 through our Client Portal or by calling our emergency line. We will accompany you throughout the resolution process.
                         </p>
                     </div>
                 </details>
@@ -558,7 +622,6 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
       const btnIcon = document.getElementById('btn-icon');
       const btnLoader = document.getElementById('btn-loader');
       const formMessage = document.getElementById('form-message');
-
       if (form) {
           form.addEventListener('submit', async (e) => {
               e.preventDefault();
@@ -566,7 +629,8 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
               // UI Loading State
               submitBtn.disabled = true;
               submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
-              btnIcon.classList.add('hidden');
+        
+       btnIcon.classList.add('hidden');
               btnLoader.classList.remove('hidden');
               formMessage.classList.add('hidden');
 
@@ -574,28 +638,33 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
               const data = Object.fromEntries(formData);
 
               try {
-                  const response = await fetch('/api/send-email', {
+                
+   const response = await fetch('/api/send-email', {
                       method: 'POST',
                       headers: {
                           'Content-Type': 'application/json',
-                      },
+                    
+   },
                       body: JSON.stringify(data),
                   });
 
                   if (response.ok) {
                       form.reset();
-                      formMessage.textContent = "¡Gracias! Su mensaje ha sido enviado. Nos pondremos en contacto pronto.";
+               
+       formMessage.textContent = "Thank you! Your message has been sent. We will contact you soon.";
                       formMessage.className = "text-center text-sm font-medium text-green-600 mt-4 block p-3 bg-green-50 rounded-lg";
                   } else {
                       throw new Error('Error en el envío');
-                  }
+                 
+  }
               } catch (error) {
-                  formMessage.textContent = "Hubo un error al enviar el mensaje. Por favor intente nuevamente o llámenos.";
+                  formMessage.textContent = "There was an error sending the message. Please try again or call us.";
                   formMessage.className = "text-center text-sm font-medium text-red-600 mt-4 block p-3 bg-red-50 rounded-lg";
               } finally {
                   // Reset UI
                   submitBtn.disabled = false;
-                  submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+           
+       submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
                   btnIcon.classList.remove('hidden');
                   btnLoader.classList.add('hidden');
                   formMessage.classList.remove('hidden');
@@ -607,7 +676,8 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
 
 
   <script is:inline>
-    // ELEMENTOS DEL DOM
+   
+  // DOM ELEMENTS
     const openBtn = document.getElementById('open-quote-modal');
     const modal = document.getElementById('quote-modal');
     const closeBtn = document.getElementById('close-modal-btn');
@@ -615,72 +685,74 @@ const description = "Cotice en tiempo real. Seguros confiables en Florida y Texa
     const iframe = document.getElementById('modal-iframe');
     const loader = document.getElementById('iframe-loader');
 
-    // FUNCIONES DEL MODAL
+    // MODAL FUNCTIONS
     function openModal() {
         if (!modal) return;
-        
-        // 1. Mostrar contenedor
+        // 1. Show container
         modal.classList.remove('hidden');
-        
-        // 2. Cargar Iframe (Lazy Loading para que no pese al inicio)
+        // 2. Load Iframe (Lazy Loading so it doesn't weigh on start)
         if (iframe && !iframe.getAttribute('src')) {
             iframe.setAttribute('src', iframe.getAttribute('data-src'));
-            // Ocultar loader cuando cargue
+        // Hide loader when loaded
             iframe.onload = () => {
                 if(loader) loader.style.opacity = '0';
-            };
+};
         }
 
-        // 3. Animación de entrada
+        // 3. Entrance animation
         setTimeout(() => {
             modal.classList.remove('opacity-0');
-            document.body.style.overflow = 'hidden'; // Evitar scroll trasero
+            document.body.style.overflow = 'hidden'; // Prevent back scroll
         }, 10);
-    }
+}
 
     function closeModal() {
         if (!modal) return;
-
-        // 1. Animación de salida
+        // 1. Exit animation
         modal.classList.add('opacity-0');
-        document.body.style.overflow = ''; // Restaurar scroll
+        document.body.style.overflow = '';
+        // Restore scroll
 
-        // 2. Ocultar tras la animación
+        // 2. Hide after animation
         setTimeout(() => {
             modal.classList.add('hidden');
         }, 300);
-    }
+}
 
     // EVENT LISTENERS
     if (openBtn) openBtn.addEventListener('click', openModal);
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (backdrop) backdrop.addEventListener('click', closeModal);
 
-    // Cerrar con tecla ESC
+    // Close with ESC key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
             closeModal();
         }
     });
-  </script>
+</script>
 
   <style>
-    /* Animaciones personalizadas */
+    /* Custom Animations */
     @keyframes pulse-slow {
-        0%, 100% { opacity: 0.5; transform: scale(1); }
-        50% { opacity: 0.8; transform: scale(1.1); }
+        0%, 100% { opacity: 0.5;
+transform: scale(1); }
+        50% { opacity: 0.8; transform: scale(1.1);
+}
     }
     .animate-pulse-slow {
         animation: pulse-slow 8s infinite ease-in-out;
-    }
+}
     
     @keyframes scale-in {
-        0% { transform: scale(0.95); opacity: 0; }
-        100% { transform: scale(1); opacity: 1; }
+        0% { transform: scale(0.95);
+opacity: 0; }
+        100% { transform: scale(1); opacity: 1;
+}
     }
     .animate-scale-in {
         animation: scale-in 0.3s ease-out forwards;
-    }
+}
   </style>
 
 </Layout>
