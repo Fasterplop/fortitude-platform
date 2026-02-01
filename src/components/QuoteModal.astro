@@ -1,0 +1,110 @@
+---
+/* src/components/QuoteModal.astro */
+---
+<div id="quote-modal" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300" aria-hidden="true">
+    {/* Backdrop con blur */}
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-md" id="modal-backdrop"></div>
+
+    <div class="relative z-10 w-full h-full flex items-center justify-center p-4 md:p-8">
+        <div class="bg-white w-full max-w-7xl h-[90vh] rounded-2xl overflow-hidden shadow-2xl flex flex-col relative animate-scale-in ring-1 ring-white/20">
+            
+            {/* Modal Header */}
+            <div class="bg-white px-6 py-4 border-b border-gray-200 flex items-center justify-between shadow-sm z-20">
+                <div class="flex items-center gap-4">
+                    <img src="/images/fortitude-logo.png" alt="Fortitude Insurance" class="h-8 md:h-10 w-auto object-contain" />
+                    <div class="hidden sm:block">
+                        <h3 class="font-bold text-gray-900 text-lg leading-tight">Fortitude Insurance</h3>
+                        <p class="text-xs text-gray-500 font-medium tracking-wide uppercase flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            Cotizador Oficial Seguro
+                        </p>
+                    </div>
+                </div>
+                <button id="close-modal-btn" class="group p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-400 hover:text-red-500">
+                    <svg class="w-6 h-6 transform group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            {/* Iframe Container */}
+            <div class="flex-1 bg-gray-50 relative overflow-hidden flex items-center justify-center">
+                <iframe 
+                    id="modal-iframe"
+                    src="" 
+                    data-src="https://www.agentinsure.com/compare/auto-insurance-home-insurance/fortitudeis/quote.aspx" 
+                    class="w-full h-full border-0"
+                    title="Fortitude Insurance Quoter"
+                ></iframe>
+                {/* Loader */}
+                <div class="absolute inset-0 flex items-center justify-center bg-white pointer-events-none transition-opacity duration-500" id="iframe-loader">
+                    <div class="flex flex-col items-center gap-6">
+                        <div class="relative w-16 h-16">
+                            <div class="absolute inset-0 border-4 border-gray-100 rounded-full"></div>
+                            <div class="absolute inset-0 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-gray-900 font-bold text-lg">Iniciando Cotizador</p>
+                            <p class="text-gray-400 text-sm">Conectando con aseguradoras...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script is:inline>
+    // Lógica Global del Modal
+    function initModal() {
+        const modal = document.getElementById('quote-modal');
+        const closeBtn = document.getElementById('close-modal-btn');
+        const backdrop = document.getElementById('modal-backdrop');
+        const iframe = document.getElementById('modal-iframe');
+        const loader = document.getElementById('iframe-loader');
+
+        // Selectores de botones que abren el modal (usamos una clase común)
+        const triggers = document.querySelectorAll('.open-quote-modal');
+
+        function openModal() {
+            if (!modal) return;
+            modal.classList.remove('hidden');
+            
+            // Carga diferida del iframe
+            if (iframe && !iframe.getAttribute('src')) {
+                iframe.setAttribute('src', iframe.getAttribute('data-src'));
+                iframe.onload = () => {
+                    if(loader) loader.style.opacity = '0';
+                };
+            }
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                document.body.style.overflow = 'hidden'; 
+            }, 10);
+        }
+
+        function closeModal() {
+            if (!modal) return;
+            modal.classList.add('opacity-0');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Event Listeners
+        triggers.forEach(btn => btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        }));
+
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (backdrop) backdrop.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    }
+
+    // Ejecutar al cargar y en transiciones de vista (si Astro ViewTransitions se usa a futuro)
+    document.addEventListener('DOMContentLoaded', initModal);
+</script>

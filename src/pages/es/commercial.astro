@@ -1,0 +1,202 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Accordion from '../../components/Accordion.astro';
+import CarriersCarousel from '../../components/CarriersCarousel.astro';
+import { Image } from 'astro:assets';
+import commercialImg from '../../images/commercial.jpg';
+
+// Metadatos SEO CORREGIDOS (Nacional)
+const title = "Seguros Comerciales para Empresas y Negocios | Fortitude Insurance";
+const description = "Proteja su empresa con coberturas a medida. Cotizaciones rápidas para responsabilidad civil, propiedad comercial y más en todo Estados Unidos.";
+const lang = "es";
+---
+
+<Layout title={title} description={description} lang={lang}>
+
+  {/* 1. HERO */}
+  <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-surface-light dark:bg-surface-dark">
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            {/* Texto y CTA */}
+            <div class="lg:w-1/2 text-center lg:text-left">
+                <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-6">
+                    Seguros Comerciales
+                </span>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-text-main dark:text-white mb-6 leading-[1.1]">
+                    Soluciones sólidas para <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-600">su negocio</span>
+                </h1>
+                
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    Entendemos que su empresa es el resultado de su esfuerzo. Ofrecemos seguros diseñados para mitigar riesgos y permitirle enfocarse en crecer.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                    <button class="open-quote-modal w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary-hover text-text-main font-bold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
+                        Cotizar mi Negocio
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                    
+                    <a href="/es/contact" class="w-full sm:w-auto px-8 py-4 border border-gray-200 dark:border-white/10 text-text-main dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-center">
+                        Hablar con un Agente
+                    </a>
+                </div>
+
+                <p class="mt-4 text-xs text-gray-500 dark:text-gray-400 flex items-center justify-center lg:justify-start gap-2">
+                    <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Proceso gratuito sin impacto en su crédito comercial.
+                </p>
+            </div>
+
+            {/* Imagen Hero */}
+            <div class="lg:w-1/2 relative w-full">
+                <div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/20 group">
+                    <Image src={commercialImg} alt="Negocio protegido" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  {/* 2. BENEFICIOS */}
+  <section class="py-16 bg-white dark:bg-[#0a0a0a] border-b border-gray-100 dark:border-white/5">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+            <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-gray-50 dark:bg-white/5">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4 text-2xl">
+                    ⚡
+                </div>
+                <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Eficiencia en Cotización</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">El tiempo es dinero. Obtenga un estimado profesional en minutos para que no detenga su operación comercial.</p>
+            </div>
+            
+            <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-gray-50 dark:bg-white/5">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4 text-2xl">
+                    🛡️
+                </div>
+                <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Asesoría Especializada</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Nuestros agentes analizan los riesgos específicos de su industria para recomendar la cobertura exacta que necesita.</p>
+            </div>
+
+            <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-gray-50 dark:bg-white/5">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4 text-2xl">
+                    💰
+                </div>
+                <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Gestión Centralizada</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Simplifique su administración. Maneje todas las pólizas de su empresa desde un solo portal inteligente disponible 24/7.</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  {/* 3. COBERTURAS DETALLADAS */}
+  <section class="py-24 bg-surface-light dark:bg-surface-dark">
+      <div class="container mx-auto px-4 max-w-4xl">
+          <div class="text-center mb-12">
+              <h2 class="text-3xl font-serif font-bold text-text-main dark:text-white mb-4">Coberturas diseñadas para la empresa moderna</h2>
+              <p class="text-gray-600 dark:text-gray-300">Desde pequeños emprendimientos hasta corporaciones, nuestras pólizas se adaptan a su industria.</p>
+          </div>
+
+          <div class="space-y-4">
+              <Accordion 
+                title="Responsabilidad Civil General (General Liability)" 
+                details="Protección esencial contra reclamos por daños corporales o daños a la propiedad de terceros que ocurran durante sus operaciones. Es la primera línea de defensa para proteger el patrimonio de su empresa ante demandas imprevistas o accidentes en sus instalaciones." 
+              />
+              <Accordion 
+                title="Propiedad Comercial (Commercial Property)" 
+                details="Resguarde sus activos físicos. Esta cobertura protege sus edificios, inventario, equipos, mobiliario y herramientas contra riesgos mayores como incendios, robo, vandalismo o desastres naturales, asegurando la continuidad de su operación ante lo inesperado." 
+              />
+              <Accordion 
+                title="Auto Comercial (Commercial Auto)" 
+                details="Cobertura especializada para vehículos utilizados con fines comerciales. Garantiza que su flota, sus conductores y su carga estén protegidos con límites de responsabilidad adecuados que una póliza personal no cubriría, incluyendo protección para vehículos de empleados." 
+              />
+              <Accordion 
+                title="Compensación para Trabajadores (Workers Comp)" 
+                details="Cumpla con la ley y proteja a su equipo. Esta cobertura paga los gastos médicos y salarios perdidos si un empleado se lesiona en el trabajo, protegiendo a su vez a su empresa de demandas relacionadas con accidentes laborales." 
+              />
+          </div>
+      </div>
+  </section>
+
+  {/* 4. BLOQUE DE CONFIANZA */}
+  <section class="py-24 bg-gray-50 dark:bg-[#111]">
+      <div class="container mx-auto px-4">
+          <div class="flex flex-col lg:flex-row items-center gap-16">
+              <div class="lg:w-1/2">
+                  <h2 class="text-3xl md:text-4xl font-serif font-bold text-text-main dark:text-white mb-6">
+                      Herramientas de gestión para dueños de negocios
+                  </h2>
+                  <p class="text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed">
+                      El tiempo es su recurso más valioso. Por ello, nuestro portal de clientes le permite gestionar sus documentos sin intermediarios.
+                  </p>
+                  
+                  <div class="space-y-8">
+                      <div class="flex gap-4">
+                          <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl shrink-0">1</div>
+                          <div>
+                              <h4 class="text-xl font-bold text-text-main dark:text-white mb-2">Certificados (COI) al instante</h4>
+                              <p class="text-gray-600 dark:text-gray-400 text-sm">Obtenga certificados de seguro inmediatamente para presentarlos a sus clientes o contratistas y cerrar tratos más rápido.</p>
+                          </div>
+                      </div>
+                       <div class="flex gap-4">
+                          <div class="w-12 h-12 rounded-full bg-surface-light dark:bg-white/10 flex items-center justify-center text-text-main dark:text-white font-bold text-xl shrink-0 border border-gray-200 dark:border-gray-700">2</div>
+                          <div>
+                              <h4 class="text-xl font-bold text-text-main dark:text-white mb-2">Solicitud de Cambios</h4>
+                              <p class="text-gray-600 dark:text-gray-400 text-sm">Actualice los datos de su empresa, añada vehículos a su flota o ajuste coberturas a medida que su negocio crece.</p>
+                          </div>
+                      </div>
+                       <div class="flex gap-4">
+                          <div class="w-12 h-12 rounded-full bg-surface-light dark:bg-white/10 flex items-center justify-center text-text-main dark:text-white font-bold text-xl shrink-0 border border-gray-200 dark:border-gray-700">3</div>
+                          <div>
+                              <h4 class="text-xl font-bold text-text-main dark:text-white mb-2">Acceso a Documentos</h4>
+                              <p class="text-gray-600 dark:text-gray-400 text-sm">Descargue copias digitales de sus pólizas, tarjetas de identificación y recibos de pago en cualquier momento.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              {/* Stats Grid (USA / NATIONAL COVERAGE) */}
+              <div class="lg:w-1/2 relative">
+                  <div class="grid grid-cols-2 gap-4">
+                      <div class="bg-white dark:bg-white/5 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 text-center">
+                          <div class="text-4xl font-bold text-primary mb-2">24/7</div>
+                          <div class="text-sm text-gray-500 uppercase tracking-wider font-bold">Acceso al Portal</div>
+                      </div>
+                       <div class="bg-white dark:bg-white/5 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 text-center">
+                          <div class="text-4xl font-bold text-primary mb-2">COI</div>
+                          <div class="text-sm text-gray-500 uppercase tracking-wider font-bold">Emisión Inmediata</div>
+                      </div>
+                       {/* CAMBIO AQUÍ: USA / Cobertura Nacional */}
+                       <div class="bg-white dark:bg-white/5 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 text-center col-span-2">
+                          <div class="text-4xl font-bold text-primary mb-2">USA</div>
+                          <div class="text-sm text-gray-500 uppercase tracking-wider font-bold">Cobertura Nacional</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  {/* 5. CARRIERS */}
+  <section class="py-20 bg-white dark:bg-black border-t border-gray-100 dark:border-white/10">
+      <div class="container mx-auto px-4">
+          <CarriersCarousel lang={lang} />
+      </div>
+  </section>
+
+  {/* CTA FINAL */}
+  <section class="py-20 bg-primary text-text-main text-center">
+      <div class="container mx-auto px-4">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">Asegure la continuidad de su negocio</h2>
+          <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">Nuestros agentes expertos están listos para diseñar su plan de protección.</p>
+          <div class="flex justify-center gap-4">
+               <button class="open-quote-modal px-8 py-4 bg-white text-text-main font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                  Cotizar mi Negocio
+               </button>
+          </div>
+      </div>
+  </section>
+
+</Layout>
