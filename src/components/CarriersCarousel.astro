@@ -15,7 +15,6 @@ const t = {
 
 // AÑADIDO: Propiedad 'darkInvert' para controlar individualmente cada logo
 const carriers = [
-
   { name: 'Progressive', src: '/images/carriers/Progressive.png', darkInvert: false },
   { name: 'Geico', src: '/images/carriers/Geico.png', darkInvert: false },
   { name: 'Mile Auto', src: '/images/carriers/MileAuto.png', darkInvert: false },
@@ -25,34 +24,34 @@ const carriers = [
   { name: 'AmericanIntegrity', src: '/images/carriers/AmericanIntegrity.png', darkInvert: false },
   { name: 'Coterie', src: '/images/carriers/Coterie.png', darkInvert: true },
   { name: 'Embark', src: '/images/carriers/Embark.png', darkInvert: true },
- 
   { name: 'Monarch', src: '/images/carriers/monarch.png', darkInvert: false },
   { name: 'TheGeneral', src: '/images/carriers/TheGeneral.png', darkInvert: true },
 ];
 ---
 
-<section class="py-12 bg-transparent overflow-hidden border-b border-gray-100 dark:border-gray-800 pointer-events-none select-none">
-  <div class="container mx-auto px-4 mb-8">
+<section class="py-4 md:py-12 bg-transparent overflow-hidden border-b border-gray-100 dark:border-gray-800 pointer-events-none select-none">
+  {/* MODIFICACIÓN: Título oculto en móvil (hidden) y visible en desktop (md:block) */}
+  <div class="container mx-auto px-4 mb-0 md:mb-8 hidden md:block">
      <p class="text-center text-xs font-bold text-gray-400 uppercase tracking-[0.2em]">
       {t.heading}
     </p>
   </div>
   
   <div class="relative w-full">
-    {/* Ajuste de degradados para coincidir con el fondo #151515 del Hero */}
-    <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white dark:from-[#151515] to-transparent z-10"></div>
-    <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white dark:from-[#151515] to-transparent z-10"></div>
+    {/* Ajuste de degradados: más estrechos en móvil (w-8) para ver más contenido */}
+    <div class="absolute inset-y-0 left-0 w-8 md:w-24 bg-gradient-to-r from-white dark:from-[#151515] to-transparent z-10"></div>
+    <div class="absolute inset-y-0 right-0 w-8 md:w-24 bg-gradient-to-l from-white dark:from-[#151515] to-transparent z-10"></div>
 
     <div class="flex w-max animate-infinite-scroll">
+      
       {/* BLOQUE 1 */}
-      <div class="flex gap-20 mx-10 items-center">
-    
+      <div class="flex gap-10 md:gap-20 mx-5 md:mx-10 items-center">
         {carriers.map((carrier) => (
-          <div class="w-44 h-28 flex items-center justify-center">
+          /* Ajuste de tamaño: w-32 h-20 en móvil, w-44 h-28 en desktop */
+          <div class="w-32 h-20 md:w-44 md:h-28 flex items-center justify-center">
             <img 
               src={carrier.src} 
               alt={carrier.name} 
-            
               class={`max-w-full max-h-full object-contain transition-all duration-300 ${carrier.darkInvert ? 'dark:brightness-0 dark:invert' : ''}`} 
             />
           </div>
@@ -60,10 +59,9 @@ const carriers = [
       </div>
       
       {/* BLOQUE 2 (Duplicado para el efecto infinito) */}
-      <div class="flex gap-20 mx-10 items-center">
+      <div class="flex gap-10 md:gap-20 mx-5 md:mx-10 items-center">
         {carriers.map((carrier) => (
-          <div class="w-44 h-28 flex items-center justify-center">
-     
+          <div class="w-32 h-20 md:w-44 md:h-28 flex items-center justify-center">
              <img 
               src={carrier.src} 
               alt={carrier.name} 
