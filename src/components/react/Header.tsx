@@ -12,7 +12,6 @@ interface ModalProps {
 const ModalFrame = ({ isOpen, onClose, title, url, loaderText }: ModalProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
-  // Reset loading state when url or open state changes
   useEffect(() => {
     if (isOpen) setIsLoading(true);
   }, [isOpen, url]);
@@ -21,19 +20,14 @@ const ModalFrame = ({ isOpen, onClose, title, url, loaderText }: ModalProps) => 
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8" aria-modal="true" role="dialog">
-      {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity animate-fade-in" 
         onClick={onClose}
       ></div>
       
-      {/* Modal Content */}
       <div className="relative bg-white w-full max-w-7xl h-[90vh] rounded-2xl overflow-hidden shadow-2xl flex flex-col animate-scale-in ring-1 ring-white/20">
-        
-        {/* Header del Modal */}
         <div className="bg-white px-6 py-4 border-b border-gray-200 flex items-center justify-between shadow-sm z-20">
             <div className="flex items-center gap-4">
-                {/* Logo pequeño */}
                 <img src="/images/fortitude-logo.png" alt="Fortitude Insurance" className="h-8 w-auto object-contain" />
                 <div className="hidden sm:block border-l border-gray-300 pl-4 ml-1">
                     <h3 className="font-bold text-gray-900 text-lg leading-tight">{title}</h3>
@@ -48,7 +42,6 @@ const ModalFrame = ({ isOpen, onClose, title, url, loaderText }: ModalProps) => 
             </button>
         </div>
 
-        {/* Iframe Container */}
         <div className="flex-1 bg-gray-50 relative w-full h-full flex items-center justify-center overflow-hidden">
             {isLoading && (
               <div className="absolute inset-0 flex flex-col items-center justify-center bg-white z-10">
@@ -84,7 +77,6 @@ export default function Header({ lang }: HeaderProps) {
   const [activeModal, setActiveModal] = useState<'client' | 'quote' | null>(null);
   const [isDark, setIsDark] = useState(false);
 
-  // URLs de configuración
   const URLS = {
     client: "https://customerservice.agentinsure.com/EzlynxCustomerService/fortitudeis/Account/LogIn",
     quote: "https://www.agentinsure.com/compare/auto-insurance-home-insurance/fortitudeis/quote.aspx"
@@ -113,7 +105,6 @@ export default function Header({ lang }: HeaderProps) {
     }
   };
 
-  // Manejo de Modales
   const openModal = (type: 'client' | 'quote') => {
     setIsMenuOpen(false);
     setActiveModal(type);
@@ -125,21 +116,21 @@ export default function Header({ lang }: HeaderProps) {
     document.body.style.overflow = '';
   };
 
-  // Textos según idioma (RESTAURADOS AL ORIGINAL)
   const t = {
     en: {
       login: 'Log In',
-      insuranceHeading: 'Insurance Services', // Original
-      auto: 'Auto Insurance', // Original
-      property: 'Property Insurance', // Original
-      commercial: 'Commercial Insurance', // Original
+      insuranceHeading: 'Insurance Services',
+      auto: 'Auto Insurance',
+      property: 'Property Insurance',
+      commercial: 'Commercial Insurance',
+      additional: 'Additional Insurance',
       companyHeading: 'Company',
       about: 'About Us',
       resources: 'Resources',
       contact: 'Contact Us',
       accountHeading: 'Client Center',
-      accountLink: 'Client Portal (ID Cards & Claims)', // Original
-      quote: 'Get An Insurance Quote', // Original
+      accountLink: 'Client Portal (ID Cards & Claims)',
+      quote: 'Get An Insurance Quote',
       darkMode: 'Dark Mode',
       switchLangText: 'Español',
       switchLink: '/es',
@@ -150,17 +141,18 @@ export default function Header({ lang }: HeaderProps) {
     },
     es: {
       login: 'Ingresar',
-      insuranceHeading: 'Servicios de Seguros', // Original
-      auto: 'Seguro de Auto', // Original
-      property: 'Seguro de Propiedad', // Original
-      commercial: 'Seguro Comercial', // Original
+      insuranceHeading: 'Servicios de Seguros',
+      auto: 'Seguro de Auto',
+      property: 'Seguro de Propiedad',
+      commercial: 'Seguro Comercial',
+      additional: 'Servicios Adicionales',
       companyHeading: 'Compañía',
       about: 'Nosotros',
       resources: 'Recursos',
       contact: 'Contacto',
       accountHeading: 'Centro de Clientes',
-      accountLink: 'Portal de Clientes (Pagos y Reclamos)', // Original
-      quote: 'Obtener Cotización', // Original
+      accountLink: 'Portal de Clientes (Pagos y Reclamos)',
+      quote: 'Obtener Cotización',
       darkMode: 'Modo Oscuro',
       switchLangText: 'English',
       switchLink: '/',
@@ -171,17 +163,42 @@ export default function Header({ lang }: HeaderProps) {
     }
   }[lang === 'es' ? 'es' : 'en'];
 
-  // Definición de links
+  // === ICON DEFINITIONS ===
+  const icons = {
+    auto: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" /></svg>
+    ),
+    property: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+    ),
+    commercial: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+    ),
+    additional: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+    ),
+    about: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    ),
+    resources: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+    ),
+    contact: (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+    ),
+  };
+
   const insuranceLinks = [
-    { name: t.auto, href: lang === 'es' ? '/es/auto' : '/auto' },
-    { name: t.property, href: lang === 'es' ? '/es/propiedad' : '/property' },
-    { name: t.commercial, href: lang === 'es' ? '/es/comercial' : '/commercial' },
+    { name: t.auto, href: lang === 'es' ? '/es/auto' : '/auto', icon: icons.auto },
+    { name: t.property, href: lang === 'es' ? '/es/propiedad' : '/property', icon: icons.property },
+    { name: t.commercial, href: lang === 'es' ? '/es/comercial' : '/commercial', icon: icons.commercial },
+    { name: t.additional, href: lang === 'es' ? '/es/additional-insurance' : '/additional-insurance', icon: icons.additional },
   ];
 
   const companyLinks = [
-    { name: t.about, href: lang === 'es' ? '/es/nosotros' : '/about' },
-    { name: t.resources, href: lang === 'es' ? '/es/recursos' : '/resources' },
-    { name: t.contact, href: lang === 'es' ? '/es/contacto' : '/contact' },
+    { name: t.about, href: lang === 'es' ? '/es/nosotros' : '/about', icon: icons.about },
+    { name: t.resources, href: lang === 'es' ? '/es/recursos' : '/resources', icon: icons.resources },
+    { name: t.contact, href: lang === 'es' ? '/es/contacto' : '/contact', icon: icons.contact },
   ];
 
   return (
@@ -191,7 +208,6 @@ export default function Header({ lang }: HeaderProps) {
           
           {/* 1. LOGO */}
           <a href={lang === 'es' ? '/es' : '/'} className="flex items-center">
-            {/* Logo responsivo: más pequeño en móvil para no estorbar */}
             <img 
               src="/images/fortitude-logo.png" 
               alt="Fortitude Insurance" 
@@ -205,7 +221,7 @@ export default function Header({ lang }: HeaderProps) {
             {/* 2. LOGIN SHORTCUT */}
             <button 
               onClick={() => openModal('client')}
-              className="text-sm font-bold text-text-main dark:text-surface-light hover:text-primary transition-colors flex items-center gap-1 focus:outline-none"
+              className="text-sm font-bold text-text-main dark:text-surface-light hover:text-primary transition-colors flex items-center gap-2 focus:outline-none"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
               <span className="hidden sm:inline">{t.login}</span>
@@ -275,16 +291,16 @@ export default function Header({ lang }: HeaderProps) {
             <a 
               key={link.href} 
               href={link.href} 
-              // OPTIMIZACIÓN MÓVIL: text-sm para acomodar textos largos, py-2 para reducir altura
-              // DESKTOP: Vuelve a text-lg y py-3
-              className="px-5 md:px-6 py-2 md:py-3 text-sm md:text-lg font-semibold md:font-bold text-text-main dark:text-surface-light border-b border-gray-50 dark:border-gray-800 hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
+              className="group px-5 md:px-6 py-2 md:py-3 text-sm md:text-lg font-semibold md:font-bold text-text-main dark:text-surface-light border-b border-gray-50 dark:border-gray-800 hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5 transition-colors flex items-center gap-3"
             >
+              <span className="text-gray-400 group-hover:text-primary transition-colors">
+                {link.icon}
+              </span>
               {link.name}
             </a>
           ))}
 
           {/* SECTION 2: COMPANY */}
-          {/* Margen superior reducido en móvil (mt-4) */}
           <div className="px-5 md:px-6 py-1 md:py-2 mt-4 md:mt-6 text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider">
             {t.companyHeading}
           </div>
@@ -292,8 +308,11 @@ export default function Header({ lang }: HeaderProps) {
             <a 
               key={link.href} 
               href={link.href} 
-              className="px-5 md:px-6 py-2 md:py-3 text-sm md:text-lg font-semibold md:font-bold text-text-main dark:text-surface-light border-b border-gray-50 dark:border-gray-800 hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
+              className="group px-5 md:px-6 py-2 md:py-3 text-sm md:text-lg font-semibold md:font-bold text-text-main dark:text-surface-light border-b border-gray-50 dark:border-gray-800 hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5 transition-colors flex items-center gap-3"
             >
+              <span className="text-gray-400 group-hover:text-primary transition-colors">
+                {link.icon}
+              </span>
               {link.name}
             </a>
           ))}
@@ -304,19 +323,17 @@ export default function Header({ lang }: HeaderProps) {
           </div>
           <button 
             onClick={() => openModal('client')}
-            className="w-full text-left px-5 md:px-6 py-2 md:py-3 text-sm md:text-lg font-bold text-primary border-b border-gray-50 dark:border-gray-800 hover:text-primary-hover hover:bg-gray-50 dark:hover:bg-white/5 transition-colors flex items-center gap-2 focus:outline-none"
+            className="w-full text-left px-5 md:px-6 py-2 md:py-3 text-sm md:text-lg font-bold text-primary border-b border-gray-50 dark:border-gray-800 hover:text-primary-hover hover:bg-gray-50 dark:hover:bg-white/5 transition-colors flex items-center gap-3 focus:outline-none"
           >
-            <div className="min-w-[1.25rem]">
+            <span className="text-primary">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-            </div>
-            {/* leading-tight ayuda cuando el texto largo se rompe en dos líneas */}
+            </span>
             <span className="leading-tight">{t.accountLink}</span>
           </button>
 
         </nav>
 
         {/* Drawer Footer */}
-        {/* Padding reducido en móvil (p-4) vs desktop (p-6) */}
         <div className="p-4 md:p-6 bg-gray-50 dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800">
           
           {/* BOTÓN "GET A QUOTE" */}
