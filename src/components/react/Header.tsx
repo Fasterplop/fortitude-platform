@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-// === COMPONENTE MODAL REUTILIZABLE ===
+// === COMPONENTE MODAL REUTILIZABLE (Sin cambios) ===
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -115,7 +115,7 @@ export default function Header({ lang }: HeaderProps) {
 
   // Manejo de Modales
   const openModal = (type: 'client' | 'quote') => {
-    setIsMenuOpen(false); // Cerrar menú si está abierto
+    setIsMenuOpen(false);
     setActiveModal(type);
     document.body.style.overflow = 'hidden';
   };
@@ -125,21 +125,21 @@ export default function Header({ lang }: HeaderProps) {
     document.body.style.overflow = '';
   };
 
-  // Textos según idioma
+  // Textos según idioma (RESTAURADOS AL ORIGINAL)
   const t = {
     en: {
       login: 'Log In',
-      insuranceHeading: 'Insurance Services',
-      auto: 'Auto Insurance',
-      property: 'Property Insurance',
-      commercial: 'Commercial Insurance',
+      insuranceHeading: 'Insurance Services', // Original
+      auto: 'Auto Insurance', // Original
+      property: 'Property Insurance', // Original
+      commercial: 'Commercial Insurance', // Original
       companyHeading: 'Company',
       about: 'About Us',
       resources: 'Resources',
       contact: 'Contact Us',
       accountHeading: 'Client Center',
-      accountLink: 'Client Portal (ID Cards & Claims)',
-      quote: 'Get An Insurance Quote',
+      accountLink: 'Client Portal (ID Cards & Claims)', // Original
+      quote: 'Get An Insurance Quote', // Original
       darkMode: 'Dark Mode',
       switchLangText: 'Español',
       switchLink: '/es',
@@ -150,17 +150,17 @@ export default function Header({ lang }: HeaderProps) {
     },
     es: {
       login: 'Ingresar',
-      insuranceHeading: 'Servicios de Seguros',
-      auto: 'Seguro de Auto',
-      property: 'Seguro de Propiedad',
-      commercial: 'Seguro Comercial',
+      insuranceHeading: 'Servicios de Seguros', // Original
+      auto: 'Seguro de Auto', // Original
+      property: 'Seguro de Propiedad', // Original
+      commercial: 'Seguro Comercial', // Original
       companyHeading: 'Compañía',
       about: 'Nosotros',
       resources: 'Recursos',
       contact: 'Contacto',
       accountHeading: 'Centro de Clientes',
-      accountLink: 'Portal de Clientes (Pagos y Reclamos)',
-      quote: 'Obtener Cotización',
+      accountLink: 'Portal de Clientes (Pagos y Reclamos)', // Original
+      quote: 'Obtener Cotización', // Original
       darkMode: 'Modo Oscuro',
       switchLangText: 'English',
       switchLink: '/',
@@ -187,10 +187,11 @@ export default function Header({ lang }: HeaderProps) {
   return (
     <>
       <header className="sticky top-0 z-50 w-full bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div className="container mx-auto px-4 h-24 md:h-28 flex items-center justify-between">
+        <div className="container mx-auto px-4 h-24 md:h-28 flex items-center justify-between"> 
           
           {/* 1. LOGO */}
           <a href={lang === 'es' ? '/es' : '/'} className="flex items-center">
+            {/* Logo responsivo: más pequeño en móvil para no estorbar */}
             <img 
               src="/images/fortitude-logo.png" 
               alt="Fortitude Insurance" 
@@ -201,7 +202,7 @@ export default function Header({ lang }: HeaderProps) {
           {/* RIGHT SIDE ACTIONS */}
           <div className="flex items-center gap-4 md:gap-6">
             
-            {/* 2. LOGIN SHORTCUT -> MODAL CLIENT */}
+            {/* 2. LOGIN SHORTCUT */}
             <button 
               onClick={() => openModal('client')}
               className="text-sm font-bold text-text-main dark:text-surface-light hover:text-primary transition-colors flex items-center gap-1 focus:outline-none"
@@ -234,7 +235,6 @@ export default function Header({ lang }: HeaderProps) {
         </div>
       </header>
 
-      {/* === MODAL RENDER (Shared Logic) === */}
       <ModalFrame 
         isOpen={activeModal !== null}
         onClose={closeModal}
@@ -244,7 +244,6 @@ export default function Header({ lang }: HeaderProps) {
       />
 
       {/* DRAWER / SIDE MENU */}
-      {/* Overlay del Menú */}
       {isMenuOpen && (
         <div 
           className="fixed inset-0 bg-black/50 z-[60] backdrop-blur-sm"
@@ -253,76 +252,83 @@ export default function Header({ lang }: HeaderProps) {
       )}
 
       {/* Panel Deslizante */}
-      <div className={`fixed top-0 right-0 h-full w-[85%] max-w-sm bg-surface-light dark:bg-surface-card z-[70] shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-0 right-0 h-full w-[85%] max-w-xs md:max-w-sm bg-surface-light dark:bg-surface-card z-[70] shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         
         {/* Drawer Header */}
-        <div className="flex justify-end p-4 border-b border-gray-100 dark:border-gray-800">
+        <div className="flex justify-end p-3 md:p-4 border-b border-gray-100 dark:border-gray-800">
           <button 
             onClick={() => setIsMenuOpen(false)}
-            className="p-2 text-gray-500 hover:text-primary transition-colors"
+            className="p-1 md:p-2 text-gray-500 hover:text-primary transition-colors"
           >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
           </button>
         </div>
 
         {/* Drawer Content */}
-        <nav className="flex-1 overflow-y-auto py-4 flex flex-col">
+        <nav className="flex-1 overflow-y-auto py-2 md:py-4 flex flex-col">
           
           {/* SECTION 1: INSURANCE */}
-          <div className="px-6 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider">
+          <div className="px-5 md:px-6 py-1 md:py-2 text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider">
             {t.insuranceHeading}
           </div>
           {insuranceLinks.map((link) => (
             <a 
               key={link.href} 
               href={link.href} 
-              className="px-6 py-3 text-lg font-bold text-text-main dark:text-surface-light border-b border-gray-50 dark:border-gray-800 hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
+              // OPTIMIZACIÓN MÓVIL: text-sm para acomodar textos largos, py-2 para reducir altura
+              // DESKTOP: Vuelve a text-lg y py-3
+              className="px-5 md:px-6 py-2 md:py-3 text-sm md:text-lg font-semibold md:font-bold text-text-main dark:text-surface-light border-b border-gray-50 dark:border-gray-800 hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
             >
               {link.name}
             </a>
           ))}
 
           {/* SECTION 2: COMPANY */}
-          <div className="px-6 py-2 mt-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
+          {/* Margen superior reducido en móvil (mt-4) */}
+          <div className="px-5 md:px-6 py-1 md:py-2 mt-4 md:mt-6 text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider">
             {t.companyHeading}
           </div>
           {companyLinks.map((link) => (
             <a 
               key={link.href} 
               href={link.href} 
-              className="px-6 py-3 text-lg font-bold text-text-main dark:text-surface-light border-b border-gray-50 dark:border-gray-800 hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
+              className="px-5 md:px-6 py-2 md:py-3 text-sm md:text-lg font-semibold md:font-bold text-text-main dark:text-surface-light border-b border-gray-50 dark:border-gray-800 hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
             >
               {link.name}
             </a>
           ))}
 
-           {/* SECTION 3: CLIENT CENTER -> MODAL CLIENT */}
-           <div className="px-6 py-2 mt-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
+           {/* SECTION 3: CLIENT CENTER */}
+           <div className="px-5 md:px-6 py-1 md:py-2 mt-4 md:mt-6 text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-wider">
             {t.accountHeading}
           </div>
           <button 
             onClick={() => openModal('client')}
-            className="w-full text-left px-6 py-3 text-lg font-bold text-primary border-b border-gray-50 dark:border-gray-800 hover:text-primary-hover hover:bg-gray-50 dark:hover:bg-white/5 transition-colors flex items-center gap-2 focus:outline-none"
+            className="w-full text-left px-5 md:px-6 py-2 md:py-3 text-sm md:text-lg font-bold text-primary border-b border-gray-50 dark:border-gray-800 hover:text-primary-hover hover:bg-gray-50 dark:hover:bg-white/5 transition-colors flex items-center gap-2 focus:outline-none"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-            {t.accountLink}
+            <div className="min-w-[1.25rem]">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            </div>
+            {/* leading-tight ayuda cuando el texto largo se rompe en dos líneas */}
+            <span className="leading-tight">{t.accountLink}</span>
           </button>
 
         </nav>
 
         {/* Drawer Footer */}
-        <div className="p-6 bg-gray-50 dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800">
+        {/* Padding reducido en móvil (p-4) vs desktop (p-6) */}
+        <div className="p-4 md:p-6 bg-gray-50 dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800">
           
-          {/* BOTÓN "GET A QUOTE" -> MODAL QUOTE */}
+          {/* BOTÓN "GET A QUOTE" */}
           <button 
             onClick={() => openModal('quote')}
-            className="block w-full bg-primary hover:bg-primary-hover text-text-main font-bold text-center py-4 rounded-md shadow-md text-lg mb-6 transition-colors focus:outline-none"
+            className="block w-full bg-primary hover:bg-primary-hover text-text-main font-bold text-center py-3 md:py-4 rounded-md shadow-md text-sm md:text-lg mb-3 md:mb-6 transition-colors focus:outline-none tracking-wide"
           >
             {t.quote}
           </button>
 
           <div className="flex items-center justify-between">
-            <span className="font-medium text-text-main dark:text-surface-light">
+            <span className="font-medium text-sm md:text-base text-text-main dark:text-surface-light">
               {t.darkMode}
             </span>
             

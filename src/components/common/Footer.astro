@@ -1,58 +1,65 @@
 ---
 interface Props {
-  lang?: string; // Aceptamos string para no pelear con el Layout
+  lang?: string;
 }
 
 const { lang } = Astro.props;
-
-// Lógica interna: Si llega 'en' usamos 'en', para cualquier otra cosa (undefined, 'es', 'fr') forzamos 'es'
 const currentLang: 'es' | 'en' = (lang === 'en') ? 'en' : 'es';
 
 const content = {
   es: {
-    sitemap: "Mapa del Sitio",
-    contact: "Contacto",
-    legal: "Legal",
+    description: "Protección sólida para su futuro. Seguros confiables para auto, hogar y negocios.",
+    productTitle: "Seguros",
+    companyTitle: "Empresa",
+    contactTitle: "Contacto",
     phone: "813-753-4197",
+    // Eliminamos guiones para el link de WhatsApp
+    whatsappNumber: "18137534197", 
     email: "Jesus.perez@fortitudeins.us",
-    // RUTAS EN ESPAÑOL ACTUALIZADAS
-    links: [
-      { label: "Inicio", href: "/" },
+    cta: "Cotizar Ahora",
+    productLinks: [
       { label: "Autos", href: "/auto" }, 
       { label: "Propiedad", href: "/propiedad" },
       { label: "Comercial", href: "/comercial" },
+    ],
+    companyLinks: [
+      { label: "Inicio", href: "/" },
       { label: "Nosotros", href: "/nosotros" },
       { label: "Recursos", href: "/recursos" },
-      { label: "Contacto", href: "/contacto" },
     ],
     legalLinks: [
       { label: "Política de Privacidad", href: "/privacidad" },
       { label: "Términos y Condiciones", href: "/terminos" },
     ],
     copyright: `© ${new Date().getFullYear()} Fortitude Insurance Services LLC.`,
+    madeBy: "Diseñado por",
     agent: "Jesus Perez"
   },
   en: {
-    sitemap: "Sitemap",
-    contact: "Contact",
-    legal: "Legal",
+    description: "Solid protection for your future. Reliable insurance for auto, home, and business.",
+    productTitle: "Insurance",
+    companyTitle: "Company",
+    contactTitle: "Contact",
     phone: "813-753-4197",
+    whatsappNumber: "18137534197",
     email: "Jesus.perez@fortitudeins.us",
-    // RUTAS EN INGLES MANTIENEN SU ESTRUCTURA
-    links: [
-      { label: "Home", href: "/en/" },
+    cta: "Get a Quote",
+    productLinks: [
       { label: "Auto", href: "/en/auto" },
       { label: "Property", href: "/en/property" },
       { label: "Commercial", href: "/en/commercial" },
+    ],
+    companyLinks: [
+      { label: "Home", href: "/en/" },
       { label: "About Us", href: "/en/about" },
       { label: "Resources", href: "/en/resources" },
-      { label: "Contact", href: "/en/contact" },
     ],
     legalLinks: [
       { label: "Privacy Policy", href: "/en/privacy" },
       { label: "Terms & Conditions", href: "/en/terms" },
     ],
     copyright: `© ${new Date().getFullYear()} Fortitude Insurance Services LLC.`,
+    madeBy: "Designed by",
     agent: "Jesus Perez"
   }
 };
@@ -60,56 +67,46 @@ const content = {
 const t = content[currentLang];
 ---
 
-<footer class="w-full border-t border-neutral-200 dark:border-neutral-800 bg-[#FFFFFF] dark:bg-[#0F0F0F] text-[#121212] dark:text-gray-200 transition-colors duration-300">
-  <div class="max-w-7xl mx-auto px-6 py-12 lg:px-8">
+<footer class="w-full border-t border-neutral-200 dark:border-neutral-800 bg-surface-light dark:bg-surface-dark text-text-main dark:text-gray-200 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-16 lg:px-8">
     
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 text-center lg:text-left">
       
-      {/* Columna 1: Identidad y Contacto */}
-      <div class="space-y-4">
+      {/* Columna 1: Marca, Descripción y CTA */}
+      <div class="flex flex-col items-center lg:items-start space-y-6 lg:pr-16">
         <a href={currentLang === 'en' ? '/en/' : '/'} class="block">
-            <span class="font-serif text-2xl font-bold text-[#121212] dark:text-white">
-              Fortitude <span class="text-[#C5A059]">Insurance</span>
-            </span>
+            <img 
+              src="/images/fortitude-logo.png" 
+              alt="Fortitude Insurance" 
+              class="h-14 md:h-20 w-auto object-contain"
+            />
         </a>
-        <p class="text-sm leading-6 text-gray-600 dark:text-gray-400">
-          {currentLang === 'es' ? 'Protección sólida para su futuro.' : 'Solid protection for your future.'}
+        <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400 max-w-sm">
+          {t.description}
         </p>
-        <div class="pt-2 space-y-2 text-sm">
-          <p class="flex items-center gap-2">
-            <span class="text-[#C5A059]">📞</span>
-            <a href={`tel:${t.phone}`} class="hover:text-[#C5A059] transition-colors">{t.phone}</a>
-          </p>
-          <p class="flex items-center gap-2">
-            <span class="text-[#C5A059]">✉️</span>
-            <a href={`mailto:${t.email}`} class="hover:text-[#C5A059] transition-colors">{t.email}</a>
-          </p>
-           <p class="text-xs text-gray-500">{t.agent}</p>
-        </div>
         
-        {/* Social Media Placeholders */}
-        <div class="flex space-x-4 pt-2">
-          <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-[#C5A059]">
-            <div class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
-          </a>
-          <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-[#C5A059]">
-             <div class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
-          </a>
-          <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-[#C5A059]">
-             <div class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
-          </a>
+        <div class="pt-2 w-full lg:w-auto">
+            <button 
+              type="button"
+              class="open-quote-modal inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-bold text-text-main shadow-lg hover:bg-primary-hover hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 gap-2 group w-full sm:w-auto"
+            >
+              <span>{t.cta}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </button>
         </div>
       </div>
 
-      {/* Columna 2: Sitemap Principal */}
-      <div>
-        <h3 class="text-sm font-semibold leading-6 text-[#121212] dark:text-white uppercase tracking-wider mb-4 border-b-2 border-[#C5A059] inline-block pb-1">
-          {t.sitemap}
+      {/* Columna 2: Productos (Seguros) */}
+      <div class="flex flex-col items-center lg:items-start">
+        <h3 class="text-sm font-bold uppercase tracking-wider text-text-main dark:text-white mb-6 border-b-2 border-primary inline-block pb-1">
+          {t.productTitle}
         </h3>
-        <ul role="list" class="space-y-3">
-          {t.links.map((link) => (
+        <ul role="list" class="space-y-4 w-full">
+          {t.productLinks.map((link) => (
             <li>
-              <a href={link.href} class="text-sm leading-6 text-gray-600 dark:text-gray-400 hover:text-[#C5A059] dark:hover:text-[#C5A059] transition-colors">
+              <a href={link.href} class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors block">
                 {link.label}
               </a>
             </li>
@@ -117,37 +114,117 @@ const t = content[currentLang];
         </ul>
       </div>
 
-      {/* Columna 3: Legales y CTA secundario */}
-      <div>
-        <h3 class="text-sm font-semibold leading-6 text-[#121212] dark:text-white uppercase tracking-wider mb-4 border-b-2 border-[#C5A059] inline-block pb-1">
-          {t.legal}
+      {/* Columna 3: Empresa */}
+      <div class="flex flex-col items-center lg:items-start">
+        <h3 class="text-sm font-bold uppercase tracking-wider text-text-main dark:text-white mb-6 border-b-2 border-primary inline-block pb-1">
+          {t.companyTitle}
         </h3>
-        <ul role="list" class="space-y-3">
-          {t.legalLinks.map((link) => (
+        <ul role="list" class="space-y-4 w-full">
+          {t.companyLinks.map((link) => (
             <li>
-              <a href={link.href} class="text-sm leading-6 text-gray-600 dark:text-gray-400 hover:text-[#C5A059] dark:hover:text-[#C5A059] transition-colors">
+              <a href={link.href} class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors block">
                 {link.label}
               </a>
             </li>
           ))}
         </ul>
+      </div>
+
+      {/* Columna 4: Contacto y Redes Sociales */}
+      <div class="flex flex-col items-center lg:items-start">
+        <h3 class="text-sm font-bold uppercase tracking-wider text-text-main dark:text-white mb-6 border-b-2 border-primary inline-block pb-1">
+          {t.contactTitle}
+        </h3>
         
-        <div class="mt-8">
-           <a 
-             href={currentLang === 'en' ? '/en/quote' : '/quote'} 
-             class="rounded-md bg-[#C5A059] px-3.5 py-2.5 text-sm font-semibold text-[#121212] shadow-sm hover:bg-[#b08d4b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5A059] transition-all"
-           >
-             {currentLang === 'es' ? 'Cotizar Ahora' : 'Get a Quote'}
-           </a>
+        <div class="space-y-4 w-full">
+            {/* Datos de contacto */}
+            <div class="space-y-3">
+                <a href={`tel:${t.phone}`} class="flex items-center justify-center lg:justify-start gap-3 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors group">
+                    <div class="flex-shrink-0 p-2 bg-gray-100 dark:bg-gray-800 rounded-md group-hover:bg-primary/20 transition-colors text-primary flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <span class="text-sm font-medium">{t.phone}</span>
+                </a>
+                <a href={`mailto:${t.email}`} class="flex items-center justify-center lg:justify-start gap-3 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors group">
+                     <div class="flex-shrink-0 p-2 bg-gray-100 dark:bg-gray-800 rounded-md group-hover:bg-primary/20 transition-colors text-primary flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                        </svg>
+                     </div>
+                     <span class="text-sm font-medium break-all">{t.email}</span>
+                </a>
+            </div>
+
+            {/* Redes Sociales */}
+            <div class="pt-4 border-t border-gray-100 dark:border-gray-800">
+                <p class="text-xs text-gray-500 mb-3 uppercase tracking-wide">Social</p>
+                <div class="flex gap-3 justify-center lg:justify-start">
+                    
+                    {/* WhatsApp Button */}
+                    <a 
+                      href={`https://wa.me/${t.whatsappNumber}`} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      aria-label="WhatsApp" 
+                      class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 hover:bg-[#25D366] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                    >
+                        {/* Icono de WhatsApp */}
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                    </a>
+
+                    {/* Instagram Button */}
+                    <a 
+                      href="https://www.instagram.com/fortitudeinsurances/" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      aria-label="Instagram" 
+                      class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 hover:bg-[#E4405F] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                    >
+                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.76-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                </div>
+            </div>
         </div>
       </div>
 
     </div>
 
-    <div class="mt-12 border-t border-neutral-200 dark:border-neutral-800 pt-8 text-center">
-      <p class="text-xs leading-5 text-gray-500 dark:text-gray-500">
-        {t.copyright}
-      </p>
+    {/* Bottom Bar: Copyright, Legal Links y Créditos */}
+    <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-gray-500 text-center md:text-left">
+      
+      {/* Copyright */}
+      <div class="w-full md:w-auto">
+          <p>{t.copyright}</p>
+      </div>
+
+      {/* Links Legales */}
+      <div class="flex flex-wrap justify-center md:justify-start gap-6">
+          {t.legalLinks.map((link) => (
+             <a href={link.href} class="hover:text-primary transition-colors">
+                {link.label}
+             </a>
+          ))}
+      </div>
+      
+      {/* Credits */}
+      <div class="w-full md:w-auto">
+        <p class="flex items-center justify-center md:justify-end gap-1">
+          {t.madeBy} 
+          <a 
+            href="https://hikevodesign.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="font-bold text-gray-700 dark:text-gray-300 hover:text-primary transition-colors"
+          >
+            Hikevo Design
+          </a>
+        </p>
+      </div>
     </div>
   </div>
 </footer>
