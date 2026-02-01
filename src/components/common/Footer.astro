@@ -1,0 +1,153 @@
+---
+interface Props {
+  lang?: string; // Aceptamos string para no pelear con el Layout
+}
+
+const { lang } = Astro.props;
+
+// Lógica interna: Si llega 'en' usamos 'en', para cualquier otra cosa (undefined, 'es', 'fr') forzamos 'es'
+const currentLang: 'es' | 'en' = (lang === 'en') ? 'en' : 'es';
+
+const content = {
+  es: {
+    sitemap: "Mapa del Sitio",
+    contact: "Contacto",
+    legal: "Legal",
+    phone: "813-753-4197",
+    email: "Jesus.perez@fortitudeins.us",
+    // RUTAS EN ESPAÑOL ACTUALIZADAS
+    links: [
+      { label: "Inicio", href: "/" },
+      { label: "Autos", href: "/auto" }, 
+      { label: "Propiedad", href: "/propiedad" },
+      { label: "Comercial", href: "/comercial" },
+      { label: "Nosotros", href: "/nosotros" },
+      { label: "Recursos", href: "/recursos" },
+      { label: "Contacto", href: "/contacto" },
+    ],
+    legalLinks: [
+      { label: "Política de Privacidad", href: "/privacidad" },
+      { label: "Términos y Condiciones", href: "/terminos" },
+    ],
+    copyright: `© ${new Date().getFullYear()} Fortitude Insurance Services LLC.`,
+    agent: "Jesus Perez"
+  },
+  en: {
+    sitemap: "Sitemap",
+    contact: "Contact",
+    legal: "Legal",
+    phone: "813-753-4197",
+    email: "Jesus.perez@fortitudeins.us",
+    // RUTAS EN INGLES MANTIENEN SU ESTRUCTURA
+    links: [
+      { label: "Home", href: "/en/" },
+      { label: "Auto", href: "/en/auto" },
+      { label: "Property", href: "/en/property" },
+      { label: "Commercial", href: "/en/commercial" },
+      { label: "About Us", href: "/en/about" },
+      { label: "Resources", href: "/en/resources" },
+      { label: "Contact", href: "/en/contact" },
+    ],
+    legalLinks: [
+      { label: "Privacy Policy", href: "/en/privacy" },
+      { label: "Terms & Conditions", href: "/en/terms" },
+    ],
+    copyright: `© ${new Date().getFullYear()} Fortitude Insurance Services LLC.`,
+    agent: "Jesus Perez"
+  }
+};
+
+const t = content[currentLang];
+---
+
+<footer class="w-full border-t border-neutral-200 dark:border-neutral-800 bg-[#FFFFFF] dark:bg-[#0F0F0F] text-[#121212] dark:text-gray-200 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-12 lg:px-8">
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+      
+      {/* Columna 1: Identidad y Contacto */}
+      <div class="space-y-4">
+        <a href={currentLang === 'en' ? '/en/' : '/'} class="block">
+            <span class="font-serif text-2xl font-bold text-[#121212] dark:text-white">
+              Fortitude <span class="text-[#C5A059]">Insurance</span>
+            </span>
+        </a>
+        <p class="text-sm leading-6 text-gray-600 dark:text-gray-400">
+          {currentLang === 'es' ? 'Protección sólida para su futuro.' : 'Solid protection for your future.'}
+        </p>
+        <div class="pt-2 space-y-2 text-sm">
+          <p class="flex items-center gap-2">
+            <span class="text-[#C5A059]">📞</span>
+            <a href={`tel:${t.phone}`} class="hover:text-[#C5A059] transition-colors">{t.phone}</a>
+          </p>
+          <p class="flex items-center gap-2">
+            <span class="text-[#C5A059]">✉️</span>
+            <a href={`mailto:${t.email}`} class="hover:text-[#C5A059] transition-colors">{t.email}</a>
+          </p>
+           <p class="text-xs text-gray-500">{t.agent}</p>
+        </div>
+        
+        {/* Social Media Placeholders */}
+        <div class="flex space-x-4 pt-2">
+          <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-[#C5A059]">
+            <div class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+          </a>
+          <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-[#C5A059]">
+             <div class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-[#C5A059]">
+             <div class="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+          </a>
+        </div>
+      </div>
+
+      {/* Columna 2: Sitemap Principal */}
+      <div>
+        <h3 class="text-sm font-semibold leading-6 text-[#121212] dark:text-white uppercase tracking-wider mb-4 border-b-2 border-[#C5A059] inline-block pb-1">
+          {t.sitemap}
+        </h3>
+        <ul role="list" class="space-y-3">
+          {t.links.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm leading-6 text-gray-600 dark:text-gray-400 hover:text-[#C5A059] dark:hover:text-[#C5A059] transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Columna 3: Legales y CTA secundario */}
+      <div>
+        <h3 class="text-sm font-semibold leading-6 text-[#121212] dark:text-white uppercase tracking-wider mb-4 border-b-2 border-[#C5A059] inline-block pb-1">
+          {t.legal}
+        </h3>
+        <ul role="list" class="space-y-3">
+          {t.legalLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm leading-6 text-gray-600 dark:text-gray-400 hover:text-[#C5A059] dark:hover:text-[#C5A059] transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        
+        <div class="mt-8">
+           <a 
+             href={currentLang === 'en' ? '/en/quote' : '/quote'} 
+             class="rounded-md bg-[#C5A059] px-3.5 py-2.5 text-sm font-semibold text-[#121212] shadow-sm hover:bg-[#b08d4b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5A059] transition-all"
+           >
+             {currentLang === 'es' ? 'Cotizar Ahora' : 'Get a Quote'}
+           </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-12 border-t border-neutral-200 dark:border-neutral-800 pt-8 text-center">
+      <p class="text-xs leading-5 text-gray-500 dark:text-gray-500">
+        {t.copyright}
+      </p>
+    </div>
+  </div>
+</footer>

@@ -174,14 +174,14 @@ export default function Header({ lang }: HeaderProps) {
   // Definición de links
   const insuranceLinks = [
     { name: t.auto, href: lang === 'es' ? '/es/auto' : '/auto' },
-    { name: t.property, href: lang === 'es' ? '/es/property' : '/property' },
-    { name: t.commercial, href: lang === 'es' ? '/es/commercial' : '/commercial' },
+    { name: t.property, href: lang === 'es' ? '/es/propiedad' : '/property' },
+    { name: t.commercial, href: lang === 'es' ? '/es/comercial' : '/commercial' },
   ];
 
   const companyLinks = [
-    { name: t.about, href: lang === 'es' ? '/es/about' : '/about' },
-    { name: t.resources, href: lang === 'es' ? '/es/resources' : '/resources' },
-    { name: t.contact, href: lang === 'es' ? '/es/contact' : '/contact' },
+    { name: t.about, href: lang === 'es' ? '/es/nosotros' : '/about' },
+    { name: t.resources, href: lang === 'es' ? '/es/recursos' : '/resources' },
+    { name: t.contact, href: lang === 'es' ? '/es/contacto' : '/contact' },
   ];
 
   return (

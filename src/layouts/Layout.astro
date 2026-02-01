@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Footer from '../components/common/Footer.astro';
 import Header from '../components/react/Header';
 import QuoteModal from '../components/QuoteModal.astro';
 
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const { title, description, lang = 'en' } = Astro.props;
+
 ---
 
 <!doctype html>
@@ -50,11 +52,9 @@ const { title, description, lang = 'en' } = Astro.props;
 			<slot />
 		</main>
 
-		<QuoteModal />
+		<QuoteModal lang={lang} />
 
-		<footer class="py-10 text-center text-sm opacity-60">
-			<p>&copy; {new Date().getFullYear()} Fortitude Insurance Services LLC. All rights reserved.</p>
-		</footer>
+		<Footer lang={lang} />
 	</body>
 </html>
 

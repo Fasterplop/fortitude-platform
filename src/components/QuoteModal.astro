@@ -1,8 +1,25 @@
 ---
-/* src/components/QuoteModal.astro */
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'es' } = Astro.props;
+
+
+const urls = {
+  es: "https://www.agentinsure.com/compare/auto-insurance-home-insurance/fortitudeis/quote.aspx",
+  en: "https://www.agentinsure.com/compare/auto-insurance-home-insurance/fortitudeis/quote.aspx" 
+};
+
+const activeUrl = lang === 'en' ? urls.en : urls.es;
+
+const modalTitle = lang === 'en' ? "Fast Quote" : "Cotización Rápida";
+const loadingText = lang === 'en' ? "Connecting to Quoting Engine..." : "Conectando con aseguradoras...";
+const initText = lang === 'en' ? "Starting Quote" : "Iniciando Cotizador";
 ---
+
 <div id="quote-modal" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300" aria-hidden="true">
-    {/* Backdrop con blur */}
+    {/* Backdrop */}
     <div class="absolute inset-0 bg-black/80 backdrop-blur-md" id="modal-backdrop"></div>
 
     <div class="relative z-10 w-full h-full flex items-center justify-center p-4 md:p-8">
@@ -16,7 +33,7 @@
                         <h3 class="font-bold text-gray-900 text-lg leading-tight">Fortitude Insurance</h3>
                         <p class="text-xs text-gray-500 font-medium tracking-wide uppercase flex items-center gap-1.5">
                             <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                            Cotizador Oficial Seguro
+                            {modalTitle}
                         </p>
                     </div>
                 </div>
@@ -30,7 +47,7 @@
                 <iframe 
                     id="modal-iframe"
                     src="" 
-                    data-src="https://www.agentinsure.com/compare/auto-insurance-home-insurance/fortitudeis/quote.aspx" 
+                    data-src={activeUrl} 
                     class="w-full h-full border-0"
                     title="Fortitude Insurance Quoter"
                 ></iframe>
@@ -42,8 +59,8 @@
                             <div class="absolute inset-0 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
                         </div>
                         <div class="text-center">
-                            <p class="text-gray-900 font-bold text-lg">Iniciando Cotizador</p>
-                            <p class="text-gray-400 text-sm">Conectando con aseguradoras...</p>
+                            <p class="text-gray-900 font-bold text-lg">{initText}</p>
+                            <p class="text-gray-400 text-sm">{loadingText}</p>
                         </div>
                     </div>
                 </div>
@@ -53,27 +70,21 @@
 </div>
 
 <script is:inline>
-    // Lógica Global del Modal
+    // Lógica Global del Modal (Sin cambios, solo usa el data-src que ya renderizamos correctamente)
     function initModal() {
         const modal = document.getElementById('quote-modal');
         const closeBtn = document.getElementById('close-modal-btn');
         const backdrop = document.getElementById('modal-backdrop');
         const iframe = document.getElementById('modal-iframe');
         const loader = document.getElementById('iframe-loader');
-
-        // Selectores de botones que abren el modal (usamos una clase común)
         const triggers = document.querySelectorAll('.open-quote-modal');
 
         function openModal() {
             if (!modal) return;
             modal.classList.remove('hidden');
-            
-            // Carga diferida del iframe
             if (iframe && !iframe.getAttribute('src')) {
                 iframe.setAttribute('src', iframe.getAttribute('data-src'));
-                iframe.onload = () => {
-                    if(loader) loader.style.opacity = '0';
-                };
+                iframe.onload = () => { if(loader) loader.style.opacity = '0'; };
             }
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
@@ -85,12 +96,9 @@
             if (!modal) return;
             modal.classList.add('opacity-0');
             document.body.style.overflow = '';
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
         }
 
-        // Event Listeners
         triggers.forEach(btn => btn.addEventListener('click', (e) => {
             e.preventDefault();
             openModal();
@@ -99,12 +107,8 @@
         if (closeBtn) closeBtn.addEventListener('click', closeModal);
         if (backdrop) backdrop.addEventListener('click', closeModal);
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
-                closeModal();
-            }
+            if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) closeModal();
         });
     }
-
-    // Ejecutar al cargar y en transiciones de vista (si Astro ViewTransitions se usa a futuro)
     document.addEventListener('DOMContentLoaded', initModal);
 </script>

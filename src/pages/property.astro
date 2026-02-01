@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Accordion from '../components/Accordion.astro';
+import CarriersCarousel from '../components/CarriersCarousel.astro';
+import { Image } from 'astro:assets';
+import propertyImg from '../images/property.jpg';
+
+// SEO Metadata (English)
+const title = "Property Insurance: Home, Condo & Renters | Fortitude Insurance";
+const description = "Protect your home with custom coverage. Get a home, condo, or renters insurance quote in minutes.";
+const lang = "en";
+---
+
+<Layout title={title} description={description} lang={lang}>
+
+  {/* 1. HERO (English Translation) */}
+  <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-surface-light dark:bg-surface-dark">
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            {/* Text & CTA */}
+            <div class="lg:w-1/2 text-center lg:text-left">
+                <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-6">
+                    Property Insurance
+                </span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-text-main dark:text-white mb-6 leading-[1.1]">
+                    Reliable protection <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-600">for your home</span>
+                </h1>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    Your home is your most important investment. We help you find the exact policy to safeguard your property with the efficiency you expect.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                    {/* MODAL TRIGGER */}
+                    <button class="open-quote-modal w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary-hover text-text-main font-bold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
+                        Quote my Property
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                    <a href="/contact" class="w-full sm:w-auto px-8 py-4 border border-gray-200 dark:border-white/10 text-text-main dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-center">
+                        Speak with an Agent
+                    </a>
+                </div>
+                <p class="mt-4 text-xs text-gray-500 dark:text-gray-400 flex items-center justify-center lg:justify-start gap-2">
+                    <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Free process with no impact on your credit.
+                </p>
+            </div>
+
+            {/* Hero Image */}
+            <div class="lg:w-1/2 relative w-full">
+                <div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/20 group">
+                    <Image src={propertyImg} alt="Protected home in Florida" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  {/* 2. BENEFITS (Standardized) */}
+  <section class="py-16 bg-white dark:bg-[#0a0a0a] border-b border-gray-100 dark:border-white/5">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+            {/* Benefit 1 */}
+            <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-gray-50 dark:bg-white/5">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4 text-2xl">
+                    ⚡
+                </div>
+                <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Smart Comparison</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Our system searches across multiple carriers simultaneously to find you the best rate in real-time.</p>
+            </div>
+            
+            {/* Benefit 2 */}
+            <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-gray-50 dark:bg-white/5">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4 text-2xl">
+                    🛡️
+                </div>
+                <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">No Impact on Credit</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Get your initial quote with total peace of mind. We provide an accurate estimate without affecting your credit history.</p>
+            </div>
+
+            {/* Benefit 3 */}
+            <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-gray-50 dark:bg-white/5">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4 text-2xl">
+                    💰
+                </div>
+                <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Bundle Savings</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Maximize your benefits. When you bundle your auto insurance with property insurance, you access preferential rates and exclusive discounts.</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  {/* 3. DETAILED COVERAGES (Accordion Translation) */}
+  <section class="py-24 bg-surface-light dark:bg-surface-dark">
+      <div class="container mx-auto px-4 max-w-4xl">
+          <div class="text-center mb-12">
+              <h2 class="text-3xl font-serif font-bold text-text-main dark:text-white mb-4">Solutions for every type of home</h2>
+              <p class="text-gray-600 dark:text-gray-300">Whether you own, live in a condo, or rent; we have a specific option for your situation.</p>
+          </div>
+
+          <div class="space-y-4">
+              <Accordion 
+                title="Homeowners Insurance" 
+                details="Complete protection for your home's structure and your belongings. This policy is fundamental to protect your investment against fire, theft, and structural damage, while also providing liability protection for accidents that occur on your property." 
+              />
+              <Accordion 
+                title="Condo Insurance" 
+                details="Specialized coverage designed to complement your association's master policy (HOA). It specifically protects the interior of your unit (walls-in), your personal improvements, and all your belongings, covering the gaps that the building's insurance doesn't cover." 
+              />
+              <Accordion 
+                title="Renters Insurance" 
+                details="Even if you don't own the building, your belongings are worth a lot. This essential and affordable protection covers your clothes, electronics, and furniture, while also offering vital personal liability coverage if you accidentally cause damage to the rental property or neighbors." 
+              />
+          </div>
+      </div>
+  </section>
+
+  {/* 4. TRUST BLOCK (Standardized) */}
+  <section class="py-24 bg-gray-50 dark:bg-[#111]">
+      <div class="container mx-auto px-4">
+          <div class="flex flex-col lg:flex-row items-center gap-16">
+              <div class="lg:w-1/2">
+                  <h2 class="text-3xl md:text-4xl font-serif font-bold text-text-main dark:text-white mb-6">
+                      Why trust your protection to Fortitude Insurance
+                  </h2>
+                  <p class="text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed">
+                      We are dedicated to ensuring that insurance quoting and management processes are clear, fast, and professional.
+                  </p>
+                  
+                  <div class="space-y-8">
+                      <div class="flex gap-4">
+                          <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl shrink-0">1</div>
+                          <div>
+                              <h4 class="text-xl font-bold text-text-main dark:text-white mb-2">Proven Efficiency</h4>
+                              <p class="text-gray-600 dark:text-gray-400 text-sm">Clear and fast quoting processes designed specifically for business owners and homeowners.</p>
+                          </div>
+                      </div>
+                       <div class="flex gap-4">
+                          <div class="w-12 h-12 rounded-full bg-surface-light dark:bg-white/10 flex items-center justify-center text-text-main dark:text-white font-bold text-xl shrink-0 border border-gray-200 dark:border-gray-700">2</div>
+                          <div>
+                              <h4 class="text-xl font-bold text-text-main dark:text-white mb-2">Expert Advice</h4>
+                              <p class="text-gray-600 dark:text-gray-400 text-sm">We identify the exact coverage your lifestyle requires, ensuring you don't pay extra for what you don't need.</p>
+                          </div>
+                      </div>
+                       <div class="flex gap-4">
+                          <div class="w-12 h-12 rounded-full bg-surface-light dark:bg-white/10 flex items-center justify-center text-text-main dark:text-white font-bold text-xl shrink-0 border border-gray-200 dark:border-gray-700">3</div>
+                          <div>
+                              <h4 class="text-xl font-bold text-text-main dark:text-white mb-2">Total Transparency</h4>
+                              <p class="text-gray-600 dark:text-gray-400 text-sm">No hidden fees or complex processes. We offer direct and professional insurance solutions.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="lg:w-1/2 relative">
+                  <div class="grid grid-cols-2 gap-4">
+                      <div class="bg-white dark:bg-white/5 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 text-center">
+                          <div class="text-4xl font-bold text-primary mb-2">3-5</div>
+                          <div class="text-sm text-gray-500 uppercase tracking-wider font-bold">Minutes to quote</div>
+                      </div>
+                       <div class="bg-white dark:bg-white/5 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 text-center">
+                          <div class="text-4xl font-bold text-primary mb-2">FL & TX</div>
+                          <div class="text-sm text-gray-500 uppercase tracking-wider font-bold">Specialized Coverage</div>
+                      </div>
+                       <div class="bg-white dark:bg-white/5 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 text-center col-span-2">
+                          <div class="text-4xl font-bold text-primary mb-2">100%</div>
+                          <div class="text-sm text-gray-500 uppercase tracking-wider font-bold">Satisfaction Guaranteed</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  {/* 5. CARRIERS */}
+  <section class="py-20 bg-white dark:bg-black border-t border-gray-100 dark:border-white/10">
+      <div class="container mx-auto px-4">
+          <CarriersCarousel lang={lang} />
+      </div>
+  </section>
+
+  {/* FINAL CTA */}
+  <section class="py-20 bg-primary text-text-main text-center">
+      <div class="container mx-auto px-4">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">Protect your investment today</h2>
+          <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">Quote in minutes and get the peace of mind your home deserves.</p>
+          <div class="flex justify-center gap-4">
+               <button class="open-quote-modal px-8 py-4 bg-white text-text-main font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                  Start Quote
+               </button>
+          </div>
+      </div>
+  </section>
+
+</Layout>
