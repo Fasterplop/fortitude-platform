@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Privacy Policy | Fortitude Insurance";
+const description = "How we collect, use, and protect your personal data at Fortitude Insurance Services LLC.";
+
+const lastUpdated = "February 1, 2026";
+---
+
+<Layout title={title} description={description} lang="en">
+
+  {/* SIMPLE HEADER */}
+  <section class="pt-32 pb-12 bg-surface-light dark:bg-[#050505]">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-text-main dark:text-white mb-4">
+        Privacy Policy
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Your privacy is sacred. Here we clearly explain how we handle your information.
+      </p>
+    </div>
+  </section>
+
+  {/* LEGAL CONTENT */}
+  <section class="pb-20 bg-surface-light dark:bg-[#050505]">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-white dark:bg-[#151515] p-8 md:p-12 rounded-3xl border border-gray-100 dark:border-white/5 shadow-xl">
+        
+        {/* Intro */}
+        <div class="mb-10 pb-10 border-b border-gray-100 dark:border-white/10">
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 font-mono uppercase tracking-widest">
+                Last Updated: {lastUpdated}
+            </p>
+            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                At <strong>Fortitude Insurance Services LLC</strong> ("we", "our", "us"), we respect your privacy and are committed to protecting the personal information you share with us. This policy outlines how we collect, use, and safeguard your data.
+            </p>
+        </div>
+
+        <div class="space-y-12 text-gray-700 dark:text-gray-300 leading-relaxed">
+
+            {/* 1. Information Collection */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    1. Information We Collect
+                </h3>
+                <p>
+                    To provide you with accurate insurance quotes, we collect "Personally Identifiable Information" (PII), which may include, but is not limited to:
+                </p>
+                <ul class="list-disc pl-5 mt-4 space-y-2 opacity-90">
+                    <li>Name, address, email address, and phone number.</li>
+                    <li>Date of birth, driver's license number, and marital status.</li>
+                    <li>Vehicle details (VIN) and property information.</li>
+                    <li>Driving history and prior claims data.</li>
+                </ul>
+            </article>
+
+            {/* 2. Usage */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    2. How We Use Your Information
+                </h3>
+                <p>
+                    We use your data exclusively to:
+                </p>
+                <ul class="list-disc pl-5 mt-4 space-y-2 opacity-90">
+                    <li>Request quotes from multiple insurance carriers (such as Progressive, Geico, Bristol West, etc.) on your behalf.</li>
+                    <li>Issue, service, and renew your insurance policies.</li>
+                    <li>Communicate with you regarding changes to your coverage or billing.</li>
+                </ul>
+            </article>
+
+            {/* 3. SMS Policy (Unified Style) */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    3. SMS & Text Messaging Policy
+                </h3>
+                <p class="mb-4">
+                    By providing your phone number, you consent to receive text messages (SMS) from Fortitude Insurance regarding your quotes and policies.
+                </p>
+                <p class="font-bold mb-2">
+                    Mobile Data Privacy:
+                </p>
+                <p class="mb-4">
+                    <strong>No mobile information will be shared with third parties/affiliates for marketing/promotional purposes.</strong> All the above categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.
+                </p>
+                <p class="text-sm text-gray-500">
+                    You may opt-out of receiving messages at any time by replying "STOP".
+                </p>
+            </article>
+
+            {/* 4. Cookies & Ads */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    4. Cookies & Digital Advertising
+                </h3>
+                <p>
+                    This website uses cookies and similar tracking technologies (such as the <strong>Meta/Facebook Pixel</strong> and <strong>Google Ads</strong> tags).
+                </p>
+                <p class="mt-4">
+                    These tools allow us to:
+                </p>
+                <ul class="list-disc pl-5 mt-2 space-y-2 opacity-90">
+                    <li>Analyze our website traffic to improve user experience.</li>
+                    <li>Serve you relevant advertisements on third-party platforms (Retargeting) based on your interest in our services.</li>
+                </ul>
+                <p class="mt-4 text-sm text-gray-500">
+                    You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
+                </p>
+            </article>
+
+            {/* 5. Sharing */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    5. Information Sharing
+                </h3>
+                <p>
+                    <strong>We do not sell your personal information.</strong> We only share your data with:
+                </p>
+                <ul class="list-disc pl-5 mt-4 space-y-2 opacity-90">
+                    <li><strong>Insurance Carriers:</strong> Strictly as necessary to obtain your quote.</li>
+                    <li><strong>Software Providers:</strong> Such as EZLynx (our management system), who are contractually obligated to protect your data.</li>
+                    <li><strong>Authorities:</strong> If required by law (e.g., DMV reporting).</li>
+                </ul>
+            </article>
+
+            {/* 6. Security */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    6. Data Security
+                </h3>
+                <p>
+                    We implement industry-standard security measures (SSL encryption, secure servers) to protect your personal information from unauthorized access, alteration, or destruction.
+                </p>
+            </article>
+
+            {/* Contact */}
+            <div class="mt-16 pt-8 border-t border-gray-100 dark:border-white/10">
+                <h4 class="font-bold text-lg text-text-main dark:text-white mb-2">Privacy Contact</h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    To exercise your rights to access, correct, or delete data, please contact us:
+                </p>
+                <address class="not-italic text-gray-700 dark:text-gray-300">
+                    <strong>Fortitude Insurance Services LLC</strong><br/>
+                    <a href="mailto:support@fortitudeins.us" class="text-primary hover:underline">support@fortitudeins.us</a>
+                </address>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Accesibilidad | Fortitude Insurance";
+const description = "Declaración de accesibilidad y compromiso de Fortitude Insurance con la inclusión digital.";
+
+const lastUpdated = "1 de Febrero, 2026";
+---
+
+<Layout title={title} description={description} lang="es">
+
+  {/* ENCABEZADO SIMPLE */}
+  <section class="pt-32 pb-12 bg-surface-light dark:bg-[#050505]">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-text-main dark:text-white mb-4">
+        Declaración de Accesibilidad
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Nuestro compromiso con la inclusión digital para todos nuestros clientes.
+      </p>
+    </div>
+  </section>
+
+  {/* CONTENIDO */}
+  <section class="pb-20 bg-surface-light dark:bg-[#050505]">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-white dark:bg-[#151515] p-8 md:p-12 rounded-3xl border border-gray-100 dark:border-white/5 shadow-xl">
+        
+        {/* Intro */}
+        <div class="mb-10 pb-10 border-b border-gray-100 dark:border-white/10">
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 font-mono uppercase tracking-widest">
+                Última Actualización: {lastUpdated}
+            </p>
+            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                En <strong>Fortitude Insurance Services LLC</strong>, creemos que los seguros deben ser accesibles para todos. Nos esforzamos por garantizar que nuestro sitio web sea fácil de usar para personas con discapacidades, cumpliendo con los estándares de la industria.
+            </p>
+        </div>
+
+        <div class="space-y-12 text-gray-700 dark:text-gray-300 leading-relaxed">
+
+            {/* 1. Estándares y Compromiso */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    1. Estándares y Cumplimiento
+                </h3>
+                <p>
+                    Hemos invertido recursos para ayudar a garantizar que nuestro sitio web sea más fácil de usar y accesible, con la firme creencia de que todas las personas tienen derecho a vivir con dignidad, igualdad, comodidad e independencia.
+                </p>
+                <p class="mt-4">
+                    Trabajamos continuamente para mejorar la experiencia del usuario para todos y aplicar los estándares de accesibilidad pertinentes, incluidas las Pautas de Accesibilidad al Contenido Web (WCAG) 2.1 nivel AA.
+                </p>
+            </article>
+
+            {/* 2. Medidas de Accesibilidad */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    2. Características de Accesibilidad
+                </h3>
+                <p>
+                    Este sitio web incluye características diseñadas para mejorar la accesibilidad, tales como:
+                </p>
+                <ul class="list-disc pl-5 mt-4 space-y-2 opacity-90">
+                    <li><strong>Contraste de Color:</strong> Modos claro y oscuro optimizados para reducir la fatiga visual y mejorar la legibilidad del texto.</li>
+                    <li><strong>Navegación por Teclado:</strong> Estructura lógica que permite navegar por los menús y formularios utilizando solo el teclado.</li>
+                    <li><strong>Texto Alternativo (Alt Text):</strong> Descripciones en las imágenes para compatibilidad con lectores de pantalla.</li>
+                    <li><strong>Formularios Claros:</strong> Etiquetas explícitas en todos los campos de entrada para facilitar el llenado de cotizaciones.</li>
+                </ul>
+            </article>
+
+            {/* 3. Limitaciones */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    3. Descargo de Responsabilidad
+                </h3>
+                <p>
+                    A pesar de nuestros esfuerzos por hacer que todas las páginas y contenidos sean totalmente accesibles, es posible que algunos contenidos aún no se hayan adaptado completamente a los estándares de accesibilidad más estrictos. Esto puede ser consecuencia de no haber encontrado o identificado la solución tecnológica más adecuada.
+                </p>
+                <p class="mt-4">
+                    Específicamente, algunos portales de terceros (como los sistemas de pago de las aseguradoras o herramientas de cotización externas) están fuera de nuestro control directo, aunque exigimos a nuestros socios que mantengan estándares similares.
+                </p>
+            </article>
+
+            {/* 4. Contacto de Soporte */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    4. ¿Necesitas Ayuda?
+                </h3>
+                <p>
+                    Si tienes dificultades para ver o navegar por el contenido de este sitio web, o si notas algún contenido, característica o funcionalidad que crees que no es totalmente accesible para personas con discapacidades, por favor ponte en contacto con nosotros.
+                </p>
+                <p class="mt-4">
+                    Estaremos encantados de ayudarte a través de un método de comunicación alternativo accesible para ti (por ejemplo, comunicación telefónica).
+                </p>
+            </article>
+
+            {/* Contacto */}
+            <div class="mt-16 pt-8 border-t border-gray-100 dark:border-white/10">
+                <h4 class="font-bold text-lg text-text-main dark:text-white mb-2">Contacto de Accesibilidad</h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    Tomamos sus comentarios muy en serio y los consideraremos al evaluar formas de acomodar a todos nuestros clientes.
+                </p>
+                <address class="not-italic text-gray-700 dark:text-gray-300">
+                    <strong>Fortitude Insurance Services LLC</strong><br/>
+                    Teléfono: <a href="tel:813-753-4197" class="text-primary hover:underline">(813) 753-4197</a><br/>
+                    Email: <a href="mailto:support@fortitudeins.us" class="text-primary hover:underline">support@fortitudeins.us</a>
+                </address>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

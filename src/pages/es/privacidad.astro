@@ -1,0 +1,153 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Política de Privacidad | Fortitude Insurance";
+const description = "Cómo recopilamos, usamos y protegemos tus datos personales en Fortitude Insurance Services LLC.";
+
+const lastUpdated = "1 de Febrero, 2026";
+---
+
+<Layout title={title} description={description} lang="es">
+
+  {/* ENCABEZADO SIMPLE */}
+  <section class="pt-32 pb-12 bg-surface-light dark:bg-[#050505]">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-text-main dark:text-white mb-4">
+        Política de Privacidad
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Tu privacidad es sagrada. Aquí explicamos claramente cómo manejamos tu información.
+      </p>
+    </div>
+  </section>
+
+  {/* CONTENIDO LEGAL */}
+  <section class="pb-20 bg-surface-light dark:bg-[#050505]">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-white dark:bg-[#151515] p-8 md:p-12 rounded-3xl border border-gray-100 dark:border-white/5 shadow-xl">
+        
+        {/* Intro */}
+        <div class="mb-10 pb-10 border-b border-gray-100 dark:border-white/10">
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 font-mono uppercase tracking-widest">
+                Última Actualización: {lastUpdated}
+            </p>
+            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                En <strong>Fortitude Insurance Services LLC</strong> ("nosotros", "nuestro"), respetamos su privacidad y estamos comprometidos a proteger la información personal que comparte con nosotros. Esta política describe cómo recopilamos, utilizamos y salvaguardamos sus datos.
+            </p>
+        </div>
+
+        <div class="space-y-12 text-gray-700 dark:text-gray-300 leading-relaxed">
+
+            {/* 1. Recopilación de Información */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    1. Información que Recopilamos
+                </h3>
+                <p>
+                    Para proporcionarle cotizaciones de seguros precisas, recopilamos "Información de Identificación Personal" (PII), que puede incluir, entre otros:
+                </p>
+                <ul class="list-disc pl-5 mt-4 space-y-2 opacity-90">
+                    <li>Nombre, dirección, correo electrónico y número de teléfono.</li>
+                    <li>Fecha de nacimiento, número de licencia de conducir y estado civil.</li>
+                    <li>Detalles de su vehículo (VIN) y propiedad.</li>
+                    <li>Historial de conducción y reclamos anteriores.</li>
+                </ul>
+            </article>
+
+            {/* 2. Uso de la Información */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    2. Cómo Usamos su Información
+                </h3>
+                <p>
+                    Utilizamos sus datos exclusivamente para:
+                </p>
+                <ul class="list-disc pl-5 mt-4 space-y-2 opacity-90">
+                    <li>Solicitar cotizaciones a múltiples compañías aseguradoras (como Progressive, Geico, Bristol West, etc.) en su nombre.</li>
+                    <li>Emitir, mantener y renovar sus pólizas de seguro.</li>
+                    <li>Comunicarnos con usted sobre cambios en su cobertura o facturación.</li>
+                </ul>
+            </article>
+
+            {/* 3. SMS y Mensajes de Texto (Integrado visualmente) */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    3. Política de SMS y Mensajes de Texto
+                </h3>
+                <p class="mb-4">
+                    Al proporcionarnos su número de teléfono, usted consiente recibir mensajes de texto (SMS) de Fortitude Insurance relacionados con sus cotizaciones y pólizas.
+                </p>
+                <p class="font-bold mb-2">
+                    Privacidad de Datos Móviles:
+                </p>
+                <p class="mb-4">
+                    <strong>Ninguna información móvil será compartida con terceros o afiliados con fines de marketing o promocionales.</strong> Todas las categorías anteriores excluyen los datos de aceptación (opt-in) y consentimiento de mensajería de texto; esta información no se compartirá con terceros.
+                </p>
+                <p class="text-sm text-gray-500">
+                    Puede optar por no recibir mensajes en cualquier momento respondiendo "STOP".
+                </p>
+            </article>
+
+            {/* 4. Cookies y Publicidad (Pixel/Ads) */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    4. Cookies y Publicidad Digital
+                </h3>
+                <p>
+                    Este sitio web utiliza cookies y tecnologías de seguimiento similares (como el <strong>Píxel de Meta/Facebook</strong> y etiquetas de <strong>Google Ads</strong>).
+                </p>
+                <p class="mt-4">
+                    Estas herramientas nos permiten:
+                </p>
+                <ul class="list-disc pl-5 mt-2 space-y-2 opacity-90">
+                    <li>Analizar el tráfico de nuestro sitio web para mejorar la experiencia del usuario.</li>
+                    <li>Mostrarle anuncios relevantes en plataformas de terceros (Retargeting) basados en su interés en nuestros servicios.</li>
+                </ul>
+                <p class="mt-4 text-sm text-gray-500">
+                    Usted puede configurar su navegador para rechazar todas las cookies o indicar cuándo se envía una cookie.
+                </p>
+            </article>
+
+            {/* 5. Compartir con Terceros */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    5. Intercambio de Información
+                </h3>
+                <p>
+                    <strong>No vendemos su información personal.</strong> Solo compartimos sus datos con:
+                </p>
+                <ul class="list-disc pl-5 mt-4 space-y-2 opacity-90">
+                    <li><strong>Aseguradoras:</strong> Estrictamente lo necesario para obtener su cotización.</li>
+                    <li><strong>Proveedores de Software:</strong> Como EZLynx (nuestro sistema de gestión), quienes están obligados contractualmente a proteger sus datos.</li>
+                    <li><strong>Autoridades:</strong> Si así lo requiere la ley (por ejemplo, reportes al DMV).</li>
+                </ul>
+            </article>
+
+            {/* 6. Seguridad de Datos */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    6. Seguridad de Datos
+                </h3>
+                <p>
+                    Implementamos medidas de seguridad estándar de la industria (cifrado SSL, servidores seguros) para proteger su información personal contra acceso no autorizado, alteración o destrucción.
+                </p>
+            </article>
+
+            {/* Contacto */}
+            <div class="mt-16 pt-8 border-t border-gray-100 dark:border-white/10">
+                <h4 class="font-bold text-lg text-text-main dark:text-white mb-2">Contacto de Privacidad</h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    Para ejercer sus derechos de acceso, corrección o eliminación de datos, contáctenos:
+                </p>
+                <address class="not-italic text-gray-700 dark:text-gray-300">
+                    <strong>Fortitude Insurance Services LLC</strong><br/>
+                    <a href="mailto:support@fortitudeins.us" class="text-primary hover:underline">support@fortitudeins.us</a>
+                </address>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

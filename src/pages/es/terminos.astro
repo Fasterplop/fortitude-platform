@@ -1,0 +1,139 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Términos y Condiciones | Fortitude Insurance";
+const description = "Términos de uso, limitaciones de responsabilidad y condiciones legales para el uso de los servicios de Fortitude Insurance Services LLC.";
+
+// Fecha de última actualización
+const lastUpdated = "1 de Febrero, 2026";
+---
+
+<Layout title={title} description={description} lang="es">
+
+  {/* ENCABEZADO SIMPLE (Texto) */}
+  <section class="pt-32 pb-12 bg-surface-light dark:bg-[#050505]">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-text-main dark:text-white mb-4">
+        Términos y Condiciones
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Por favor lee detenidamente nuestros términos de uso antes de utilizar nuestros servicios.
+      </p>
+    </div>
+  </section>
+
+  {/* CONTENIDO LEGAL */}
+  <section class="pb-20 bg-surface-light dark:bg-[#050505]">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-white dark:bg-[#151515] p-8 md:p-12 rounded-3xl border border-gray-100 dark:border-white/5 shadow-xl">
+        
+        {/* Intro */}
+        <div class="mb-10 pb-10 border-b border-gray-100 dark:border-white/10">
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 font-mono uppercase tracking-widest">
+                Última Actualización: {lastUpdated}
+            </p>
+            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                Bienvenido a <strong>Fortitude Insurance Services LLC</strong> ("Agencia", "nosotros", "nuestro"). Al acceder a nuestro sitio web, utilizar nuestro cotizador en línea o contratar nuestros servicios, usted acepta estar legalmente vinculado por los siguientes términos y condiciones.
+            </p>
+        </div>
+
+        {/* Cláusulas */}
+        <div class="space-y-12 text-gray-700 dark:text-gray-300 leading-relaxed">
+
+            {/* 1. Naturaleza de los Servicios */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    1. Naturaleza de los Servicios
+                </h3>
+                <p>
+                    Fortitude Insurance opera como una <strong>agencia de seguros independiente</strong> licenciada en los estados de Florida y Texas. No somos una compañía aseguradora (carrier). Actuamos como intermediarios para solicitar cotizaciones, presentar opciones y facilitar la emisión de pólizas entre usted (el cliente) y las compañías aseguradoras (terceros).
+                </p>
+            </article>
+
+            {/* 2. NO COBERTURA AUTOMÁTICA (Estilo Normalizado) */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    2. Sin Cobertura Automática (No Binding)
+                </h3>
+                <p>
+                    El uso de nuestro sitio web, el envío de formularios de contacto, correos electrónicos, mensajes de voz o la obtención de una cotización en línea <strong>NO constituye un acuerdo de cobertura de seguro</strong> (binder).
+                </p>
+                <p class="mt-4">
+                    Ninguna cobertura de seguro se considera vigente, modificada o renovada hasta que usted reciba una <strong>confirmación expresa y por escrito</strong> (Binder o Página de Declaraciones) directamente de un agente licenciado de Fortitude Insurance o de la compañía aseguradora correspondiente.
+                </p>
+            </article>
+
+            {/* 3. Precisión de la Información */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    3. Precisión de la Información
+                </h3>
+                <p>
+                    Las cotizaciones presentadas se basan estrictamente en la información que usted proporciona. Usted es responsable de garantizar que todos los datos (historial de conducción, uso del vehículo, detalles de la propiedad, etc.) sean precisos y veraces.
+                </p>
+                <ul class="list-disc pl-5 mt-4 space-y-2 opacity-90">
+                    <li>La omisión o falsificación de datos puede resultar en un cambio inexacto de la prima (precio).</li>
+                    <li>Las aseguradoras se reservan el derecho de cancelar la póliza o negar un reclamo si se descubre información falsa ("Material Misrepresentation").</li>
+                </ul>
+            </article>
+
+            {/* 4. Enlaces a Terceros */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    4. Enlaces y Servicios de Terceros
+                </h3>
+                <p>
+                    Nuestro sitio web puede contener enlaces a sitios externos, incluidos portales de pago de aseguradoras (Progressive, Geico, etc.) o sistemas de cotización (EZLynx). Fortitude Insurance no controla ni garantiza el contenido, las políticas de privacidad o la seguridad de estos sitios de terceros.
+                </p>
+            </article>
+
+            {/* 5. Propiedad Intelectual */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    5. Propiedad Intelectual
+                </h3>
+                <p>
+                    Todo el contenido de este sitio web, incluyendo logotipos, textos, diseños y código, es propiedad de Fortitude Insurance Services LLC o se utiliza con licencia. Los logotipos de las aseguradoras mostrados pertenecen a sus respectivos propietarios y se utilizan únicamente con fines informativos para identificar a nuestros socios comerciales.
+                </p>
+            </article>
+
+            {/* 6. Limitación de Responsabilidad */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    6. Limitación de Responsabilidad
+                </h3>
+                <p>
+                    En la máxima medida permitida por la ley aplicable, Fortitude Insurance no será responsable de ningún daño directo, indirecto, incidental o consecuente que surja del uso o la imposibilidad de uso de este sitio web o de la información proporcionada en él.
+                </p>
+            </article>
+
+            {/* 7. Ley Aplicable */}
+            <article>
+                <h3 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-4">
+                    7. Jurisdicción y Ley Aplicable
+                </h3>
+                <p>
+                    Estos términos se regirán e interpretarán de acuerdo con las leyes del <strong>Estado de Florida</strong>. Cualquier disputa legal relacionada con estos términos se resolverá exclusivamente en los tribunales competentes del Condado de Pasco, Florida.
+                </p>
+            </article>
+
+            {/* Contacto Legal */}
+            <div class="mt-16 pt-8 border-t border-gray-100 dark:border-white/10">
+                <h4 class="font-bold text-lg text-text-main dark:text-white mb-2">¿Preguntas Legales?</h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    Si tiene dudas sobre estos términos, por favor contáctenos formalmente:
+                </p>
+                <address class="not-italic text-gray-700 dark:text-gray-300">
+                    <strong>Fortitude Insurance Services LLC</strong><br/>
+                    28210 Paseo Drive #190<br/>
+                    Wesley Chapel, FL 33543<br/>
+                    <a href="mailto:support@fortitudeins.us" class="text-primary hover:underline">support@fortitudeins.us</a>
+                </address>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -192,7 +192,7 @@ export default function Header({ lang }: HeaderProps) {
     { name: t.auto, href: lang === 'es' ? '/es/auto' : '/auto', icon: icons.auto },
     { name: t.property, href: lang === 'es' ? '/es/propiedad' : '/property', icon: icons.property },
     { name: t.commercial, href: lang === 'es' ? '/es/comercial' : '/commercial', icon: icons.commercial },
-    { name: t.additional, href: lang === 'es' ? '/es/additional-insurance' : '/additional-insurance', icon: icons.additional },
+    { name: t.additional, href: lang === 'es' ? '/es/servicios-adicionales' : '/additional-insurance', icon: icons.additional },
   ];
 
   const companyLinks = [

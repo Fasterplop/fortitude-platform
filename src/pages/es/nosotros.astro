@@ -1,0 +1,180 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import InternalHero from '../../components/InternalHero.astro';
+import CarriersCarousel from '../../components/CarriersCarousel.astro';
+import { Image } from 'astro:assets';
+
+// Asegúrate de tener estas imágenes o cambia las rutas
+import aboutHeroImg from '../../images/additional.jpg'; // Reutilizamos o usa una de oficina
+import agentImg from '../../images/auto.jpg'; // IDEALMENTE: Tu foto profesional aquí
+
+const title = "Nosotros | Fortitude Insurance";
+const description = "Conoce a Fortitude Insurance, tu agencia independiente en Florida y Texas dedicada a proteger lo que más importa con honestidad y tecnología.";
+
+const stats = [
+  { value: "FL & TX", label: "Licenciados" },
+  { value: "24/7", label: "Atención a Reclamos" },
+  { value: "100%", label: "Agencia Independiente" },
+];
+---
+
+<Layout title={title} description={description} lang="es">
+
+  {/* 1. HERO SECTION */}
+  <InternalHero
+    title="Protegiendo tu futuro con integridad."
+    subtitle="Más que una agencia de seguros, somos tus vecinos y defensores en Wesley Chapel, sirviendo a toda Florida y Texas."
+    image={aboutHeroImg}
+    imageAlt="Equipo de Fortitude Insurance trabajando"
+  />
+
+  {/* 2. LA DIFERENCIA (Agencia Independiente) */}
+  <section class="py-20 bg-white dark:bg-[#0a0a0a] overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col lg:flex-row items-center gap-16">
+        
+        {/* Texto */}
+        <div class="lg:w-1/2 space-y-8">
+            <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest">
+                ¿Por qué elegirnos?
+            </span>
+            <h2 class="text-3xl md:text-5xl font-serif font-bold text-text-main dark:text-white leading-tight">
+                El poder de elegir <br/>
+                <span class="text-primary">es tuyo.</span>
+            </h2>
+            <div class="space-y-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p>
+                    A diferencia de las grandes agencias "captivas" que solo pueden ofrecerte una marca de seguros, <strong>Fortitude Insurance es una agencia independiente.</strong>
+                </p>
+                <p>
+                    ¿Qué significa esto para ti? Significa que no trabajamos para una aseguradora; <strong>trabajamos para ti.</strong> Tenemos la libertad de comparar docenas de las mejores compañías del país (como Progressive, Travelers, Bristol West) para encontrar la cobertura exacta que necesitas al precio que mereces.
+                </p>
+            </div>
+
+            {/* Lista de Ventajas */}
+            <ul class="space-y-4 mt-4">
+                {[
+                    'Asesoría honesta sin presiones de venta.',
+                    'Múltiples cotizaciones en un solo lugar.',
+                    'Re-cotización anual para asegurar que sigas teniendo el mejor precio.'
+                ].map(item => (
+                    <li class="flex items-center gap-3">
+                        <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span class="text-text-main dark:text-gray-200 font-medium">{item}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
+        {/* Imagen / Gráfico Visual */}
+        <div class="lg:w-1/2 relative">
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-3xl transform rotate-3 scale-105"></div>
+            <div class="relative bg-surface-light dark:bg-[#151515] p-8 md:p-12 rounded-3xl border border-gray-100 dark:border-white/5 shadow-2xl">
+                <div class="grid grid-cols-1 gap-8">
+                    {/* Tarjeta Comparativa */}
+                    <div class="bg-white dark:bg-white/5 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-white/5">
+                        <h4 class="font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            Agente Tradicional
+                        </h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Solo una opción. Si suben el precio, no tienes alternativa.</p>
+                    </div>
+                    
+                    {/* Tarjeta Fortitude */}
+                    <div class="bg-primary/5 dark:bg-primary/10 p-6 rounded-xl border border-primary/20 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 px-3 py-1 bg-primary text-white text-[10px] font-bold uppercase rounded-bl-lg">
+                            Fortitude
+                        </div>
+                        <h4 class="font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Agente Independiente
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">
+                            Acceso a +20 aseguradoras. Si una sube el precio, te movemos a otra mejor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {/* 3. MEET THE AGENT (HUMAN TOUCH) */}
+  <section class="py-24 bg-gray-50 dark:bg-[#111]">
+    <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto bg-white dark:bg-[#151515] rounded-3xl overflow-hidden shadow-xl border border-gray-100 dark:border-white/5 flex flex-col md:flex-row">
+            
+            {/* Foto del Agente */}
+            <div class="md:w-2/5 relative min-h-[400px]">
+                 {/* Placeholder para foto de Jesús - Reemplazar 'image={agentImg}' por tu foto real */}
+                <Image src={agentImg} alt="Jesus Perez - Agente de Seguros" class="absolute inset-0 w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:bg-gradient-to-r"></div>
+                
+                <div class="absolute bottom-6 left-6 text-white">
+                    <p class="font-serif text-2xl font-bold">Jesus Perez</p>
+                    <p class="text-primary font-medium text-sm uppercase tracking-wider">Fundador & Agente Principal</p>
+                </div>
+            </div>
+
+            {/* Bio del Agente */}
+            <div class="md:w-3/5 p-8 md:p-12 flex flex-col justify-center">
+                <svg class="w-10 h-10 text-primary/40 mb-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.067 12.167 14.897 11.594 14.502C12.4278 12.6075 14.3015 11.2676 16.5 11.2676C19.2614 11.2676 21.5 13.5061 21.5 16.2676V21H14.017ZM24 21L24.004 16.2676C24.004 12.1229 20.6447 8.76758 16.5 8.76758C14.7356 8.76758 13.1165 9.37517 11.8385 10.3995C11.5246 6.98595 8.66579 4.26758 5.125 4.26758C2.29454 4.26758 0 6.56212 0 9.39258V21H9.983L9.983 18C9.983 15.3926 7.80787 13.2676 5.125 13.2676C4.84654 13.2676 4.57608 13.2929 4.31688 13.3411C4.77708 15.7335 6.87814 17.5501 9.41094 17.5501C11.1681 17.5501 12.7231 16.6346 13.6391 15.2443C13.8821 15.4344 14.017 15.7061 14.017 16.0001V21H24Z"></path></svg>
+                
+                <h3 class="text-2xl font-bold text-text-main dark:text-white mb-6">"Mi compromiso es tu tranquilidad."</h3>
+                
+                <div class="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p>
+                        Fundé Fortitude Insurance con una visión clara: combinar la velocidad de la tecnología moderna con la calidez del trato humano.
+                    </p>
+                    <p>
+                        Como residente de Wesley Chapel, entiendo los desafíos únicos que enfrentamos en Florida, desde huracanes hasta el aumento de primas. Mi trabajo no es solo venderte una póliza, sino educarte para que entiendas exactamente qué estás protegiendo.
+                    </p>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-gray-100 dark:border-white/10 flex items-center gap-6">
+                    <div>
+                        <p class="text-3xl font-bold text-primary">FL & TX</p>
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">Licencia Activa</p>
+                    </div>
+                    <div class="h-10 w-px bg-gray-200 dark:bg-white/10"></div>
+                     <div>
+                        <p class="text-3xl font-bold text-text-main dark:text-white">100%</p>
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">Bilingüe (EN/ES)</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+  </section>
+
+  {/* 4. CARRIERS (Prueba de Autoridad) */}
+  <div class="bg-surface-light dark:bg-surface-dark border-y border-gray-100 dark:border-white/5">
+      <CarriersCarousel lang="es" />
+  </div>
+
+  {/* 5. CTA FINAL */}
+  <section class="py-20 bg-white dark:bg-[#050505] text-center">
+      <div class="container mx-auto px-4">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-text-main dark:text-white mb-6">
+              ¿Listo para experimentar la diferencia Fortitude?
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
+              Únete a cientos de clientes satisfechos que han encontrado mejor cobertura y mejores precios con nosotros.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+              <a href="/es/#quote" class="px-8 py-4 bg-primary hover:bg-primary-hover text-text-main font-bold rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+                  Cotizar en Línea
+              </a>
+              <a href="/es/contacto" class="px-8 py-4 bg-gray-100 dark:bg-white/10 text-text-main dark:text-white font-bold rounded-full hover:bg-gray-200 dark:hover:bg-white/20 transition-all">
+                  Contactar Oficina
+              </a>
+          </div>
+      </div>
+  </section>
+
+</Layout>

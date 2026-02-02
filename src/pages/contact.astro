@@ -1,0 +1,251 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Accordion from '../components/Accordion.astro';
+
+// SEO Metadata
+const title = "Contact Us | Fortitude Insurance";
+const description = "We are here to help. Visit our office in Wesley Chapel, contact us on WhatsApp, or manage your policy online.";
+
+// Portal URLs (Same as Header)
+const URLS = {
+  client: "https://customerservice.agentinsure.com/EzlynxCustomerService/fortitudeis/Account/LogIn",
+  quote: "https://www.agentinsure.com/compare/auto-insurance-home-insurance/fortitudeis/quote.aspx"
+};
+---
+
+<Layout title={title} description={description} lang="en">
+  
+  {/* Simple Hero Section */}
+  <section class="relative bg-surface-light dark:bg-surface-dark pt-16 pb-12 md:pt-24 md:pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30 dark:opacity-5"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+      <h1 class="text-4xl md:text-5xl font-black font-serif text-text-main dark:text-white mb-6 tracking-tight">
+        <span class="text-primary">Connect</span> with Us
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+        Whether you are a current client or looking for new coverage, we have the direct channel for you.
+      </p>
+    </div>
+  </section>
+
+  {/* Split Intent Cards: Quick Filtering */}
+  <section class="relative z-20 -mt-8 px-6 pb-16">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      {/* Option 1: Current Client (Portal) */}
+      <a href={URLS.client} target="_blank" rel="noopener noreferrer" class="group relative bg-white dark:bg-surface-card p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-white/5 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+          <svg class="w-24 h-24 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <h3 class="text-2xl font-bold text-text-main dark:text-white mb-2 group-hover:text-primary transition-colors">Current Client</h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Access your documents, ID cards, make payments, or report a claim.</p>
+        <span class="inline-flex items-center font-bold text-primary group-hover:translate-x-2 transition-transform">
+          Go to Client Center
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </span>
+      </a>
+
+      {/* Option 2: New Client (Quote) */}
+      <a href={URLS.quote} target="_blank" rel="noopener noreferrer" class="group relative bg-primary/5 dark:bg-primary/10 p-8 rounded-2xl shadow-xl border-2 border-primary/20 hover:border-primary hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+           <svg class="w-24 h-24 text-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        </div>
+        <h3 class="text-2xl font-bold text-text-main dark:text-white mb-2 group-hover:text-primary transition-colors">Looking for Insurance</h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Get a quick online quote or schedule a call with an agent for personalized advice.</p>
+        <span class="inline-flex items-center font-bold text-primary group-hover:translate-x-2 transition-transform">
+          Quote Now
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </span>
+      </a>
+
+    </div>
+  </section>
+
+  {/* Main Content: Info & Form */}
+  <section class="py-16 bg-white dark:bg-surface-card border-t border-gray-100 dark:border-white/5">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
+      
+      {/* Left Column: Contact Info */}
+      <div class="space-y-10">
+        <div>
+          <h2 class="text-3xl font-bold font-serif text-text-main dark:text-white mb-6">Contact Information</h2>
+          <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+            We are located in the heart of Wesley Chapel. You can visit us at our office, call us, or email us directly.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          
+          {/* Item: Address */}
+          <div class="flex items-start gap-4">
+            <div class="p-3 rounded-lg bg-primary/10 text-primary mt-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-text-main dark:text-white">Office</h4>
+              <p class="text-gray-600 dark:text-gray-400">
+                28210 Paseo Drive #190 <br/>
+                Wesley Chapel, FL 33543
+              </p>
+            </div>
+          </div>
+
+          {/* Item: Phone */}
+          <div class="flex items-start gap-4">
+            <div class="p-3 rounded-lg bg-primary/10 text-primary mt-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-text-main dark:text-white">Phone</h4>
+              <a href="tel:813-753-4197" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors block">
+                (813) 753-4197
+              </a>
+              <p class="text-xs text-gray-400 mt-1">Mon - Fri: 9:00 AM - 5:00 PM</p>
+            </div>
+          </div>
+
+          {/* Item: Email */}
+          <div class="flex items-start gap-4">
+            <div class="p-3 rounded-lg bg-primary/10 text-primary mt-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-text-main dark:text-white">Email</h4>
+              <a href="mailto:Jesus.perez@fortitudeins.us" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                Jesus.perez@fortitudeins.us
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        {/* WhatsApp Button Large */}
+        <div class="pt-4">
+             <a 
+                href="https://wa.me/18137534197" 
+                target="_blank"
+                class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+            >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                <span>Chat on WhatsApp</span>
+            </a>
+        </div>
+
+        {/* Map Embed */}
+        <div class="w-full h-64 bg-gray-100 rounded-xl overflow-hidden shadow-inner mt-6">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.820253457816!2d-82.34860492367114!3d28.21272660301135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2b740529d1c9d%3A0x867332766336466f!2s28210%20Paseo%20Dr%20%23190%2C%20Wesley%20Chapel%2C%20FL%2033543!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+      </div>
+
+      {/* Right Column: Form */}
+      <div class="bg-gray-50 dark:bg-white/5 p-8 rounded-3xl border border-gray-100 dark:border-white/10">
+        <h3 class="text-2xl font-bold text-text-main dark:text-white mb-6">Send us a Message</h3>
+        
+        <form class="space-y-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="space-y-2">
+                    <label for="name" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Full Name</label>
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all dark:text-white" placeholder="John Doe" />
+                </div>
+                <div class="space-y-2">
+                    <label for="phone" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Phone</label>
+                    <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all dark:text-white" placeholder="(813) 000-0000" />
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <label for="email" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Email Address</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all dark:text-white" placeholder="john@example.com" />
+            </div>
+
+            <div class="space-y-2">
+                <label for="subject" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Subject</label>
+                
+                {/* RELATIVE WRAPPER for custom arrow */}
+                <div class="relative">
+                  <select id="subject" name="subject" class="w-full px-4 py-3 rounded-lg bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all dark:text-white appearance-none cursor-pointer">
+                      <option value="quote">Request a Quote</option>
+                      <option value="question">General Question</option>
+                      <option value="claim">Claim Assistance (Non-Urgent)</option>
+                      <option value="other">Other</option>
+                  </select>
+                  
+                  {/* CUSTOM ARROW ICON */}
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500 dark:text-gray-400">
+                    <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+
+            </div>
+
+            <div class="space-y-2">
+                <label for="message" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Message</label>
+                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all dark:text-white" placeholder="How can we help you today?"></textarea>
+            </div>
+
+            <div class="pt-2">
+                <button type="submit" class="w-full py-4 bg-primary hover:bg-primary-hover text-text-main font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+                    Send Message
+                </button>
+                <p class="text-xs text-center text-gray-500 mt-4">
+                    By submitting this form, you agree to be contacted by Fortitude Insurance. Your data is protected.
+                </p>
+            </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  {/* FAQ Section */}
+  <section class="py-16 bg-surface-light dark:bg-surface-dark">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl font-bold font-serif text-center text-text-main dark:text-white mb-10">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <Accordion 
+          title="What do I do if I have an accident or claim?" 
+          details="If it's an emergency, call 911. To report a claim, the fastest way is through our Client Center ('Current Client' button above) where you'll find direct 24/7 carrier numbers." 
+        />
+        <Accordion 
+          title="What documents do I need to quote auto insurance?" 
+          details="Generally, we need: Driver's license, vehicle registration, and if you have current insurance, your declarations page (dec page) to match or improve your coverages." 
+        />
+        <Accordion 
+          title="Can I insure my business if it's new?" 
+          details="Yes! We work with carriers specializing in new businesses and startups in Florida. Contact us to evaluate your specific risks." 
+        />
+        <Accordion 
+            title="Where are you located?" 
+            details="Our physical office is at 28210 Paseo Drive #190, Wesley Chapel, FL 33543. We accept in-person visits by appointment to provide you with the best service." 
+        />
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* DARK MODE CONTRAST FIX: 
+    Solid dark background ONLY for dropdown options in dark mode.
+  */
+  :global(.dark) select option {
+    background-color: #171717;
+    color: white;
+  }
+  
+  select option {
+    background-color: white;
+    color: #333;
+  }
+</style>

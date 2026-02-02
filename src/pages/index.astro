@@ -185,233 +185,163 @@ const lang = "en";
     </div>
   </section>
 
-{/* === SECCIÓN DE COBERTURAS: "Chameleon Scroll Slider" === */}
-  {/* El ID 'chameleon-section' será clave para cambiar el color de fondo */}
-  <section id="chameleon-section" class="relative py-24 transition-colors duration-1000 ease-in-out bg-gray-50 dark:bg-[#0a0a0a]">
+{/* === SECCIÓN PORTFOLIO 3x3 GRID === */}
+<section class="py-24 bg-surface-light dark:bg-surface-dark relative border-t border-gray-100 dark:border-white/5">
+  <div class="container mx-auto px-4">
     
-    <div class="container mx-auto px-4">
-      
-      {/* HEADER */}
-      <div class="mb-24 lg:mb-40 text-center lg:text-left relative z-10">
-          <span class="font-bold tracking-[0.3em] uppercase text-xs mb-4 block opacity-60">Our Portfolio</span>
-          <h2 class="text-6xl md:text-8xl lg:text-9xl font-serif font-bold text-text-main dark:text-white leading-[0.9] tracking-tighter mb-8 transition-colors duration-700" id="section-title">
-            Our <br/>
-            <span>Coverages</span>
-          </h2>
-          <p class="text-xl md:text-2xl font-light max-w-3xl leading-relaxed lg:ml-2 border-l-4 border-current pl-6 opacity-80 transition-colors duration-700">
-             We engineer protection layers for every aspect of your life.
-          </p>
-      </div>
-
-      <div class="flex flex-col lg:flex-row gap-12 lg:gap-28">
-        
-        {/* === COLUMNA IZQUIERDA: VISUAL FIJO (Sticky Slider) === */}
-        <div class="hidden lg:flex lg:w-1/2 h-[90vh] sticky top-8 items-start justify-center z-20">
-          
-          {/* Marco de la Imagen */}
-          <div class="relative w-full h-full rounded-[3rem] overflow-hidden shadow-2xl border-[8px] border-white dark:border-white/10 ring-1 ring-black/5 bg-gray-900">
-            
-            {/* --- IMÁGENES (Efecto Slider Vertical) --- */}
-            
-            {/* 1. AUTO IMAGE */}
-            <div id="img-auto" class="scroll-img absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out z-10 translate-y-0 opacity-100">
-                <Image src={autoImg} alt="Auto Insurance" class="w-full h-full object-cover" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                <div class="absolute bottom-16 left-12 right-12 text-white">
-                    <div class="inline-block px-3 py-1 bg-blue-500/30 border border-blue-400/50 rounded-full text-blue-100 text-xs font-bold uppercase tracking-widest mb-4 backdrop-blur-md">Mobility</div>
-                    <h3 class="text-6xl font-serif leading-none">Auto Protection</h3>
-                </div>
-            </div>
-
-            {/* 2. PROPERTY IMAGE */}
-            <div id="img-property" class="scroll-img absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out z-20 translate-y-full opacity-100">
-                <Image src={propertyImg} alt="Property Insurance" class="w-full h-full object-cover" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                 <div class="absolute bottom-16 left-12 right-12 text-white">
-                    <div class="inline-block px-3 py-1 bg-orange-500/30 border border-orange-400/50 rounded-full text-orange-100 text-xs font-bold uppercase tracking-widest mb-4 backdrop-blur-md">Assets</div>
-                    <h3 class="text-6xl font-serif leading-none">Real Estate</h3>
-                </div>
-            </div>
-
-            {/* 3. COMMERCIAL IMAGE */}
-            <div id="img-commercial" class="scroll-img absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out z-30 translate-y-full opacity-100">
-                <Image src={commercialImg} alt="Commercial Insurance" class="w-full h-full object-cover" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                 <div class="absolute bottom-16 left-12 right-12 text-white">
-                    <div class="inline-block px-3 py-1 bg-gray-500/30 border border-gray-400/50 rounded-full text-gray-100 text-xs font-bold uppercase tracking-widest mb-4 backdrop-blur-md">Enterprise</div>
-                    <h3 class="text-6xl font-serif leading-none">Commercial</h3>
-                </div>
-            </div>
-
-            {/* 4. MORE IMAGE */}
-            <div id="img-additional" class="scroll-img absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out z-40 translate-y-full opacity-100 bg-gray-900">
-                  <Image src={additionalImg} alt="Additional Insurance" class="w-full h-full object-cover" />
-                 <div class="absolute bottom-16 left-12 right-12 text-white">
-                    <div class="inline-block px-3 py-1 bg-yellow-500/30 border border-yellow-400/50 rounded-full text-yellow-100 text-xs font-bold uppercase tracking-widest mb-4 backdrop-blur-md">Lifestyle</div>
-                    <h3 class="text-6xl font-serif leading-none">Full Suite</h3>
-                </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* === COLUMNA DERECHA: TEXTO (Scrollable Trigger) === */}
-        <div class="w-full lg:w-1/2 pb-24 flex flex-col pt-[10vh]">
-          
-            {/* Los items tienen una altura mínima grande para forzar el scroll y dar tiempo a las transiciones */}
-            
-            {/* ITEM 1: AUTO */}
-            {/* data-color define el color de fondo de la sección entera */}
-            <div class="scroll-item group min-h-[80vh] flex flex-col justify-center px-8" 
-                 data-img="img-auto" 
-                 data-bgcolor="bg-blue-50 dark:bg-[#0f172a]"
-                 data-textcolor="text-blue-900 dark:text-blue-100">
-                
-                <h3 class="text-4xl md:text-6xl font-bold mb-6 transition-colors duration-500 group-[.active]:text-blue-600 dark:group-[.active]:text-blue-400">
-                    Auto Insurance
-                </h3>
-                <p class="text-xl md:text-2xl opacity-70 leading-relaxed mb-8">
-                    Experience the freedom of the road. We offer tailored protection for personal vehicles, classic cars, and collector items in FL & TX.
-                </p>
-                <a href="/auto" class="inline-flex text-lg font-bold hover:translate-x-2 transition-transform items-center gap-2 opacity-60 group-[.active]:opacity-100">
-                    View Plans <span class="text-2xl">&rarr;</span>
-                </a>
-            </div>
-
-            {/* ITEM 2: PROPERTY */}
-            <div class="scroll-item group min-h-[80vh] flex flex-col justify-center px-8" 
-                 data-img="img-property" 
-                 data-bgcolor="bg-orange-50 dark:bg-[#2a1b0f]"
-                 data-textcolor="text-orange-900 dark:text-orange-100">
-
-                <h3 class="text-4xl md:text-6xl font-bold mb-6 transition-colors duration-500 group-[.active]:text-orange-600 dark:group-[.active]:text-orange-400">
-                    Property
-                </h3>
-                <p class="text-xl md:text-2xl opacity-70 leading-relaxed mb-8">
-                    Your home is your sanctuary. We fortify it with comprehensive Homeowners, Condo, and Flood protection designed to weather any storm.
-                </p>
-                <a href="/property" class="inline-flex text-lg font-bold hover:translate-x-2 transition-transform items-center gap-2 opacity-60 group-[.active]:opacity-100">
-                    View Coverage <span class="text-2xl">&rarr;</span>
-                </a>
-            </div>
-
-            {/* ITEM 3: COMMERCIAL */}
-            <div class="scroll-item group min-h-[80vh] flex flex-col justify-center px-8" 
-                 data-img="img-commercial" 
-                 data-bgcolor="bg-gray-200 dark:bg-[#1f2937]"
-                 data-textcolor="text-gray-900 dark:text-gray-100">
-
-                <h3 class="text-4xl md:text-6xl font-bold mb-6 transition-colors duration-500 group-[.active]:text-gray-800 dark:group-[.active]:text-white">
-                    Commercial
-                </h3>
-                <p class="text-xl md:text-2xl opacity-70 leading-relaxed mb-8">
-                    Business continuity is priority #1. From General Liability to large Commercial Fleets, we help you take risks and grow without hesitation.
-                </p>
-                <a href="/commercial" class="inline-flex text-lg font-bold hover:translate-x-2 transition-transform items-center gap-2 opacity-60 group-[.active]:opacity-100">
-                    Business Solutions <span class="text-2xl">&rarr;</span>
-                </a>
-            </div>
-
-            {/* ITEM 4: MORE */}
-            <div class="scroll-item group min-h-[60vh] flex flex-col justify-center px-8" 
-                 data-img="img-additional" 
-                 data-bgcolor="bg-yellow-50 dark:bg-[#1a1500]"
-                 data-textcolor="text-yellow-900 dark:text-yellow-100">
-
-                <h3 class="text-4xl md:text-6xl font-bold mb-8 transition-colors duration-500 group-[.active]:text-yellow-600 dark:group-[.active]:text-yellow-400">
-                    Specialty & More
-                </h3>
-                
-                <div class="flex flex-wrap gap-3 mb-12">
-                    {['Health','Renters', 'Rideshare', 'Boat', 'Motorcycle', 'RV', 'General Liability'].map(item => (
-                        <span class="px-5 py-3 rounded-xl border border-current opacity-60 font-medium text-sm cursor-default hover:opacity-100 transition-opacity">
-                            {item}
-                        </span>
-                    ))}
-                </div>
-
-                <div class="p-8 rounded-3xl bg-white/50 dark:bg-black/20 backdrop-blur-sm border border-black/5 dark:border-white/10">
-                     <h4 class="text-2xl font-serif font-bold mb-2">Don't see what you need?</h4>
-                     <p class="opacity-70 mb-6">We have access to 50+ specialized carriers.</p>
-                     <a href="/additional-insurance" class="inline-block w-full py-5 bg-black dark:bg-white text-white dark:text-black font-bold text-center rounded-2xl hover:scale-[1.02] transition-transform shadow-lg">
-                        View All Coverages
-                     </a>
-                </div>
-            </div>
-
-        </div>
-      </div>
+    {/* Header */}
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Full Protection Portfolio</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-text-main dark:text-white mb-6">
+        Protected on <span class="text-primary">every front</span>.
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-400 font-light">
+        Explore our comprehensive range of specialized protection plans.
+      </p>
     </div>
 
-    <script is:inline>
-        document.addEventListener('DOMContentLoaded', () => {
-            const section = document.getElementById('chameleon-section');
-            const items = document.querySelectorAll('.scroll-item');
-            const images = document.querySelectorAll('.scroll-img');
-            
-            // Observer con margen para detectar cuando el elemento ocupa el centro de la pantalla
-            const observerOptions = {
-                root: null,
-                rootMargin: '-40% 0px -40% 0px', 
-                threshold: 0
-            };
+    {/* GRID 3x3: 9 CARDS */}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const target = entry.target;
-                        
-                        // 1. CAMBIO DE COLOR DE FONDO (Atmosfera completa)
-                        const newBgClass = target.getAttribute('data-bgcolor');
-                        const newTextClass = target.getAttribute('data-textcolor');
-                        
-                        // Limpiamos clases de color anteriores (esto requiere que Tailwind tenga estas clases generadas)
-                        // Para simplicidad en Astro/Tailwind dinámico, es mejor manipular clases específicas o usar style inline si las clases son complejas.
-                        // Aquí usaremos la manipulación de clases asumiendo que el 'base' bg-white se sobreescribe.
-                        
-                        // Reseteamos colores base conocidos
-                        section.className = `relative py-24 transition-colors duration-1000 ease-in-out ${newBgClass}`;
-                        section.style.color = ""; // Reset inline color if used
-                        
-                        // Aplicar color de texto al contenedor si es necesario para herencia
-                        // section.classList.add(newTextClass.split(' ')[0]);
+      {/* 1. AUTO */}
+      <a href="/auto" class="group relative h-[400px] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=1000&auto=format&fit=crop" alt="Auto Insurance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-70 transition-opacity"></div>
+        <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+           <div class="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-3 border border-white/20 text-white">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 012-2v0a2 2 0 10-2 2H5z"></path></svg>
+           </div>
+           <h3 class="text-2xl font-serif font-bold text-white mb-1">Auto</h3>
+           <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+             Comprehensive vehicle coverage.
+           </p>
+        </div>
+      </a>
 
-                        // 2. ACTIVAR ITEM DE TEXTO
-                        items.forEach(i => i.classList.remove('active'));
-                        target.classList.add('active');
+      {/* 2. HOME */}
+      <a href="/property" class="group relative h-[400px] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1600596542815-27bfef40ba3c?q=80&w=1000&auto=format&fit=crop" alt="Home Insurance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-70 transition-opacity"></div>
+        <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+           <div class="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-3 border border-white/20 text-white">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+           </div>
+           <h3 class="text-2xl font-serif font-bold text-white mb-1">Home</h3>
+           <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+             Protecting your main residence.
+           </p>
+        </div>
+      </a>
 
-                        // 3. SLIDER DE IMÁGENES (Efecto Deslizar)
-                        const targetImgId = target.getAttribute('data-img');
-                        let foundActive = false;
+      {/* 3. COMMERCIAL */}
+      <a href="/commercial" class="group relative h-[400px] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop" alt="Commercial Insurance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-70 transition-opacity"></div>
+        <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+           <div class="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-3 border border-white/20 text-white">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+           </div>
+           <h3 class="text-2xl font-serif font-bold text-white mb-1">Commercial</h3>
+           <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+             Business growth and liability.
+           </p>
+        </div>
+      </a>
 
-                        images.forEach(img => {
-                            if (img.id === targetImgId) {
-                                // Imagen Activa: Se pone en posición 0
-                                img.style.transform = 'translateY(0%)';
-                                img.style.opacity = '1';
-                                img.style.zIndex = '10';
-                                foundActive = true;
-                            } else if (foundActive) {
-                                // Imágenes siguientes: Se bajan (esperando entrar)
-                                img.style.transform = 'translateY(100%)';
-                                img.style.opacity = '0';
-                                img.style.zIndex = '0';
-                            } else {
-                                // Imágenes anteriores: Se suben (ya pasaron)
-                                // Opcional: dejarlas en 0 pero con z-index bajo para que la nueva las tape "deslizando"
-                                img.style.transform = 'translateY(-20%) scale(0.95)'; // Efecto Parallax sutil al salir
-                                img.style.opacity = '0';
-                                img.style.zIndex = '0';
-                            }
-                        });
-                    }
-                });
-            }, observerOptions);
+      {/* 4. HEALTH */}
+      <a href="/additional-insurance" class="group relative h-[400px] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1000&auto=format&fit=crop" alt="Health Insurance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-70 transition-opacity"></div>
+        <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+           <div class="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-3 border border-white/20 text-white">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+           </div>
+           <h3 class="text-2xl font-serif font-bold text-white mb-1">Health</h3>
+           <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+             Medical care for you and your family.
+           </p>
+        </div>
+      </a>
 
-            items.forEach(item => observer.observe(item));
-        });
-    </script>
-  </section>
+      {/* 5. RENTERS */}
+      <a href="/additional-insurance" class="group relative h-[400px] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1000&auto=format&fit=crop" alt="Renters Insurance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-70 transition-opacity"></div>
+        <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+           <div class="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-3 border border-white/20 text-white">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11.536 19.336 9.5 21.336 7.5 19.336l-2-2-2-2 10.743-10.743A6 6 0 0121.757 9z"></path></svg>
+           </div>
+           <h3 class="text-2xl font-serif font-bold text-white mb-1">Renters</h3>
+           <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+             Coverage for your personal property.
+           </p>
+        </div>
+      </a>
+
+      {/* 6. GENERAL LIABILITY */}
+      <a href="/additional-insurance" class="group relative h-[400px] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop" alt="General Liability" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-70 transition-opacity"></div>
+        <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+           <div class="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-3 border border-white/20 text-white">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+           </div>
+           <h3 class="text-2xl font-serif font-bold text-white mb-1">Liability</h3>
+           <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+             Protection against third-party claims.
+           </p>
+        </div>
+      </a>
+
+      {/* 7. MOTORCYCLE */}
+      <a href="/additional-insurance" class="group relative h-[400px] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=1000&auto=format&fit=crop" alt="Motorcycle" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-70 transition-opacity"></div>
+        <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+           <div class="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-3 border border-white/20 text-white">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+           </div>
+           <h3 class="text-2xl font-serif font-bold text-white mb-1">Motorcycle</h3>
+           <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+             Ride with confidence and safety.
+           </p>
+        </div>
+      </a>
+
+      {/* 8. BOAT */}
+      <a href="/additional-insurance" class="group relative h-[400px] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=1000&auto=format&fit=crop" alt="Boat" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-70 transition-opacity"></div>
+        <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+           <div class="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-3 border border-white/20 text-white">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"></path></svg>
+           </div>
+           <h3 class="text-2xl font-serif font-bold text-white mb-1">Boat</h3>
+           <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+             Coverage for your water adventures.
+           </p>
+        </div>
+      </a>
+
+      {/* 9. RV */}
+      <a href="/additional-insurance" class="group relative h-[400px] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?q=80&w=1000&auto=format&fit=crop" alt="RV" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-70 transition-opacity"></div>
+        <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+           <div class="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-3 border border-white/20 text-white">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+           </div>
+           <h3 class="text-2xl font-serif font-bold text-white mb-1">RV</h3>
+           <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+             Security for your home on the road.
+           </p>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</section>
 
   {/* CONTACT SECTION */}
   {/* Fondo Claro en Light (con elementos sutiles) y Oscuro en Dark */}
@@ -758,6 +688,10 @@ const lang = "en";
   </script>
 
   <style>
+    :global(.dark) select option {
+    background-color: #171717;
+    color: white;
+  }
     /* Custom Animations */
     @keyframes pulse-slow {
         0%, 100% { opacity: 0.5; transform: scale(1); }

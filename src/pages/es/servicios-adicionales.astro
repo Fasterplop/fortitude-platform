@@ -1,0 +1,172 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Accordion from '../../components/Accordion.astro';
+import { Image } from 'astro:assets';
+// Reutilizamos la imagen comercial o puedes subir una nueva genérica
+import heroImg from '../../images/commercial.jpg'; 
+
+const title = "Seguros Adicionales y Especializados | Fortitude Insurance";
+const description = "Cobertura completa para salud, negocios, botes, RVs y más. Cotice su seguro médico y responsabilidad civil en línea.";
+const lang = "es";
+---
+
+<Layout title={title} description={description} lang={lang}>
+
+
+  {/* SECCIÓN 1: PRODUCTOS CON COTIZACIÓN DIRECTA (Salud & GL) */}
+  <section class="py-20 bg-white dark:bg-[#0a0a0a]">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-primary font-bold tracking-wider uppercase text-sm">Autogestión Disponible</span>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-text-main dark:text-white mt-2 mb-4">
+          Cotice y contrate en línea ahora
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400">
+          Para su comodidad, ofrecemos plataformas digitales directas para Seguros de Salud y Responsabilidad Civil Comercial. Obtenga su precio al instante.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+        
+        {/* TARJETA: SALUD (HEALTH SHERPA) */}
+        <div class="relative group bg-surface-light dark:bg-white/5 rounded-3xl p-8 border border-gray-100 dark:border-white/10 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center text-2xl mb-6">
+            🏥
+          </div>
+          <h3 class="text-2xl font-bold text-text-main dark:text-white mb-3">Seguro de Salud / Obamacare</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            Acceda a planes de salud de calidad, verifique si califica para subsidios del gobierno y proteja el bienestar de su familia. Cobertura médica, hospitalaria y preventiva.
+          </p>
+          <a 
+            href="https://www.healthsherpa.com/?_agent_id=jesus-perez-diaz-afcquq" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="inline-flex w-full justify-center items-center gap-2 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors"
+          >
+            Ver Planes de Salud
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        </div>
+
+        {/* TARJETA: GENERAL LIABILITY (NEXT INSURANCE) */}
+        <div class="relative group bg-surface-light dark:bg-white/5 rounded-3xl p-8 border border-gray-100 dark:border-white/10 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div class="w-14 h-14 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 rounded-2xl flex items-center justify-center text-2xl mb-6">
+            ⚖️
+          </div>
+          <h3 class="text-2xl font-bold text-text-main dark:text-white mb-3">General Liability (GL)</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            Protección esencial para contratistas y pequeños negocios. Cubre daños a terceros, lesiones corporales y defensa legal. Ideal para cumplir requisitos de contratos.
+          </p>
+          <a 
+            href="https://track.nextinsurance.com/links?agent_affiliation=FICGAFRDDbL4UXMt&serial=992855993&channel=affiliation" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="inline-flex w-full justify-center items-center gap-2 px-6 py-4 bg-yellow-600 hover:bg-yellow-700 text-white font-bold rounded-xl transition-colors"
+          >
+            Cotizar Liability Ahora
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {/* SECCIÓN 2: ESTILO DE VIDA (Modal Trigger) */}
+  <section class="py-20 bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-white/5">
+    <div class="container mx-auto px-4">
+      <div class="mb-12">
+        <h2 class="text-3xl font-serif font-bold text-text-main dark:text-white mb-4">Protección para su estilo de vida</h2>
+        <p class="text-gray-600 dark:text-gray-300 max-w-2xl">
+          Disfrute de sus aventuras y proteja sus bienes personales con nuestras coberturas especializadas. Hable con nosotros para un plan a medida.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        {/* RENTERS */}
+        <div class="bg-white dark:bg-[#151515] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 hover:border-primary/50 transition-colors group">
+            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">🏢</div>
+            <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Seguro de Inquilinos</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Su arrendador asegura el edificio, pero no sus cosas. Proteja su ropa, electrónicos y muebles contra robo o incendio.
+            </p>
+            <button class="open-quote-modal text-primary font-bold text-sm hover:underline">Solicitar Cotización &rarr;</button>
+        </div>
+
+        {/* RIDESHARE */}
+        <div class="bg-white dark:bg-[#151515] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 hover:border-primary/50 transition-colors group">
+            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">🚕</div>
+            <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Rideshare (Uber/Lyft)</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Cubra la "brecha" de cobertura que existe mientras espera una solicitud de viaje. Esencial para conductores de apps.
+            </p>
+            <button class="open-quote-modal text-primary font-bold text-sm hover:underline">Solicitar Cotización &rarr;</button>
+        </div>
+
+        {/* MOTORCYCLE */}
+        <div class="bg-white dark:bg-[#151515] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 hover:border-primary/50 transition-colors group">
+            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">🏍️</div>
+            <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Motocicletas</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Desde cruisers hasta deportivas. Cobertura de responsabilidad, colisión y accesorios para su moto.
+            </p>
+            <button class="open-quote-modal text-primary font-bold text-sm hover:underline">Solicitar Cotización &rarr;</button>
+        </div>
+
+        {/* BOAT / WATERCRAFT */}
+        <div class="bg-white dark:bg-[#151515] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 hover:border-primary/50 transition-colors group">
+            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">⚓</div>
+            <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Botes y Embarcaciones</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Navegue tranquilo. Cubrimos daños al casco, responsabilidad civil en el agua y equipo de pesca.
+            </p>
+            <button class="open-quote-modal text-primary font-bold text-sm hover:underline">Solicitar Cotización &rarr;</button>
+        </div>
+
+        {/* RV / MOTORHOME */}
+        <div class="bg-white dark:bg-[#151515] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 hover:border-primary/50 transition-colors group">
+            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">🚐</div>
+            <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">RV y Casas Rodantes</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Su hogar lejos de casa. Protección integral para campers y motorhomes, incluyendo efectos personales a bordo.
+            </p>
+            <button class="open-quote-modal text-primary font-bold text-sm hover:underline">Solicitar Cotización &rarr;</button>
+        </div>
+
+         {/* PET INSURANCE (Opcional, buen relleno) */}
+         <div class="bg-white dark:bg-[#151515] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 hover:border-primary/50 transition-colors group">
+            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">🐶</div>
+            <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Mascotas</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Ayuda con los gastos veterinarios inesperados por accidentes o enfermedades de su perro o gato.
+            </p>
+            <button class="open-quote-modal text-primary font-bold text-sm hover:underline">Solicitar Cotización &rarr;</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {/* FAQ RÁPIDO */}
+  <section class="py-20 bg-white dark:bg-black">
+    <div class="container mx-auto px-4 max-w-3xl">
+        <h2 class="text-2xl font-bold text-center mb-10 text-text-main dark:text-white">Preguntas Frecuentes</h2>
+        <div class="space-y-4">
+             <Accordion 
+                title="¿El seguro de auto cubre si manejo para Uber/Lyft?" 
+                details="Generalmente no. Las pólizas personales excluyen el uso comercial. Necesita un endoso de 'Rideshare' para cubrir el período en que la app está encendida pero no tiene pasajero, ya que Uber/Lyft suelen cubrir solo cuando el pasajero está en el auto."
+            />
+            <Accordion 
+                title="¿Por qué necesito General Liability?" 
+                details="Si usted es dueño de negocio, esta cobertura lo protege si alguien (que no sea su empleado) se lastima en su propiedad o si usted causa daños a la propiedad de un cliente. Es fundamental para obtener contratos."
+            />
+            <Accordion 
+                title="¿Qué es HealthSherpa?" 
+                details="Es una plataforma asociada oficial para el Mercado de Seguros Médicos (ACA). A través de nuestro enlace, usted puede ver planes, precios y subsidios disponibles para usted de manera rápida y segura."
+            />
+        </div>
+    </div>
+  </section>
+
+</Layout>

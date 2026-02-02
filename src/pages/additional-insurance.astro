@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Accordion from '../components/Accordion.astro';
+import { Image } from 'astro:assets';
+// Reutilizamos la imagen comercial o puedes subir una nueva genérica
+import heroImg from '../images/commercial.jpg'; 
+
+const title = "Additional & Specialized Insurance | Fortitude Insurance";
+const description = "Complete coverage for health, business, boats, RVs, and more. Quote your health and liability insurance online.";
+const lang = "en";
+---
+
+<Layout title={title} description={description} lang={lang}>
+
+
+  {/* SECTION 1: DIRECT QUOTE PRODUCTS (Health & GL) */}
+  <section class="py-20 bg-white dark:bg-[#0a0a0a]">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-primary font-bold tracking-wider uppercase text-sm">Self-Service Available</span>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-text-main dark:text-white mt-2 mb-4">
+          Quote and Bind Online Now
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400">
+          For your convenience, we offer direct digital platforms for Health Insurance and Commercial General Liability. Get your price instantly.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+        
+        {/* CARD: HEALTH (HEALTH SHERPA) */}
+        <div class="relative group bg-surface-light dark:bg-white/5 rounded-3xl p-8 border border-gray-100 dark:border-white/10 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center text-2xl mb-6">
+            🏥
+          </div>
+          <h3 class="text-2xl font-bold text-text-main dark:text-white mb-3">Health Insurance / Obamacare</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            Access quality health plans, check if you qualify for government subsidies, and protect your family's well-being. Medical, hospital, and preventive coverage.
+          </p>
+          <a 
+            href="https://www.healthsherpa.com/?_agent_id=jesus-perez-diaz-afcquq" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="inline-flex w-full justify-center items-center gap-2 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors"
+          >
+            View Health Plans
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        </div>
+
+        {/* CARD: GENERAL LIABILITY (NEXT INSURANCE) */}
+        <div class="relative group bg-surface-light dark:bg-white/5 rounded-3xl p-8 border border-gray-100 dark:border-white/10 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div class="w-14 h-14 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 rounded-2xl flex items-center justify-center text-2xl mb-6">
+            ⚖️
+          </div>
+          <h3 class="text-2xl font-bold text-text-main dark:text-white mb-3">General Liability (GL)</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            Essential protection for contractors and small businesses. Covers third-party property damage, bodily injury, and legal defense. Ideal for meeting contract requirements.
+          </p>
+          <a 
+            href="https://track.nextinsurance.com/links?agent_affiliation=FICGAFRDDbL4UXMt&serial=992855993&channel=affiliation" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="inline-flex w-full justify-center items-center gap-2 px-6 py-4 bg-yellow-600 hover:bg-yellow-700 text-white font-bold rounded-xl transition-colors"
+          >
+            Quote Liability Now
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {/* SECTION 2: LIFESTYLE (Modal Trigger) */}
+  <section class="py-20 bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-white/5">
+    <div class="container mx-auto px-4">
+      <div class="mb-12">
+        <h2 class="text-3xl font-serif font-bold text-text-main dark:text-white mb-4">Protection for Your Lifestyle</h2>
+        <p class="text-gray-600 dark:text-gray-300 max-w-2xl">
+          Enjoy your adventures and protect your personal assets with our specialized coverages. Talk to us for a tailored plan.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        {/* RENTERS */}
+        <div class="bg-white dark:bg-[#151515] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 hover:border-primary/50 transition-colors group">
+            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">🏢</div>
+            <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Renters Insurance</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Your landlord insures the building, but not your stuff. Protect your clothes, electronics, and furniture against theft or fire.
+            </p>
+            <button class="open-quote-modal text-primary font-bold text-sm hover:underline">Request a Quote &rarr;</button>
+        </div>
+
+        {/* RIDESHARE */}
+        <div class="bg-white dark:bg-[#151515] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 hover:border-primary/50 transition-colors group">
+            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">🚕</div>
+            <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Rideshare (Uber/Lyft)</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Cover the "gap" in coverage that exists while waiting for a ride request. Essential for app drivers.
+            </p>
+            <button class="open-quote-modal text-primary font-bold text-sm hover:underline">Request a Quote &rarr;</button>
+        </div>
+
+        {/* MOTORCYCLE */}
+        <div class="bg-white dark:bg-[#151515] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 hover:border-primary/50 transition-colors group">
+            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">🏍️</div>
+            <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Motorcycles</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                From cruisers to sport bikes. Liability, collision, and accessory coverage for your bike.
+            </p>
+            <button class="open-quote-modal text-primary font-bold text-sm hover:underline">Request a Quote &rarr;</button>
+        </div>
+
+        {/* BOAT / WATERCRAFT */}
+        <div class="bg-white dark:bg-[#151515] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 hover:border-primary/50 transition-colors group">
+            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">⚓</div>
+            <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Boats & Watercraft</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Sail with peace of mind. We cover hull damage, water liability, and fishing equipment.
+            </p>
+            <button class="open-quote-modal text-primary font-bold text-sm hover:underline">Request a Quote &rarr;</button>
+        </div>
+
+        {/* RV / MOTORHOME */}
+        <div class="bg-white dark:bg-[#151515] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 hover:border-primary/50 transition-colors group">
+            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">🚐</div>
+            <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">RVs & Motorhomes</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Your home away from home. Comprehensive protection for campers and motorhomes, including personal effects on board.
+            </p>
+            <button class="open-quote-modal text-primary font-bold text-sm hover:underline">Request a Quote &rarr;</button>
+        </div>
+
+         {/* PET INSURANCE (Optional filler) */}
+         <div class="bg-white dark:bg-[#151515] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 hover:border-primary/50 transition-colors group">
+            <div class="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">🐶</div>
+            <h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Pets</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Help with unexpected veterinary costs due to accidents or illnesses for your dog or cat.
+            </p>
+            <button class="open-quote-modal text-primary font-bold text-sm hover:underline">Request a Quote &rarr;</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {/* FAQ QUICK */}
+  <section class="py-20 bg-white dark:bg-black">
+    <div class="container mx-auto px-4 max-w-3xl">
+        <h2 class="text-2xl font-bold text-center mb-10 text-text-main dark:text-white">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+             <Accordion 
+                title="Does auto insurance cover me if I drive for Uber/Lyft?" 
+                details="Generally, no. Personal policies exclude commercial use. You need a 'Rideshare' endorsement to cover the period when the app is on but you have no passenger, as Uber/Lyft usually only cover when a passenger is in the car."
+            />
+            <Accordion 
+                title="Why do I need General Liability?" 
+                details="If you are a business owner, this coverage protects you if someone (other than your employee) gets injured on your property or if you cause damage to a client's property. It is fundamental for securing contracts."
+            />
+            <Accordion 
+                title="What is HealthSherpa?" 
+                details="It is an official partner platform for the Health Insurance Marketplace (ACA). Through our link, you can view available plans, prices, and subsidies for you quickly and securely."
+            />
+        </div>
+    </div>
+  </section>
+
+</Layout>
