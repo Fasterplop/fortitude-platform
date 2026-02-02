@@ -76,6 +76,8 @@ export default function Header({ lang }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeModal, setActiveModal] = useState<'client' | 'quote' | null>(null);
   const [isDark, setIsDark] = useState(false);
+  // Estado para la URL del cambio de idioma. Valor inicial seguro para SSR.
+  const [switchUrl, setSwitchUrl] = useState(lang === 'es' ? '/' : '/es');
 
   const URLS = {
     client: "https://customerservice.agentinsure.com/EzlynxCustomerService/fortitudeis/Account/LogIn",
@@ -84,14 +86,48 @@ export default function Header({ lang }: HeaderProps) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      // 1. Lógica del tema oscuro
       const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const storedTheme = localStorage.getItem('theme');
       if (storedTheme === 'dark' || (!storedTheme && isSystemDark)) {
         setIsDark(true);
         document.documentElement.classList.add('dark');
       }
+
+      // 2. Lógica de Mapeo de Rutas para cambio de idioma
+      const currentPath = window.location.pathname.replace(/\/$/, ""); // Normalizar quitando slash final
+      
+      // Mapa bidireccional de rutas basado en tus archivos
+      const routeMap = [
+        { en: '', es: '/es' }, // Home (sin slash final por la normalización)
+        { en: '/', es: '/es' }, // Home explicito
+        { en: '/auto', es: '/es/auto' },
+        { en: '/property', es: '/es/propiedad' },
+        { en: '/commercial', es: '/es/comercial' },
+        { en: '/additional-insurance', es: '/es/servicios-adicionales' },
+        { en: '/about', es: '/es/nosotros' },
+        { en: '/resources', es: '/es/recursos' },
+        { en: '/contact', es: '/es/contacto' },
+        { en: '/privacy', es: '/es/privacidad' },
+        { en: '/terms', es: '/es/terminos' },
+        { en: '/accessibility', es: '/es/accesibilidad' }
+      ];
+
+      const match = routeMap.find(r => r.en === currentPath || r.es === currentPath);
+      
+      if (match) {
+        // Si encontramos la ruta en el mapa, devolvemos la opuesta
+        setSwitchUrl(lang === 'es' ? (match.en || '/') : match.es);
+      } else {
+        // Fallback genérico: intentar reemplazar prefijos si no está en el mapa
+        if (lang === 'es') {
+             setSwitchUrl(currentPath.replace('/es', '') || '/');
+        } else {
+             setSwitchUrl(`/es${currentPath}`);
+        }
+      }
     }
-  }, []);
+  }, [lang]); // Se ejecuta al montar y si cambia el idioma
 
   const toggleTheme = () => {
     if (isDark) {
@@ -133,7 +169,7 @@ export default function Header({ lang }: HeaderProps) {
       quote: 'Get An Insurance Quote',
       darkMode: 'Dark Mode',
       switchLangText: 'Español',
-      switchLink: '/es',
+      // switchLink eliminado de aquí, usamos el estado switchUrl
       modalClientTitle: 'Client Center',
       modalQuoteTitle: 'Fast Quote',
       loadingClient: 'Connecting to Client Portal...',
@@ -155,7 +191,7 @@ export default function Header({ lang }: HeaderProps) {
       quote: 'Obtener Cotización',
       darkMode: 'Modo Oscuro',
       switchLangText: 'English',
-      switchLink: '/',
+      // switchLink eliminado de aquí, usamos el estado switchUrl
       modalClientTitle: 'Centro de Clientes',
       modalQuoteTitle: 'Cotización Rápida',
       loadingClient: 'Conectando al Portal de Clientes...',
@@ -229,7 +265,7 @@ export default function Header({ lang }: HeaderProps) {
 
             {/* 3. LANGUAGE SELECTOR */}
             <a 
-              href={t.switchLink} 
+              href={switchUrl} 
               className="text-sm font-bold text-text-main dark:text-surface-light hover:text-primary transition-colors flex items-center gap-1"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -250,7 +286,8 @@ export default function Header({ lang }: HeaderProps) {
           </div>
         </div>
       </header>
-
+      
+      {/* ... RESTO DEL CÓDIGO (ModalFrame, Menú lateral, etc) se mantiene igual ... */}
       <ModalFrame 
         isOpen={activeModal !== null}
         onClose={closeModal}
