@@ -5,10 +5,13 @@ import CarriersCarousel from '../../components/CarriersCarousel.astro';
 import { Image } from 'astro:assets';
 import commercialImg from '../../images/commercial.jpg';
 
-// Metadatos SEO CORREGIDOS (Nacional)
+// Metadatos SEO (Nacional)
 const title = "Seguros Comerciales para Empresas y Negocios | Fortitude Insurance";
 const description = "Proteja su empresa con coberturas a medida. Cotizaciones rápidas para responsabilidad civil, propiedad comercial y más en todo Estados Unidos.";
 const lang = "es";
+
+// Link para General Liability (Next Insurance)
+const glLink = "https://app.nextinsurance.com/?agent_affiliation=FICGAFRDDbL4UXMt&serial=992855993&channel=affiliation&prev_tracking_id=01e0e5d4fb75d8543f645ee701338f74&tracking_id=53b7f420e14fbb863501ec2cecb86cc3";
 ---
 
 <Layout title={title} description={description} lang={lang}>
@@ -29,14 +32,16 @@ const lang = "es";
                 </h1>
                 
                 <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                    Entendemos que su empresa es el resultado de su esfuerzo. Ofrecemos seguros diseñados para mitigar riesgos y permitirle enfocarse en crecer.
+                    Entendemos que su empresa es el resultado de su esfuerzo.
+                    Ofrecemos seguros diseñados para mitigar riesgos y permitirle enfocarse en crecer.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                    <button class="open-quote-modal w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary-hover text-text-main font-bold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
-                        Cotizar mi Negocio
+                    {/* BOTÓN: COTIZAR RESPONSABILIDAD CIVIL (Enlace directo) */}
+                    <a href={glLink} target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary-hover text-text-main font-bold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
+                        Cotizar Responsabilidad Civil
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </button>
+                    </a>
                     
                     <a href="/es/contact" class="w-full sm:w-auto px-8 py-4 border border-gray-200 dark:border-white/10 text-text-main dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-center">
                         Hablar con un Agente
@@ -102,19 +107,19 @@ const lang = "es";
           <div class="space-y-4">
               <Accordion 
                 title="Responsabilidad Civil General (General Liability)" 
-                details="Protección esencial contra reclamos por daños corporales o daños a la propiedad de terceros que ocurran durante sus operaciones. Es la primera línea de defensa para proteger el patrimonio de su empresa ante demandas imprevistas o accidentes en sus instalaciones." 
+                details="Protección esencial contra reclamos por daños corporales o daños a la propiedad de terceros que ocurran durante sus operaciones. Es la primera línea de defensa para proteger el patrimonio de su empresa ante demandas imprevistas o accidentes en sus instalaciones."
               />
               <Accordion 
                 title="Propiedad Comercial (Commercial Property)" 
-                details="Resguarde sus activos físicos. Esta cobertura protege sus edificios, inventario, equipos, mobiliario y herramientas contra riesgos mayores como incendios, robo, vandalismo o desastres naturales, asegurando la continuidad de su operación ante lo inesperado." 
+                details="Resguarde sus activos físicos. Esta cobertura protege sus edificios, inventario, equipos, mobiliario y herramientas contra riesgos mayores como incendios, robo, vandalismo o desastres naturales, asegurando la continuidad de su operación ante lo inesperado."
               />
               <Accordion 
                 title="Auto Comercial (Commercial Auto)" 
-                details="Cobertura especializada para vehículos utilizados con fines comerciales. Garantiza que su flota, sus conductores y su carga estén protegidos con límites de responsabilidad adecuados que una póliza personal no cubriría, incluyendo protección para vehículos de empleados." 
+                details="Cobertura especializada para vehículos utilizados con fines comerciales. Garantiza que su flota, sus conductores y su carga estén protegidos con límites de responsabilidad adecuados que una póliza personal no cubriría, incluyendo protección para vehículos de empleados."
               />
               <Accordion 
                 title="Compensación para Trabajadores (Workers Comp)" 
-                details="Cumpla con la ley y proteja a su equipo. Esta cobertura paga los gastos médicos y salarios perdidos si un empleado se lesiona en el trabajo, protegiendo a su vez a su empresa de demandas relacionadas con accidentes laborales." 
+                details="Cumpla con la ley y proteja a su equipo. Esta cobertura paga los gastos médicos y salarios perdidos si un empleado se lesiona en el trabajo, protegiendo a su vez a su empresa de demandas relacionadas con accidentes laborales."
               />
           </div>
       </div>
@@ -147,7 +152,7 @@ const lang = "es";
                               <p class="text-gray-600 dark:text-gray-400 text-sm">Actualice los datos de su empresa, añada vehículos a su flota o ajuste coberturas a medida que su negocio crece.</p>
                           </div>
                       </div>
-                       <div class="flex gap-4">
+                      <div class="flex gap-4">
                           <div class="w-12 h-12 rounded-full bg-surface-light dark:bg-white/10 flex items-center justify-center text-text-main dark:text-white font-bold text-xl shrink-0 border border-gray-200 dark:border-gray-700">3</div>
                           <div>
                               <h4 class="text-xl font-bold text-text-main dark:text-white mb-2">Acceso a Documentos</h4>
@@ -192,9 +197,9 @@ const lang = "es";
           <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">Asegure la continuidad de su negocio</h2>
           <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">Nuestros agentes expertos están listos para diseñar su plan de protección.</p>
           <div class="flex justify-center gap-4">
-               <button class="open-quote-modal px-8 py-4 bg-white text-text-main font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                  Cotizar mi Negocio
-               </button>
+               <a href={glLink} target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-white text-text-main font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                  Cotizar Responsabilidad Civil
+               </a>
           </div>
       </div>
   </section>

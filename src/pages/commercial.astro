@@ -9,6 +9,9 @@ import commercialImg from '../images/commercial.jpg';
 const title = "Commercial Insurance for Businesses | Fortitude Insurance";
 const description = "Protect your business with custom coverage. Fast quotes for General Liability, Commercial Property, and more across the USA.";
 const lang = "en";
+
+// Link for General Liability (Next Insurance)
+const glLink = "https://app.nextinsurance.com/?agent_affiliation=FICGAFRDDbL4UXMt&serial=992855993&channel=affiliation&prev_tracking_id=01e0e5d4fb75d8543f645ee701338f74&tracking_id=53b7f420e14fbb863501ec2cecb86cc3";
 ---
 
 <Layout title={title} description={description} lang={lang}>
@@ -29,16 +32,17 @@ const lang = "en";
                 </h1>
                 
                 <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                    We understand your business is the result of your effort. We offer insurance designed to mitigate risks and allow you to focus on growing.
+                    We understand your business is the result of your effort.
+                    We offer insurance designed to mitigate risks and allow you to focus on growing.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                    {/* BUTTON TO OPEN MODAL */}
-                    <button class="open-quote-modal w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary-hover text-text-main font-bold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
-                        Quote my Business
+                    {/* BUTTON: QUOTE GENERAL LIABILITY (Direct Link) */}
+                    <a href={glLink} target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary-hover text-text-main font-bold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
+                        Quote General Liability
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </button>
-                    
+                    </a>
+                     
                     <a href="/contact" class="w-full sm:w-auto px-8 py-4 border border-gray-200 dark:border-white/10 text-text-main dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-center">
                         Speak with an Agent
                     </a>
@@ -103,19 +107,19 @@ const lang = "en";
           <div class="space-y-4">
               <Accordion 
                 title="General Liability" 
-                details="Essential protection against claims for bodily injury or property damage to third parties occurring during your operations. It is the first line of defense to protect your company's assets against unforeseen lawsuits or accidents on your premises." 
+                details="Essential protection against claims for bodily injury or property damage to third parties occurring during your operations. It is the first line of defense to protect your company's assets against unforeseen lawsuits or accidents on your premises."
               />
               <Accordion 
                 title="Commercial Property" 
-                details="Safeguard your physical assets. This coverage protects your buildings, inventory, equipment, furniture, and tools against major risks such as fire, theft, vandalism, or natural disasters, ensuring the continuity of your operation." 
+                details="Safeguard your physical assets. This coverage protects your buildings, inventory, equipment, furniture, and tools against major risks such as fire, theft, vandalism, or natural disasters, ensuring the continuity of your operation."
               />
               <Accordion 
                 title="Commercial Auto" 
-                details="Specialized coverage for vehicles used for business purposes. Ensures your fleet, drivers, and cargo are protected with adequate liability limits that a personal policy would not cover, including protection for employee vehicles." 
+                details="Specialized coverage for vehicles used for business purposes. Ensures your fleet, drivers, and cargo are protected with adequate liability limits that a personal policy would not cover, including protection for employee vehicles."
               />
               <Accordion 
                 title="Workers' Compensation" 
-                details="Comply with the law and protect your team. This coverage pays medical expenses and lost wages if an employee gets injured on the job, while also protecting your company from lawsuits related to workplace accidents." 
+                details="Comply with the law and protect your team. This coverage pays medical expenses and lost wages if an employee gets injured on the job, while also protecting your company from lawsuits related to workplace accidents."
               />
           </div>
       </div>
@@ -148,7 +152,7 @@ const lang = "en";
                               <p class="text-gray-600 dark:text-gray-400 text-sm">Update your company details, add vehicles to your fleet, or adjust coverage as your business grows.</p>
                           </div>
                       </div>
-                       <div class="flex gap-4">
+                      <div class="flex gap-4">
                           <div class="w-12 h-12 rounded-full bg-surface-light dark:bg-white/10 flex items-center justify-center text-text-main dark:text-white font-bold text-xl shrink-0 border border-gray-200 dark:border-gray-700">3</div>
                           <div>
                               <h4 class="text-xl font-bold text-text-main dark:text-white mb-2">Document Access</h4>
@@ -193,9 +197,9 @@ const lang = "en";
           <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">Ensure your business continuity</h2>
           <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">Our expert agents are ready to design your protection plan.</p>
           <div class="flex justify-center gap-4">
-               <button class="open-quote-modal px-8 py-4 bg-white text-text-main font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                  Quote my Business
-               </button>
+               <a href={glLink} target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-white text-text-main font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                  Quote General Liability
+               </a>
           </div>
       </div>
   </section>
