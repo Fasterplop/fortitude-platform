@@ -5,9 +5,8 @@ import CarriersCarousel from '../../components/CarriersCarousel.astro';
 import { Image } from 'astro:assets';
 
 // Asegúrate de tener estas imágenes o cambia las rutas
-import aboutHeroImg from '../../images/additional.jpg'; // Reutilizamos o usa una de oficina
-import agentImg from '../../images/auto.jpg'; // IDEALMENTE: Tu foto profesional aquí
-
+import aboutHeroImg from '../../images/additional.jpg'; 
+import agentImg from '../../images/profile.png'; 
 const title = "Nosotros | Fortitude Insurance";
 const description = "Conoce a Fortitude Insurance, tu agencia independiente en Florida y Texas dedicada a proteger lo que más importa con honestidad y tecnología.";
 
@@ -157,20 +156,22 @@ const stats = [
       <CarriersCarousel lang="es" />
   </div>
 
-  {/* 5. CTA FINAL */}
-  <section class="py-20 bg-white dark:bg-[#050505] text-center">
+ {/* 5. CTA FINAL */}
+  <section class="py-20 bg-primary text-text-main text-center">
       <div class="container mx-auto px-4">
-          <h2 class="text-3xl md:text-4xl font-serif font-bold text-text-main dark:text-white mb-6">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">
               ¿Listo para experimentar la diferencia Fortitude?
           </h2>
-          <p class="text-lg text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
+          <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
               Únete a cientos de clientes satisfechos que han encontrado mejor cobertura y mejores precios con nosotros.
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-4">
-              <a href="/es/#quote" class="px-8 py-4 bg-primary hover:bg-primary-hover text-text-main font-bold rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+              {/* Botón Principal (Fondo blanco para resaltar sobre el amarillo) */}
+              <a href="/es/#quote" class="px-8 py-4 bg-white text-text-main font-bold rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
                   Cotizar en Línea
               </a>
-              <a href="/es/contacto" class="px-8 py-4 bg-gray-100 dark:bg-white/10 text-text-main dark:text-white font-bold rounded-full hover:bg-gray-200 dark:hover:bg-white/20 transition-all">
+              {/* Botón Secundario (Outline oscuro) */}
+              <a href="/es/contacto" class="px-8 py-4 bg-transparent border-2 border-text-main text-text-main font-bold rounded-full hover:bg-white/20 transition-all">
                   Contactar Oficina
               </a>
           </div>

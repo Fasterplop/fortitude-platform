@@ -3,8 +3,14 @@ import Layout from '../../layouts/Layout.astro';
 import CarriersCarousel from '../../components/CarriersCarousel.astro';
 import { Image } from 'astro:assets';
 import autoImg from '../../images/auto.jpg';
-import propertyImg from '../../images/property.jpg';
+import propertyImg from '../../images/property.jpg'; 
 import commercialImg from '../../images/commercial.jpg';
+import healthImg from '../../images/health.jpg';
+import liabilityImg from '../../images/liability.avif';
+import rentersImg from '../../images/renters.jpg';
+import motoImg from '../../images/motorcycle.jpg';
+import boatImg from '../../images/boat.avif';
+import rvImg from '../../images/rv.jpg';
 
 const title = "Fortitude Insurance Services LLC | Seguros de Auto, Hogar y Comercial";
 const description = "Cotiza en tiempo real. Seguros confiables en Florida y Texas.";
@@ -235,45 +241,45 @@ const lang = "es";
               link: '/es/comercial' 
             }
           ],
-          // FILA 2: Personales y Salud (Imágenes Unsplash + Link General)
+          // FILA 2: Personales y Salud (Imágenes Locales Actualizadas)
           [
             { 
               title: 'Salud', 
               desc: 'Planes médicos a tu medida.', 
-              img: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=1000', 
+              img: healthImg, 
               link: '/es/servicios-adicionales' 
             },
             { 
               title: 'Responsabilidad Civil', 
               desc: 'Protección ante daños a terceros.', 
-              img: 'https://images.unsplash.com/photo-1450101499121-e90f260234f6?auto=format&fit=crop&q=80&w=1000', 
+              img: liabilityImg, 
               link: '/es/servicios-adicionales' 
             },
             { 
               title: 'Inquilinos', 
               desc: 'Cuida tus bienes dentro de casa.', 
-              img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=1000', 
+              img: rentersImg, 
               link: '/es/servicios-adicionales' 
             }
           ],
-          // FILA 3: Recreativo (Imágenes Unsplash + Link General)
+          // FILA 3: Recreativo (Imágenes Locales Actualizadas)
           [
             { 
               title: 'Motos', 
               desc: 'Aventura segura en dos ruedas.', 
-              img: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=1000', 
+              img: motoImg, 
               link: '/es/servicios-adicionales' 
             },
             { 
               title: 'Embarcaciones', 
               desc: 'Navega con tranquilidad total.', 
-              img: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&q=80&w=1000', 
+              img: boatImg, 
               link: '/es/servicios-adicionales' 
             },
             { 
               title: 'Casas Rodantes', 
               desc: 'Tu hogar en cualquier carretera.', 
-              img: 'https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&q=80&w=1000', 
+              img: rvImg, 
               link: '/es/servicios-adicionales' 
             }
           ]

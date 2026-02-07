@@ -5,7 +5,12 @@ import { Image } from 'astro:assets';
 import autoImg from '../images/auto.jpg';
 import propertyImg from '../images/property.jpg';
 import commercialImg from '../images/commercial.jpg';
-import additionalImg from '../images/additional.jpg';
+import healthImg from '../images/health.jpg';
+import liabilityImg from '../images/liability.avif';
+import rentersImg from '../images/renters.jpg';
+import motorcycleImg from '../images/motorcycle.jpg';
+import boatImg from '../images/boat.avif';
+import rvImg from '../images/rv.jpg';
 
 const title = "Fortitude Insurance Services LLC | Auto, Home & Commercial Insurance";
 const description = "Quote in real time. Reliable insurance in Florida and Texas.";
@@ -203,7 +208,7 @@ const lang = "en";
       <div class="flex flex-col gap-6 max-w-7xl mx-auto">
         
         {[
-          // ROW 1: Main (Local Images + Specific Links)
+          // ROW 1: Main (Auto, Property, Commercial)
           [
             { 
               title: 'Auto', 
@@ -224,45 +229,45 @@ const lang = "en";
               link: '/commercial' 
             }
           ],
-          // ROW 2: Personal & Health (Unsplash Images + General Link)
+          // ROW 2: Personal & Health (Ahora con imágenes locales)
           [
             { 
               title: 'Health', 
               desc: 'Health plans tailored to your needs.', 
-              img: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=1000', 
+              img: healthImg, 
               link: '/additional-insurance' 
             },
             { 
               title: 'General Liability', 
               desc: 'Protection against third-party claims.', 
-              img: 'https://images.unsplash.com/photo-1450101499121-e90f260234f6?auto=format&fit=crop&q=80&w=1000', 
+              img: liabilityImg, 
               link: '/additional-insurance' 
             },
             { 
               title: 'Renters', 
               desc: 'Protect your belongings inside your home.', 
-              img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=1000', 
+              img: rentersImg, 
               link: '/additional-insurance' 
             }
           ],
-          // ROW 3: Recreational (Unsplash Images + General Link)
+          // ROW 3: Recreational (Ahora con imágenes locales)
           [
             { 
               title: 'Motorcycle', 
               desc: 'Safe adventures on two wheels.', 
-              img: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=1000', 
+              img: motorcycleImg, 
               link: '/additional-insurance' 
             },
             { 
               title: 'Boat', 
               desc: 'Navigate with total peace of mind.', 
-              img: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&q=80&w=1000', 
+              img: boatImg, 
               link: '/additional-insurance' 
             },
             { 
               title: 'RV', 
               desc: 'Your home on any road.', 
-              img: 'https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&q=80&w=1000', 
+              img: rvImg, 
               link: '/additional-insurance' 
             }
           ]
@@ -276,7 +281,7 @@ const lang = "en";
                 href={item.link} 
                 class="group relative flex-1 lg:hover:flex-[2.5] transition-[flex] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] rounded-3xl overflow-hidden cursor-pointer min-h-[280px] lg:min-h-full"
               >
-                {/* IMAGE RENDERING: Use <Image /> if local, <img> if URL string */}
+                {/* IMAGE RENDERING: Handles imports automatically */}
                 {typeof item.img === 'string' ? (
                   <img 
                     src={item.img} 
