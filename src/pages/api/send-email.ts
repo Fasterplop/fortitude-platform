@@ -40,7 +40,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     const send = await resend.emails.send({
-      from: 'Fortitude Website <support@fortitudeins.us>',
+      from: 'Fortitude Website <support@web.fortitudeins.us>',
       to: ['support@fortitudeins.us'], // Destinatario final
       replyTo: email as string,
       subject: `Nuevo Lead Web: ${name} - ${type}`,

@@ -587,16 +587,13 @@ const lang = "en";
               formMessage.classList.add('hidden');
 
               const formData = new FormData(form);
-              const data = Object.fromEntries(formData);
 
-              try {
-                  const response = await fetch('/api/send-email', {
-                      method: 'POST',
-                      headers: {
-                          'Content-Type': 'application/json',
-                      },
-                      body: JSON.stringify(data),
-                  });
+
+try {
+  const response = await fetch('/api/send-email', {
+      method: 'POST',
+      body: formData, 
+  });
 
                   if (response.ok) {
                       form.reset();
