@@ -328,7 +328,7 @@ export default function Header({ lang }: HeaderProps) {
             <a 
               key={link.href} 
               href={link.href} 
-              className="group px-5 md:px-6 py-2 md:py-3 text-sm md:text-lg font-semibold md:font-bold text-text-main dark:text-surface-light border-b border-gray-50 dark:border-gray-800 hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5 transition-colors flex items-center gap-3"
+              className="group px-5 md:px-6 py-2 md:py-3 text-sm md:text-lg font-semibold md:font-bold text-text-main dark:text-surface-light border-b border-gray-50 dark:border-gray-800 dark:hover:text-primary hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5 transition-colors flex items-center gap-3"
             >
               <span className="text-gray-400 group-hover:text-primary transition-colors">
                 {link.icon}
@@ -345,7 +345,7 @@ export default function Header({ lang }: HeaderProps) {
             <a 
               key={link.href} 
               href={link.href} 
-              className="group px-5 md:px-6 py-2 md:py-3 text-sm md:text-lg font-semibold md:font-bold text-text-main dark:text-surface-light border-b border-gray-50 dark:border-gray-800 hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5 transition-colors flex items-center gap-3"
+              className="group px-5 md:px-6 py-2 md:py-3 text-sm md:text-lg font-semibold md:font-bold text-text-main dark:text-surface-light border-b border-gray-50 dark:border-gray-800 dark:hover:text-primary hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5 transition-colors flex items-center gap-3"
             >
               <span className="text-gray-400 group-hover:text-primary transition-colors">
                 {link.icon}
