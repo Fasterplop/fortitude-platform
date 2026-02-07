@@ -5,16 +5,24 @@ import { Resend } from 'resend';
 // Importante: Esto fuerza a que esta ruta sea SSR (Server Side Rendering) en Cloudflare
 export const prerender = false;
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
+export const POST: APIRoute = async ({ request, locals }) => {
 
-export const POST: APIRoute = async ({ request }) => {
+    const RESEND_API_KEY = locals.runtime?.env?.RESEND_API_KEY || import.meta.env.RESEND_API_KEY;
+
+  if (!RESEND_API_KEY) {
+    return new Response(
+      JSON.stringify({ message: 'Error de configuración del servidor (Falta API Key)' }),
+      { status: 500 }
+    );
+  }
+
+  const resend = new Resend(RESEND_API_KEY);
   const data = await request.formData();
 
   // 1. SEGURIDAD: HONEYPOT
   // Si este campo (invisible para humanos) tiene valor, es un bot.
-  const honey = data.get('_honey');
+ const honey = data.get('_honey');
   if (honey) {
-    // Respondemos con éxito falso para confundir al bot
     return new Response(JSON.stringify({ message: 'Enviado' }), { status: 200 });
   }
 
@@ -22,8 +30,6 @@ export const POST: APIRoute = async ({ request }) => {
   const name = data.get('name');
   const email = data.get('email');
   const phone = data.get('phone');
-  
-  // Normalizamos: 'interest' viene del Home, 'subject' viene de Contacto
   const rawInterest = data.get('interest');
   const rawSubject = data.get('subject');
   const type = rawInterest || rawSubject || 'Consulta General';
