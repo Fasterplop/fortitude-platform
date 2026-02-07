@@ -8,6 +8,7 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   // Dominio final necesario para sitemap/canonical
   site: 'https://fortitudeins.us',
+  output: 'static',
 
   integrations: [react(), tailwind()],
 
