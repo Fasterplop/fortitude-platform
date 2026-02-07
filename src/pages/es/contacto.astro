@@ -150,7 +150,10 @@ const URLS = {
       <div class="bg-gray-50 dark:bg-white/5 p-8 rounded-3xl border border-gray-100 dark:border-white/10">
         <h3 class="text-2xl font-bold text-text-main dark:text-white mb-6">Envíanos un Mensaje</h3>
         
-        <form class="space-y-5">
+        <form id="contact-form" class="space-y-5">
+            {/* HONEYPOT ANTI-SPAM */}
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div class="space-y-2">
                     <label for="name" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Nombre Completo</label>
@@ -170,9 +173,7 @@ const URLS = {
             <div class="space-y-2">
                 <label for="subject" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Asunto</label>
                 
-                {/* WRAPPER RELATIVO: 
-                   Necesario para posicionar el icono de flecha "flotante" sobre el select.
-                */}
+                {/* WRAPPER RELATIVO */}
                 <div class="relative">
                   <select id="subject" name="subject" class="w-full px-4 py-3 rounded-lg bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all dark:text-white appearance-none cursor-pointer">
                       <option value="quote">Solicitar Cotización</option>
@@ -192,17 +193,21 @@ const URLS = {
             </div>
 
             <div class="space-y-2">
-                <label for="message" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Mensaje</label>
+                 <label for="message" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Mensaje</label>
                 <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all dark:text-white" placeholder="¿En qué podemos ayudarte hoy?"></textarea>
             </div>
 
             <div class="pt-2">
-                <button type="submit" class="w-full py-4 bg-primary hover:bg-primary-hover text-text-main font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
-                    Enviar Mensaje
+                <button type="submit" id="submit-btn" class="w-full py-4 bg-primary hover:bg-primary-hover text-text-main font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    <span>Enviar Mensaje</span>
+                     {/* LOADER */}
+                     <svg id="btn-loader" class="w-5 h-5 animate-spin hidden" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                 </button>
                 <p class="text-xs text-center text-gray-500 mt-4">
                     Al enviar este formulario, aceptas ser contactado por Fortitude Insurance. Tus datos están protegidos.
                 </p>
+                {/* MENSAJE FEEDBACK */}
+                <p id="form-message" class="text-center text-sm font-medium hidden mt-4 p-3 rounded-lg"></p>
             </div>
         </form>
       </div>
@@ -236,6 +241,56 @@ const URLS = {
   </section>
 
 </Layout>
+
+<script is:inline>
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnLoader = document.getElementById('btn-loader');
+    const formMessage = document.getElementById('form-message');
+
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // UI Loading State
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            if(btnLoader) btnLoader.classList.remove('hidden');
+            formMessage.classList.add('hidden');
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+
+            try {
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                if (response.ok) {
+                    form.reset();
+                    formMessage.textContent = "¡Gracias! Tu mensaje ha sido enviado. Te contactaremos pronto.";
+                    formMessage.className = "text-center text-sm font-medium text-green-600 mt-4 block p-3 bg-green-50 rounded-lg";
+                    formMessage.classList.remove('hidden');
+                } else {
+                    throw new Error('Error enviando');
+                }
+            } catch (error) {
+                formMessage.textContent = "Hubo un error al enviar el mensaje. Por favor intenta de nuevo.";
+                formMessage.className = "text-center text-sm font-medium text-red-600 mt-4 block p-3 bg-red-50 rounded-lg";
+                formMessage.classList.remove('hidden');
+            } finally {
+                // Reset UI
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                if(btnLoader) btnLoader.classList.add('hidden');
+            }
+        });
+    }
+</script>
 
 <style>
   /* FIX DE CONTRASTE: 
