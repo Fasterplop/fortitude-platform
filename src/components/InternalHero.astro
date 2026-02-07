@@ -6,9 +6,43 @@ interface Props {
   subtitle: string;
   image: ImageMetadata;
   imageAlt: string;
+  lang: 'es' | 'en';
+  primaryBtnText?: string;
+  secondaryBtnText?: string;
 }
 
-const { title, subtitle, image, imageAlt } = Astro.props;
+const { 
+  title, 
+  subtitle, 
+  image, 
+  imageAlt, 
+  lang,
+  primaryBtnText, 
+  secondaryBtnText 
+} = Astro.props;
+
+// Diccionario de configuración basado en el idioma
+const i18n = {
+  es: {
+    primaryDefault: "Cotizar ahora",
+    secondaryDefault: "Hablar con Agente",
+    quoteLink: "/es/#quote",
+    contactLink: "/es/contacto", 
+  },
+  en: {
+    primaryDefault: "Get a Quote",
+    secondaryDefault: "Speak with Agent",
+    quoteLink: "/#quote",
+    contactLink: "/contact",
+  }
+};
+
+// Seleccionamos la configuración actual
+const config = i18n[lang];
+
+// Definimos los textos finales (usando la prop opcional o el default del diccionario)
+const finalPrimaryText = primaryBtnText || config.primaryDefault;
+const finalSecondaryText = secondaryBtnText || config.secondaryDefault;
 ---
 
 <section class="relative bg-surface-light dark:bg-surface-dark overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24">
@@ -20,24 +54,33 @@ const { title, subtitle, image, imageAlt } = Astro.props;
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-text-main dark:text-white mb-6 leading-tight">
           {title}
         </h1>
+      
         <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 font-light leading-relaxed mb-8">
           {subtitle}
         </p>
+
         <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <a href="/es/#quote" class="px-8 py-4 bg-primary hover:bg-primary-hover text-text-main font-bold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 text-center">
-                Cotizar ahora
+            {/* Botón Primario: Cotizar */}
+            <a href={config.quoteLink} class="px-8 py-4 bg-primary hover:bg-primary-hover text-text-main font-bold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 text-center">
+                {finalPrimaryText}
             </a>
-            <a href="/es/contact" class="px-8 py-4 border border-gray-300 dark:border-gray-700 text-text-main dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-white/5 transition-all text-center">
-                Hablar con Agente
+     
+            {/* Botón Secundario: Contacto */}
+            <a href={config.contactLink} class="px-8 py-4 border border-gray-300 dark:border-gray-700 text-text-main dark:text-white font-medium rounded-full hover:bg-gray-50 dark:hover:bg-white/5 transition-all text-center">
+                {finalSecondaryText}
             </a>
         </div>
       </div>
 
-      {/* Imagen Decorativa (Estilo Modern Shield) */}
+      {/* Imagen Decorativa */}
       <div class="w-full md:w-1/2 relative">
         <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl relative">
             <div class="absolute inset-0 bg-primary/10 mix-blend-overlay z-10"></div>
-            <Image src={image} alt={imageAlt} class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
+            <Image 
+              src={image} 
+              alt={imageAlt} 
+              class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" 
+            />
         </div>
         {/* Decoración geométrica */}
         <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-primary rounded-full blur-2xl opacity-20 -z-10"></div>
