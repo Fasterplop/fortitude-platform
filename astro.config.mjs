@@ -22,5 +22,20 @@ export default defineConfig({
     }
   },
 
-  adapter: cloudflare()
+  adapter: cloudflare({
+    // Habilita el proxy para simular el entorno de Cloudflare correctamente
+    platformProxy: {
+      enabled: true,
+    },
+  }),
+
+  // SOLUCIÓN DEL ERROR 500:
+  vite: {
+    resolve: {
+      alias: {
+        // Forza a las librerías a usar el módulo nativo soportado por 'nodejs_compat'
+        stream: "node:stream",
+      }
+    }
+  }
 });
