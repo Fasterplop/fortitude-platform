@@ -42,19 +42,21 @@ const validations: Record<string, ValidationRule> = {
 
 export const POST: APIRoute = async ({ request, locals }) => {
   try {
-    // 1. OBTENER API KEY (Dentro del try para capturar errores de acceso)
+    // 1. OBTENCIÓN SEGURA DE LA API KEY (Evita crash si no existe)
     const RESEND_API_KEY = (locals as any).runtime?.env?.RESEND_API_KEY || import.meta.env.RESEND_API_KEY;
 
     if (!RESEND_API_KEY) {
-      throw new Error("La variable de entorno RESEND_API_KEY no está configurada.");
+      console.error("Falta la variable de entorno RESEND_API_KEY");
+      return new Response(JSON.stringify({
+        message: "Error de configuración del servidor (Falta API Key).",
+        type: "Error"
+      }), { status: 500 });
     }
 
-    // 2. INICIALIZAR CLIENTE (Solo si tenemos Key)
+    // 2. INICIALIZAR RESEND
     const resend = new Resend(RESEND_API_KEY);
 
-    // CONFIGURACIÓN DE REMITENTE
-    // IMPORTANTE: Asegúrate de que este dominio esté verificado en Resend.
-    // Si falla, prueba temporalmente con 'onboarding@resend.dev'
+    // USAR TU DOMINIO VERIFICADO
     const fromEmail = 'Fortitude Website <support@web.fortitudeins.us>';
     const toEmail = 'support@fortitudeins.us';
 
@@ -62,7 +64,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     const values: Record<string, string> = {};
     const errors: Record<string, string> = {};
 
-    // --- LÓGICA DE VALIDACIÓN (Igual que antes) ---
+    // --- VALIDACIÓN ---
     const honeyValue = data.get('_honey')?.toString() || '';
     if (honeyValue) {
       console.warn('Bot detectado por honeypot.');
@@ -82,7 +84,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
       if (rules.minLength && value.length < rules.minLength) errors[field] = `Mínimo ${rules.minLength} caracteres.`;
       if (rules.maxLength && value.length > rules.maxLength) errors[field] = `Máximo ${rules.maxLength} caracteres.`;
       if (rules.pattern && !rules.pattern.test(value)) errors[field] = `Formato inválido.`;
-      if (rules.allowedValues && !rules.allowedValues.includes(value)) errors[field] = `Opción inválida.`;
+      if (rules.allowedValues && !rules.allowedValues.includes(value)) errors[field] = `Opción inválida: ${value}`;
     }
 
     if (Object.keys(errors).length > 0) {
@@ -93,7 +95,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
       }), { status: 400 });
     }
 
-    // 3. PREPARAR HTML (Igual que antes)
+    // --- PREPARAR EMAIL ---
     const emailHtml = `
       <!DOCTYPE html>
       <html lang="es">
@@ -109,11 +111,11 @@ export const POST: APIRoute = async ({ request, locals }) => {
       </html>
     `;
 
-    // 4. ENVIAR CORREO (Corregido replyTo -> reply_to)
+    // --- ENVIAR ---
     const dataResend = await resend.emails.send({
       from: fromEmail,
       to: toEmail,
-      replyTo: values.email, // <--- CORRECCIÓN AQUÍ
+      replyTo: values.email, // <--- CORRECTO PARA EL SDK DE TYPESCRIPT
       subject: `Nuevo Lead: ${values.name} - ${values.interest}`,
       html: emailHtml,
       text: `Nuevo contacto de ${values.name}. Revisar HTML para detalles.`,
@@ -121,7 +123,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
     if (dataResend.error) {
       console.error('Error de Resend API:', dataResend.error);
-      // Esto capturará errores como "Domain not verified"
       throw new Error(`Resend Error: ${dataResend.error.message}`);
     }
 
@@ -131,9 +132,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     }), { status: 200 });
 
   } catch (error: any) {
-    console.error('SERVER ERROR:', error);
-    
-    // Devolvemos el mensaje exacto para que puedas depurar en el frontend si es necesario
+    console.error('SERVER ERROR FULL:', error);
     return new Response(JSON.stringify({
       message: error.message || "Error interno del servidor.",
       type: "Error"
