@@ -286,6 +286,10 @@ const lang = "en";
                   <img 
                     src={item.img} 
                     alt={item.title} 
+                    loading="lazy" 
+                    decoding="async"
+                    width="600" 
+                    height="400"
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
                   />
                 ) : (

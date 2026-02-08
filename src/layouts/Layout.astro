@@ -8,25 +8,69 @@ interface Props {
 	title: string;
 	description: string;
 	lang?: string;
+	image?: string;
 }
 
-const { title, description, lang = 'en' } = Astro.props;
+const { title, description, lang = 'en', image = '/og-image.png' } = Astro.props;
+
+// Lógica para URLs absolutas (Crucial para SEO)
+const siteUrl = Astro.site ? Astro.site.toString() : 'https://fortitudeins.us';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const socialImageURL = new URL(image, siteUrl);
+
+// Lógica manual para Hreflang (Crucial para sitios bilingües en /es/)
+// Esto le dice a Google: "Esta página en inglés tiene una versión en español aquí"
+const currentPath = Astro.url.pathname;
+let alternateLangUrl = '';
+let alternateLangCode = '';
+
+if (lang === 'en') {
+    alternateLangCode = 'es';
+    alternateLangUrl = new URL(`/es${currentPath === '/' ? '' : currentPath}`, siteUrl).href;
+} else {
+    alternateLangCode = 'en';
+    // Remover '/es' del path para volver a inglés
+    const pathWithoutEs = currentPath.replace(/^\/es/, '') || '/';
+    alternateLangUrl = new URL(pathWithoutEs, siteUrl).href;
+}
 
 ---
 
 <!doctype html>
 <html lang={lang} class="scroll-smooth">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
+
+
+		<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <link rel="alternate" hreflang={lang} href={canonicalURL} />
+    <link rel="alternate" hreflang={alternateLangCode} href={alternateLangUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_US' : 'en_US'} />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImageURL} />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
 
 		<script is:inline>
 			const theme = (() => {
@@ -44,7 +88,48 @@ const { title, description, lang = 'en' } = Astro.props;
 				document.documentElement.classList.remove('dark');
 			}
 		</script>
-	</head>
+
+		<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "InsuranceAgency",
+  "name": "Fortitude Insurance Services LLC",
+  "image": "https://fortitudeins.us/images/fortitude-logo.png",
+  "url": "https://fortitudeins.us",
+  "telephone": "+18137534197",
+  "email": "support@fortitudeins.us",
+  "areaServed": [
+    {
+      "@type": "State",
+      "name": "Florida"
+    },
+    {
+      "@type": "State",
+      "name": "Texas"
+    }
+  ],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "sameAs": [
+    "https://www.instagram.com/fortitudeinsurances/"
+  ],
+  "priceRange": "$$$"
+})} />
+
+    </head>
+
+        
 	<body class="overflow-x-hidden bg-surface-light dark:bg-surface-dark text-text-main dark:text-surface-light transition-colors duration-300">
 		<Header client:load lang={lang} />
 		

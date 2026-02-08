@@ -1,0 +1,68 @@
+---
+// src/pages/404.astro
+import Layout from '../layouts/Layout.astro';
+
+const title = "404 - Página No Encontrada | Fortitude Insurance";
+const description = "La página que buscas no está disponible. Regresa al inicio para encontrar tu seguro ideal.";
+const lang = "en"; 
+---
+
+<Layout title={title} description={description} lang={lang}>
+  
+  {/* Agregado 'py-24' para dar margen vertical sólido */}
+  <section class="relative min-h-[80vh] flex flex-col items-center justify-center overflow-hidden bg-surface-light dark:bg-surface-dark px-4 py-24 text-center">
+    
+    {/* Fondo sutil */}
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-gray-50/50 dark:from-surface-dark dark:via-surface-dark dark:to-[#151515] pointer-events-none"></div>
+
+    {/* Elementos decorativos de fondo */}
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 dark:bg-primary/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+      
+      {/* 404 Grande con Gradiente */}
+      <h1 class="text-9xl md:text-[12rem] font-serif font-bold tracking-tighter leading-none mb-4 select-none">
+        <span class="text-transparent bg-clip-text bg-gradient-to-br from-primary via-yellow-500 to-yellow-700 opacity-90">
+          404
+        </span>
+      </h1>
+
+      {/* Mensaje Principal */}
+      <h2 class="text-3xl md:text-5xl font-serif font-bold text-text-main dark:text-white mb-6">
+        Oops! Page not found.
+      </h2>
+      
+      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mb-10 leading-relaxed font-light">
+        We can't seem to find the page you're looking for. It might have been removed, renamed, or is temporarily unavailable.
+        <br class="hidden md:block" />
+        <span class="text-sm opacity-80 mt-2 block">(No podemos encontrar la página que buscas.)</span>
+      </p>
+
+      {/* Botones de Acción */}
+      <div class="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
+        
+        {/* Botón Principal - Home English */}
+        <a href="/" class="group relative px-8 py-4 bg-text-main dark:bg-white text-white dark:text-black font-bold text-lg rounded-full hover:-translate-y-1 transition-all duration-300 overflow-hidden min-w-[200px] shadow-lg hover:shadow-xl">
+            <span class="relative z-10 flex items-center justify-center gap-2">
+               Back to Home
+               <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            </span>
+            <div class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+        </a>
+
+        {/* Botón Secundario - Inicio Español */}
+        <a href="/es" class="px-8 py-4 border-2 border-gray-200 dark:border-white/10 text-gray-700 dark:text-white font-bold text-lg rounded-full hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-300 hover:border-primary hover:text-primary dark:hover:text-primary min-w-[200px]">
+           Ir al Inicio (ES)
+        </a>
+
+      </div>
+
+      {/* Enlace de soporte rápido */}
+      <div class="mt-12 text-sm text-gray-500 dark:text-gray-400">
+        Need help? <a href="/contact" class="text-primary hover:underline font-bold">Contact Support</a>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
